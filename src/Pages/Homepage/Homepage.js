@@ -1,0 +1,94 @@
+import React,{useState, useEffect} from 'react';
+import Navbar from '../../Layout/Navbar/Navbar';
+// Hero Images
+import hero from '../../Assets/hero-three.jpg';
+import heroTwo from '../../Assets/hero-one.jpg';
+import './Homepage.scss';
+import BlueButton from '../../Components/BlueButton/BlueButton';
+
+// How it works images
+import howOne from '../../Assets/create-account.jpg';
+import howTwo from '../../Assets/browse-books.jpg';
+import howThree from '../../Assets/read-book.jpg';
+import CardImage from '../../Components/Card/CardImage';
+
+// About 
+import AboutImg from '../../Assets/about.jpg';
+
+export default function Homepage() {
+    
+    const hows = [{
+        index : 1,
+        image : howOne,
+        text : "Créez un compte et authentifiez-vous !"
+    },
+    {
+        index: 2,
+        image : howTwo,
+        text : "Parcourez notre collection de livres disponible !" 
+    },
+    {
+        index : 3,
+        image : howThree,
+        text : "Amusez-vous soit en lisant par vous-même ou en utilisant la version audible !"
+    }]
+
+    return (    
+        <>
+            <Navbar/> 
+            
+            <div className="hero-section">
+
+                <div className="slider">
+                    <div className="black-bg"></div>
+                    <img src={heroTwo} alt="hero-one" />
+
+                    
+                </div>
+                <div className="hero-content">
+                    <h3>lorem ipsum</h3> 
+                    <h4>loreemuu ipsuumuuu</h4>
+                    <BlueButton 
+                        text="Commencer" 
+                        clickHandler={()=>alert('o zineb tahia')} />                    
+                </div>
+            </div>
+
+
+            <div className="how-it-works" id="how">
+                <div className="section-header">
+                    <h1>Comment ça marche ?</h1>
+                </div>
+                <div className="how-it-works-cards">
+                    {hows.map((how)=>{
+                        return <CardImage 
+                                    index={how.index} 
+                                    image={how.image} 
+                                    text={how.text} 
+                                />
+                    })}
+                </div>
+            </div>
+
+            <div className="about-us" id="about">
+                <div className="section-header">
+                    <h1>Qui sommes-nous ?</h1>
+                </div>
+                <div className="about-wrapper">
+                    <div className="about-img-container">
+                        <img src={AboutImg} />
+                    </div>
+                    <div className="about-text">
+                        <p>Nous sommes un groupe d’étudiants au sein de l’EILCO passionné par la lecture qui met en valeur des problèmes rencontrés par une catégorie de personnes.</p>
+                        <p>En fait, plusieurs personnes n’arrivent pas à trouver des livres gratuits et ne peuvent pas se permettre d’en acheter vu le prix élevé. De plus, la portabilité de plusieurs livres physiques  constitue un problème  puisqu’elle n’offre pas un confort pour les adeptes de lecture. Permettre à ces partisans d’écouter les différents passages du livre en conduisant, cuisinant, marchant etc. serait une solution favorable pour eux.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div className="feedback" id="feedback">
+                
+            </div>
+        </>
+    )
+}

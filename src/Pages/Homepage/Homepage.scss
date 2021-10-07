@@ -1,0 +1,121 @@
+@import '../../Styles/_mixins.scss';
+@import '../../Styles/_variables.scss';
+
+$height : 91vh;
+
+$img-one : "../../Assets/hero-one.jpg";
+$img-two : "../../Assets/hero-three.jpg";
+
+
+div.hero-section{
+    display : flex;
+    justify-content: center;
+    align-items: center;
+
+    div.slider{
+        div.black-bg{
+            background-color : rgba(0,0,0,0.3);
+            height : $height;
+            width: 100vw;
+            z-index : 2;
+            position : absolute;    
+        }
+        img{
+            height : $height;
+            width : 100vw;
+            object-fit : cover;
+            z-index: 1;
+        }   
+    }
+
+    div.hero-content{
+        display : flex;
+        justify-content: center;
+        align-items:  center;
+        position : absolute;
+        flex-direction : column;
+        // background-color: rgba(0,0,0,0.4);
+        z-index: 3;
+        
+        h3{
+            font-size : 35px;
+            color : $white;
+
+        }
+
+        h4{
+            font-size:  27px;
+            margin : 0.6rem;
+            color : white;
+            font-weight : 500;
+        }
+    }  
+}
+
+div.section-header{
+    @include center;
+    
+    margin : {
+        top : 1.4rem;
+        bottom : 3.5rem;
+    }
+
+    h1{
+        font-size : 40px;
+        font-weight : 600;
+        font-family: $font-two;
+        color : $blue;
+    }
+}
+
+div.how-it-works{
+    div.how-it-works-cards{
+        display : flex;
+        justify-content : space-around;
+        align-items: center;
+    }
+}
+
+
+div.about-us{
+    background-color : #646B76;
+    margin-top : 5rem;
+    padding : 2rem;
+    
+    div.section-header{
+        h1{
+            color : white;
+        }
+    }
+
+    div.about-wrapper{
+        display : flex;
+        align-items : center;
+        width : 70vw;
+        margin-left : auto;
+        margin-right : auto;
+        background-color : white;
+        border-radius: 5px;
+        padding :0.5rem;
+        div.about-img-container{
+            img{
+                height : 50vh;
+                width : auto;
+                object-fit : cover;
+            }
+        }
+
+        div.about-text{
+            padding: 1rem;
+            padding-top : 3rem;
+            padding-bottom: 0;
+            p{
+                padding : {
+                    top : 1rem;
+                    bottom : 1rem;
+                }
+                font-size : 18px;
+            }
+        }
+    }
+}
