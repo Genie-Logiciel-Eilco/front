@@ -19,5 +19,10 @@
 @mixin reset-link{
     text-decoration : none;
     color : white;
-    
+}
+
+@mixin big-text-blue{
+    font-size : 35px;
+    color : blue;
+    text-align : center;
 }

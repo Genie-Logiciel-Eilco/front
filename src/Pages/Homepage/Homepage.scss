@@ -119,3 +119,10 @@ div.about-us{
         }
     }
 }
+
+div.feedback{
+    div.cards-wrapper{
+        display : flex;
+        justify-content: space-around;
+    }
+}

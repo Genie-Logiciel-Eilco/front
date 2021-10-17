@@ -1,0 +1,47 @@
+@import '../../Styles/_mixins.scss';
+@import '../../Styles/_variables.scss';
+
+footer.footer-1{
+    background-color : $black;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    padding:1rem;
+    margin-top: 3rem;
+    div.footer-copyright{
+        text-align: center;
+        color:white;
+    }
+ 
+    div.footer-social-icons{
+        text-align: center;
+        display:flex;
+        justify-content: space-around;
+        width : 6rem;
+        a{
+            color:white;
+            transition: color 0.2s;
+
+            svg{
+                font-size: 1.5rem;
+            }
+            &:hover{
+                color : rgb(0, 132, 255);
+            }
+        }
+        
+    }
+
+    div.footer-scroll{
+        button.footer-scroll-btn{
+            border-radius: 50%;
+            height:3rem;
+            width:3rem;
+            background-color: $black;
+            svg{
+                color:white;
+            }
+        }
+        
+    }
+}

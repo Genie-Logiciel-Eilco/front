@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import Navbar from '../../Layout/Navbar/Navbar';
+
 // Hero Images
 import hero from '../../Assets/hero-three.jpg';
 import heroTwo from '../../Assets/hero-one.jpg';
@@ -14,6 +15,12 @@ import CardImage from '../../Components/Card/CardImage';
 
 // About 
 import AboutImg from '../../Assets/about.jpg';
+import CardSecondary from '../../Components/CardSecondary/CardSecondary';
+
+
+// Feedback
+import user from '../../Assets/user.jpg';
+import Footer from '../../Layout/Footer/Footer';
 
 export default function Homepage() {
     
@@ -32,6 +39,52 @@ export default function Homepage() {
         image : howThree,
         text : "Amusez-vous soit en lisant par vous-même ou en utilisant la version audible !"
     }]
+
+    const feedBackArr = [
+        {
+            pdp : user,
+            fullName: "Zineb Moukir",
+            text : "Je n'aime pas cette plateforme, trop lente.",
+            status : "Etudiante EILCO",
+            stars : 0
+        },
+        {
+            pdp : user,
+            fullName : "Oumaima Safi",
+            text : "Je passe un bon moment ici mais je pense qu'il faudra apporter des améliorations",
+            status : "Etudiante EILCO",
+            stars : 3
+        },
+        {
+            pdp : user,
+            fullName : "Iliass Foukhar",
+            text : "La meilleure plateforme de lecture ! Gratuite et enrichissante !",
+            status : "Etudiant EIL",
+            stars : 5
+        },
+        {
+            pdp : user,
+            fullName : "Saad Errazgouni",
+            text : "Je m'appelle mr developpeur",
+            status : "Etudiant EILCO",
+            stars : 5
+        }
+    ]
+
+    const generateFeedBack = () => {
+        let output = feedBackArr.map((feedback, index) => {
+            return  <CardSecondary 
+                        text={feedback.text} 
+                        pdp={feedback.pdp} 
+                        fullName={feedback.fullName}
+                        stars={feedback.stars}
+                        status={feedback.status}
+                        key={index} 
+                    />
+        });
+
+        return output;
+    }
 
     return (    
         <>
@@ -87,8 +140,17 @@ export default function Homepage() {
 
 
             <div className="feedback" id="feedback">
+                <div className="section-header">
+                    <h1>Consultez les avis récents</h1>
+                </div>
                 
+                <div className="cards-wrapper">
+                    {generateFeedBack()}
+                    
+                </div>
             </div>
+
+            <Footer />
         </>
     )
 }
