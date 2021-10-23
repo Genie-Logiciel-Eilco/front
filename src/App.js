@@ -7,6 +7,7 @@ import {BrowserRouter as Router,
 // Pages import
 import HomePage from './Pages/Homepage/Homepage.js';
 import LoginPage from './Pages/LoginPage/LoginPage';
+import SignupPage from './Pages/Signup/SignupPage';
 
 function App() {
   let history = useHistory();
@@ -16,6 +17,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/Login" exact component={LoginPage} />
+          <Route path="/Signup" exact component={SignupPage} />
         </Switch>
      </Router>
     </>

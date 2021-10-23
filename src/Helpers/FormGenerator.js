@@ -21,6 +21,7 @@ const elementGenerator = (element) => {
                         name={name} 
                         value={value} 
                         className="custom-input"
+                        onChange={element.onChange}
                     />
         case "number":
             return <input

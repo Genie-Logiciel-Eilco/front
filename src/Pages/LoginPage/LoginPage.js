@@ -15,22 +15,39 @@ export default function LoginPage() {
         label : "Nom d'utilisateur ou email",
         type : "text",
         name : "usernameOrEmail",
-        value : data.usernameOrEmail
+        value : data.usernameOrEmail,
+        onChange : (e) => setData(data => {
+            return {
+                ...data,
+                usernameOrEmail : e.target.value
+            };
+        })
     },
     {
         label : "Mot de passe",
         type : "password",
         name : "password",
-        value : data.password
+        value : data.password,
+        onChange : (e) => setData(data => {
+            return {
+                ...data,
+                password : e.target.value
+            };
+        })
     }]
 
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(data);
+    }
     
     return (
         <main className="login-page-wrapper">
             <Navbar />
             <img src={loginBG} className="login-page-bg" />
             <div className="login-form-wrapper">        
-                <form>    
+                <form onSubmit={handleSubmit}>    
                     <div className="logo-login-wrapper">
                         <img src={logo} className="logo-login" />
                     </div>
