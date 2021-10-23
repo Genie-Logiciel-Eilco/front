@@ -1,0 +1,126 @@
+@import '../../Styles/_mixins.scss';
+@import '../../Styles/_variables.scss';
+
+main.signup-page-wrapper{
+
+    img.login-page-bg{
+        top : 0;
+        left : 0;
+        width : 100vw;
+        height : 120vh;
+        object-fit: cover;
+    }
+    div.signup-form-wrapper{
+        position : absolute;
+        top : 0;
+        height : 90vh;
+        margin-top : 23vh;
+        width : 100vw;
+        display : flex;
+        justify-content: center;
+        align-items: center;
+        form{
+            display : flex;
+            flex-direction : column;
+            background-color : rgba(255,255,255, 0.3);
+            padding : 3rem 2rem;
+            border-radius : 0.4rem;
+    
+            div.logo-login-wrapper{
+                @include center;
+                img{
+                    height : 100px;
+                    width : 100px;
+                    border-radius : 50%;
+                }
+            }
+    
+    
+            legend{
+                text-align : center;
+                color : white;
+                font-size: 25px;
+                padding : 2rem;
+            }
+            div.input-group{
+                display : flex;
+                flex-direction : column;
+                margin-bottom : 0.7rem;
+                label{
+                    color : white;
+                    font-size : 20px;
+                    padding : 0.7rem 0.3rem;
+                    text-align: center;
+                }
+    
+                input{
+                    padding : 0.4rem 0.7rem;
+                    border-radius: 5px;
+                    
+                }
+            }
+    
+            button.btn-login{
+                background-color : #3A7FBA;
+                color : white;
+                border : none;
+                padding : 0.5rem 0.8rem;
+                font-weight : 600;
+                cursor : pointer;
+                font-size:  18px;
+                margin : {
+                    top : 1rem;
+                    bottom : 0.7rem;
+                };
+                transition : background-color 0.15s;
+                &:hover{
+                    background-color : $cyan;
+                }
+            }
+    
+            button.btn-secondary-login{
+                background-color : $yellow;
+                color : white;
+                border :none;
+                padding : 0.5rem 0.8rem;
+                font-weight : 600;
+                cursor : pointer;
+                font-size : 18px;
+                margin : {
+                    top : 0.1rem;
+                    bottom : 0.7rem;
+                }
+                width : 100%;
+                transition : background-color 0.15s;
+                &:hover{
+                    background-color : orange;
+                }
+            }
+            button.btn-ternary-login{
+                background-color : rgba(0,0,0,0.2);
+                color : white;
+                width : 100%;
+                font-weight : 600;
+                padding : 0.5rem 0.8rem;
+                cursor : pointer;
+                font-size : 18px;
+                margin : {
+                    top : 0.1rem;
+                    bottom : 0.7rem;
+                }
+                transition : background-color 0.15s;
+                transition : color 0.15s;
+                border : white 2px solid;
+                &:hover{
+                    background-color : white;
+                    color : black;
+                    
+                }
+            }
+        }   
+     
+    }
+       footer{
+        margin-top : -0.3rem;
+    }
+}
