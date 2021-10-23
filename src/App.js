@@ -6,6 +6,7 @@ import {BrowserRouter as Router,
         Route} from 'react-router-dom';
 // Pages import
 import HomePage from './Pages/Homepage/Homepage.js';
+import LoginPage from './Pages/LoginPage/LoginPage';
 
 function App() {
   let history = useHistory();
@@ -13,7 +14,8 @@ function App() {
     <>
       <Router history={history}>
         <Switch>
-          <Route path="/" exact component={HomePage} /> 
+          <Route path="/" exact component={HomePage} />
+          <Route path="/Login" exact component={LoginPage} />
         </Switch>
      </Router>
     </>

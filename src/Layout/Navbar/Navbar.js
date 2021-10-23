@@ -4,17 +4,18 @@ import logo  from '../../Assets/templogo.jpg';
 import './Navbar.scss';
 
 export default function Navbar() {
+    const baseURL = "http://localhost:3000/";
     const navLinks = [
         {
-            path  : "/#how",
+            path  : baseURL + "#how",
             label : "Comment ça marche"
         },
         {
-            path : "/#about",
+            path : baseURL + "#about",
             label : "Qui sommes-nous ?"
         },
         {
-            path : "/#feedback",
+            path : baseURL + "#feedback",
             label : "Feedback"
         }
     ]
