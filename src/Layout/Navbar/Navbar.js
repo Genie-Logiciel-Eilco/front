@@ -3,7 +3,22 @@ import { Link } from 'react-router-dom';
 import logo from '../../Assets/templogo.jpg';
 import './Navbar.scss';
 
-export default function Navbar({ navLinks }) {
+export default function Navbar() {
+    const baseURL = "http://localhost:3000/";
+    const navLinks = [
+        {
+            path: baseURL + "#how",
+            label: "Comment ça marche"
+        },
+        {
+            path: baseURL + "#about",
+            label: "Qui sommes-nous ?"
+        },
+        {
+            path: baseURL + "#feedback",
+            label: "Feedback"
+        }
+    ]
     return (
         <nav className="nav-0">
             <div className="logo-container">
