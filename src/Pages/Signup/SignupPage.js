@@ -13,6 +13,10 @@ import background from '../../Assets/Login.jpg';
 // Styling
 import './SignupPage.scss';
 
+// Backend
+import axios from 'axios';
+import API_ENDPOINT from '../../Helpers/API_URL';
+
 export default function SignupPage() {
     const [data, setData] = useState({
         first_name : "",
@@ -98,9 +102,17 @@ export default function SignupPage() {
     },]
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(data);
+        try{
+            let request  = await axios.post(`${API_ENDPOINT}/api/register`,data);
+            let response = await request.data;
+            console.log(response);
+        }
+        catch(e){
+            console.log(e);
+        }
     }
     
     return (
