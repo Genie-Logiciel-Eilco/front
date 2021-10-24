@@ -1,13 +1,17 @@
 // Styling
 import './App.scss';
-import {BrowserRouter as Router, 
-        useHistory, 
-        Switch, 
-        Route} from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  useHistory,
+  Switch,
+  Route
+} from 'react-router-dom';
 // Pages import
 import HomePage from './Pages/Homepage/Homepage.js';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import SignupPage from './Pages/Signup/SignupPage';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import Users from './Pages/Dashboard/Users/Users'
 
 function App() {
   let history = useHistory();
@@ -18,8 +22,11 @@ function App() {
           <Route path="/" exact component={HomePage} />
           <Route path="/Login" exact component={LoginPage} />
           <Route path="/Signup" exact component={SignupPage} />
+          <Route exact path="/69420/home" component={Dashboard} />
+          <Route exact path="/69420/users" component={Users} />
+          <Route exact path="" component={Books} />
         </Switch>
-     </Router>
+      </Router>
     </>
   );
 }

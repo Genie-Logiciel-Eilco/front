@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../../Layout/Navbar/Navbar';
 
 // Hero Images
@@ -23,87 +23,106 @@ import user from '../../Assets/user.jpg';
 import Footer from '../../Layout/Footer/Footer';
 
 export default function Homepage() {
-    
+
+    const navLinks = [
+        {
+            path: "/#how",
+            label: "Comment ça marche"
+        },
+        {
+            path: "/#about",
+            label: "Qui sommes-nous ?"
+        },
+        {
+            path: "/#feedback",
+            label: "Feedback"
+        },
+        // {
+        //     path : "/dash",
+        //     label : "Admin Dashboard"
+        // }
+    ]
+
     const hows = [{
-        index : 1,
-        image : howOne,
-        text : "Créez un compte et authentifiez-vous !"
+        index: 1,
+        image: howOne,
+        text: "Créez un compte et authentifiez-vous !"
     },
     {
         index: 2,
-        image : howTwo,
-        text : "Parcourez notre collection de livres disponible !" 
+        image: howTwo,
+        text: "Parcourez notre collection de livres disponible !"
     },
     {
-        index : 3,
-        image : howThree,
-        text : "Amusez-vous soit en lisant par vous-même ou en utilisant la version audible !"
+        index: 3,
+        image: howThree,
+        text: "Amusez-vous soit en lisant par vous-même ou en utilisant la version audible !"
     }]
 
     const feedBackArr = [
         {
-            pdp : user,
+            pdp: user,
             fullName: "Zineb Moukir",
-            text : "Je n'aime pas cette plateforme, trop lente.",
-            status : "Etudiante EILCO",
-            stars : 0
+            text: "Je n'aime pas cette plateforme, trop lente.",
+            status: "Etudiante EILCO",
+            stars: 0
         },
         {
-            pdp : user,
-            fullName : "Oumaima Safi",
-            text : "Je passe un bon moment ici mais je pense qu'il faudra apporter des améliorations",
-            status : "Etudiante EILCO",
-            stars : 3
+            pdp: user,
+            fullName: "Oumaima Safi",
+            text: "Je passe un bon moment ici mais je pense qu'il faudra apporter des améliorations",
+            status: "Etudiante EILCO",
+            stars: 3
         },
         {
-            pdp : user,
-            fullName : "Iliass Foukhar",
-            text : "La meilleure plateforme de lecture ! Gratuite et enrichissante !",
-            status : "Etudiant EIL",
-            stars : 5
+            pdp: user,
+            fullName: "Iliass Foukhar",
+            text: "La meilleure plateforme de lecture ! Gratuite et enrichissante !",
+            status: "Etudiant EIL",
+            stars: 5
         },
         {
-            pdp : user,
-            fullName : "Saad Errazgouni",
-            text : "Je m'appelle mr developpeur",
-            status : "Etudiant EILCO",
-            stars : 5
+            pdp: user,
+            fullName: "Saad Errazgouni",
+            text: "Je m'appelle mr developpeur",
+            status: "Etudiant EILCO",
+            stars: 5
         }
     ]
 
     const generateFeedBack = () => {
         let output = feedBackArr.map((feedback, index) => {
-            return  <CardSecondary 
-                        text={feedback.text} 
-                        pdp={feedback.pdp} 
-                        fullName={feedback.fullName}
-                        stars={feedback.stars}
-                        status={feedback.status}
-                        key={index} 
-                    />
+            return <CardSecondary
+                text={feedback.text}
+                pdp={feedback.pdp}
+                fullName={feedback.fullName}
+                stars={feedback.stars}
+                status={feedback.status}
+                key={index}
+            />
         });
 
         return output;
     }
 
-    return (    
+    return (
         <>
-            <Navbar/> 
-            
+            <Navbar navLinks={navLinks} />
+
             <div className="hero-section">
 
                 <div className="slider">
                     <div className="black-bg"></div>
                     <img src={heroTwo} alt="hero-one" />
 
-                    
+
                 </div>
                 <div className="hero-content">
-                    <h3>lorem ipsum</h3> 
+                    <h3>lorem ipsum</h3>
                     <h4>loreemuu ipsuumuuu</h4>
-                    <BlueButton 
-                        text="Commencer" 
-                        clickHandler={()=>alert('o zineb tahia')} />                    
+                    <BlueButton
+                        text="Commencer"
+                        clickHandler={() => alert('o zineb tahia')} />
                 </div>
             </div>
 
@@ -113,12 +132,12 @@ export default function Homepage() {
                     <h1>Comment ça marche ?</h1>
                 </div>
                 <div className="how-it-works-cards">
-                    {hows.map((how)=>{
-                        return <CardImage 
-                                    index={how.index} 
-                                    image={how.image} 
-                                    text={how.text} 
-                                />
+                    {hows.map((how) => {
+                        return <CardImage
+                            index={how.index}
+                            image={how.image}
+                            text={how.text}
+                        />
                     })}
                 </div>
             </div>
@@ -143,10 +162,10 @@ export default function Homepage() {
                 <div className="section-header">
                     <h1>Consultez les avis récents</h1>
                 </div>
-                
+
                 <div className="cards-wrapper">
                     {generateFeedBack()}
-                    
+
                 </div>
             </div>
 

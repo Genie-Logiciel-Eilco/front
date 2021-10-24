@@ -1,33 +1,33 @@
-@import '../../Styles/_variables.scss'; 
-@import '../../Styles/_mixins.scss';
+@import "../../Styles/_variables.scss";
+@import "../../Styles/_mixins.scss";
 
-nav.nav-0{
-    background-color : $black;
-    display : flex;
-    justify-content : space-around;
-    padding : 0.6rem;
-    font-family : $font-one;
-    z-index : 99 !important;
-    div.logo-container{
-        @include center;
-        img{
-            height : 50px;
-            width : 50px;  
-            border-radius: 50%;  
-        }
+nav.nav-0 {
+  background-color: $black;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.6rem;
+  font-family: $font-one;
+  z-index: 99 !important;
+  div.logo-container {
+    @include center;
+    img {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
     }
+  }
 
-    ul.nav-items{
-        @include reset-list;
-        @include horizontal-list;
-        li{
-            padding : 0 0.4rem;
+  ul.nav-items {
+    @include reset-list;
+    @include horizontal-list;
+    li {
+      padding: 0 0.4rem;
 
-            a{
-                @include reset-link;
-                font-size : 17px;
-                font-weight : 600;
-            }
-        }
+      a {
+        @include reset-link;
+        font-size: 17px;
+        font-weight: 600;
+      }
     }
+  }
 }
