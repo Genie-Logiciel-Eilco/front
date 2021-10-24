@@ -1,0 +1,8 @@
+.dash-container {
+  display: flex;
+}
+
+.otherz {
+  flex: 4;
+  background-color: #fff;
+}
