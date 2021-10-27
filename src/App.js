@@ -13,6 +13,7 @@ import SignupPage from './Pages/Signup/SignupPage';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Users from './Pages/Dashboard/Users/Users'
 import Books from './Pages/Dashboard/Books/Books'
+import AddBook from './Pages/Dashboard/Books/AddBook/AddBook';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route exact path="/69420/home" component={Dashboard} />
           <Route exact path="/69420/users" component={Users} />
           <Route exact path="/69420/books" component={Books} />
+          <Route exact path="/69420/books/add" component={AddBook} />
         </Switch>
       </Router>
     </>
