@@ -98,6 +98,7 @@ export default function UserList() {
                 </TableBody>
             </Table>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <span></span>
                 <Pagination activePage={books?.currentPage}
                     totalItemsCount={books?.total}
                     itemsCountPerPage={books?.per_page}

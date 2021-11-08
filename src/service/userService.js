@@ -8,6 +8,8 @@ const uploadImage = () => {
 
 }
 
+const accessToken = JSON.parse(localStorage.getItem("data")).token;
+
 const getUsers = async (perPage) => {
     return await axios.get(`${API_ENDPOINT}/api/users/paginate/${perPage}`, { headers: authHeader() })
 }
@@ -28,7 +30,8 @@ const authService = {
     getUsers,
     getBooks,
     getBooksByPage,
-    getAuthorsByPage
+    getAuthorsByPage,
+    accessToken
 }
 
 export default authService;

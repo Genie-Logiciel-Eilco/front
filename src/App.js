@@ -35,11 +35,13 @@ function App() {
           <Route path="/Signup" exact component={SignupPage} />
           <Route path="/books" exact component={Browsepage} />
           <Route path="/books/:id" exact component={Bookpage} />
-          {/* <Route exact path="/69420/home" component={dashHome} /> */}
-          {/* <Route exact path="/69420/users" component={Users} />
+          <Route exact path="/69420/home" component={dashHome} />
+          <Route exact path="/69420/users" component={Users} />
+          <Route exact path="/69420/home" component={dashHome} />
+          <Route exact path="/69420/users" component={Users} />
           <Route exact path="/69420/books/book" component={Books} />
           <Route exact path="/69420/books/author" component={Authors} />
-          <Route exact path="/69420/books/publisher" component={Publishers} /> */}
+          <Route exact path="/69420/books/publisher" component={Publishers} />
           
 
         </Switch>

@@ -3,6 +3,7 @@ import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import userService from '../../../../../service/userService'
 import "./AddBook.css"
 import { Button } from '@mui/material'
+import axios from 'axios'
 
 export default function AddBook() {
 
@@ -17,83 +18,36 @@ export default function AddBook() {
 
     const hiddenFileInput = React.useRef(null);
 
-    const onImageChange = async (e) => {
+    const onImageChange = (e) => {
         if (e.target.files && e.target.files[0]) {
             let img = e.target.files[0];
-            console.log(img)
+            setFile(e.target.files[0]);
             setImage(URL.createObjectURL(img));
         }
-        console.log(image)
-    };
+  };
 
-    // const upload = (e) => {
-    //     e.preventDefault();
-    //     imageUpload(image);
-    //     const data = {
-    //         isbn: isbn, name: name, subject: subject, synopsis: synopsis, publicationDate: publicationDate,
-    //     }
-    //     dataUpload(data);
-    // }
-    // const dataUpload = async (data) => {
-    //     await axios.post("http://104.248.39.111/api/book/add/", data)
-    // }
-
-    // const imageUpload = (image) => {
-    //     console.log(image);
-    //     // const formData = { image }
-    //     // return axios.post('http://104.248.39.111/api/book/uploadImage/', formData)
-    //     //     .then(response => console.log(response))
-    // }
-    // const imageUpload = () => {
-    //     const formData = new FormData();
-    //     formData.append("file", file);
-    //     let value = "Bearer " + user?.accessToken;
-    //     const config = {
-    //         headers: {
-    //             Authorization: userService.,
-    //             "content-type": "multipart/form-data",
-    //         },
-    //     };
-    //     return axios.post(url, formData, config).then(
-    //         (response) => {
-    //             setMessage(response.data.message);
-    //             setSuccessful(true);
-    //             props.onChange(true);
-    //         },
-    //         (error) => {
-    //             const resMessage =
-    //                 (error.response &&
-    //                     error.response.data &&
-    //                     error.response.data.message) ||
-    //                 error.message ||
-    //                 error.toString();
-    //             setMessage(resMessage);
-    //             setSuccessful(false);
-    //         }
-    //     );
-    // };
-
-    // const onFileChange = (e) => {
-    //     let files = e.target.files || e.dataTransfer.files;
-    //     if (!files.length)
-    //         return;
-    //     createFile(files[0]);
-    // }
-    // const createFile = (file) => {
-    //     let reader = new FileReader();
-    //     reader.onload = (e) => {
-    //         setFile(e.target.result)
-    //     };
-    //     reader.readAsDataURL(file);
-    // }
-
-    useEffect(() => {
-        userService.getUsers().then((res) => {
-            console.log(res?.data)
-        })
-    }, [])
-
-
+  const imageUpload = () => {
+        let formData = new FormData();
+        console.log(file);
+        formData.append("File", file);
+        let value = "Bearer " + userService.accessToken;
+        const config = {
+            headers: {
+                "Authorization": value,
+                "content-type": "multipart/form-data",
+            }
+        };
+      
+        return axios.post("http://104.248.39.111/api/book/uploadImage", formData, config).then(
+            (res) => {
+                console.log("success")
+                console.log(res)
+            },
+            (err) => {
+                console.log(err)
+            }
+        );
+    }
 
     return (
         <>
@@ -104,7 +58,8 @@ export default function AddBook() {
                             hiddenFileInput.current.click();
                         }}><PhotoCameraIcon style={{ marginRight: "10px" }} /> Upload Image</Button>
                         <input type="file" ref={hiddenFileInput} onChange={onImageChange} style={{ display: "none" }} accept=".jpeg,.png,.jpg,.tif,.jfif" />
-
+                        <img src={image} alt='' />
+                        <button onClick={imageUpload}>upload image</button>
                     </div>
                     <div className="addbook-item">
                         <label>ISBN</label>
