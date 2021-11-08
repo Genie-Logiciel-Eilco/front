@@ -2,8 +2,10 @@
 
 .books {
   .container {
-    @include container;
-    overflow-x: hidden;
+    width: 200%;
+    max-width: 1500px;
+    padding: 0 1em;
+    // margin: 0 auto;
   }
 
   &__category-title {

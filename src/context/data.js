@@ -6,7 +6,6 @@ export const data = [
         title: "The 48 Laws of PowerThe 48 Laws of Power",
         author: "Robert Greene",
         category: "Business & Money",
-        price: 24.99,
         rating: 3,
         subInfo: {
             completedTitle: "The 48 Laws of Power",
@@ -19,7 +18,6 @@ export const data = [
         title: "Rich Dad Poor Dad: What the Rich Teach Their Kids",
         author: "Robert T. Kiyosaki",
         category: "Business & Money",
-        price: 19.99,
         rating: 5,
         subInfo: {
             completedTitle:
@@ -33,7 +31,6 @@ export const data = [
         title: "Think and Grow Rich: The Landmark Bestseller",
         author: "Napoleon Hill, Arthur R. Pell",
         category: "Business & Money",
-        price: 26.99,
         rating: 4,
         subInfo: {
             completedTitle:
@@ -47,7 +44,6 @@ export const data = [
         title: "Start with Why: How Great Leaders Inspire",
         author: "Simon Sinek",
         category: "Business & Money",
-        price: 15.99,
         rating: 5,
         subInfo: {
             completedTitle:
@@ -60,8 +56,7 @@ export const data = [
         imgSrc: "https://images-na.ssl-images-amazon.com/images/I/510OlQYyRvL._AC_SX184_.jpg",
         title: "The 7 Habits of Highly Effective People: 30th",
         author: "Stephen R. Covey",
-        category: "Business & Money",
-        price: 12.35,
+        category: "Business & Money 4",
         rating: 4,
         subInfo: {
             completedTitle:
@@ -74,8 +69,7 @@ export const data = [
         imgSrc: "https://images-na.ssl-images-amazon.com/images/I/51x2TUCaM4L._AC_SX184_.jpg",
         title: "Never Split the Difference: Negotiating",
         author: "Chris Voss, Tahl Raz",
-        category: "Business & Money",
-        price: 19.99,
+        category: "Business & Money 2",
         rating: 4,
         subInfo: {
             completedTitle:
@@ -89,7 +83,6 @@ export const data = [
         title: "The 48 Laws of PowerThe 48 Laws of Power",
         author: "Robert Greene",
         category: "Business & Money",
-        price: 24.99,
         rating: 3,
         subInfo: {
             completedTitle: "The 48 Laws of Power",
@@ -102,7 +95,6 @@ export const data = [
         title: "Rich Dad Poor Dad: What the Rich Teach Their Kids",
         author: "Robert T. Kiyosaki",
         category: "Business & Money",
-        price: 19.99,
         rating: 5,
         subInfo: {
             completedTitle:
@@ -116,7 +108,6 @@ export const data = [
         title: "Think and Grow Rich: The Landmark Bestseller",
         author: "Napoleon Hill, Arthur R. Pell",
         category: "Business & Money",
-        price: 26.99,
         rating: 4,
         subInfo: {
             completedTitle:
@@ -130,7 +121,6 @@ export const data = [
         title: "Start with Why: How Great Leaders Inspire",
         author: "Simon Sinek",
         category: "Business & Money",
-        price: 15.99,
         rating: 5,
         subInfo: {
             completedTitle:
@@ -144,7 +134,6 @@ export const data = [
         title: "The 7 Habits of Highly Effective People: 30th",
         author: "Stephen R. Covey",
         category: "Business & Money",
-        price: 12.35,
         rating: 4,
         subInfo: {
             completedTitle:
@@ -158,7 +147,6 @@ export const data = [
         title: "Never Split the Difference: Negotiating",
         author: "Chris Voss, Tahl Raz",
         category: "Business & Money",
-        price: 19.99,
         rating: 4,
         subInfo: {
             completedTitle:
