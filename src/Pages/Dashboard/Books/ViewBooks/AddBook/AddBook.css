@@ -1,0 +1,34 @@
+.addbook-item {
+  padding: 10px 20px;
+}
+.addbook-item label {
+  width: 500px;
+}
+.addbook-item-label {
+  display: flex;
+  width: 100%;
+  height: 10vh;
+  border: 1px dashed rgb(146, 146, 238);
+}
+.addbook-item-label:hover {
+  background: rgb(196, 196, 196);
+  border: 1px solid rgb(219, 219, 219);
+}
+
+.addbook-text {
+  padding: 10px 20px;
+  background-color: rgb(245, 245, 245);
+  border-radius: 10px;
+  border: none;
+}
+.addbook-text.focus {
+  outline: none;
+  border: 1px solid rgb(202, 202, 202);
+}
+.bruhmoment {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  padding-top: 15px;
+}
