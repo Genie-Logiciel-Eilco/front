@@ -2,5 +2,8 @@
     outline:none;
     border:0;
     border-bottom:1px solid gray;
-    width:2vw;
+    width:30px;
+    text-align:center;
+    margin-right:10px;
+    padding:0;
 }
