@@ -1,0 +1,63 @@
+@import "../../../Styles/helpers";
+
+.categories {
+    background-color: #f4f4f4;
+    padding: 3rem 0;
+
+    @include breakpoint-down(medium) {
+        padding-top: 4rem;
+        padding-bottom: 1.5rem;
+        // background: #ccc;
+    }
+
+    .container {
+        @include container;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 400;
+
+        @include breakpoint-down(medium) {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    &__list {
+        margin-top: 0.5rem !important;
+        @include reset-list;
+        display: flex;
+        flex-wrap: wrap;
+
+        @include breakpoint-down(medium) {
+            margin-top: 0 !important;
+        }
+
+        &-item {
+            padding: 0.5rem 1.2rem;
+            border-radius: $br-v;
+            cursor: pointer;
+            margin-top: 1rem;
+            margin-right: 1rem;
+            transition: all 500ms ease-in-out;
+
+            &.inactive {
+                background-color: darken(#fff, 10%);
+            }
+
+            &.active {
+                background-color: $cyan;
+                color: #fff;
+            }
+
+            @include breakpoint-down(medium) {
+                font-size: 0.9rem;
+                padding: 0.3rem 1rem;
+                border-radius: 2rem;
+                margin-top: 0.5rem;
+                margin-right: 0.5rem;
+            }
+        }
+    }
+}

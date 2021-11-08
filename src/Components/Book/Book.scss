@@ -1,0 +1,62 @@
+@import "../../Styles/helpers";
+
+a {
+    text-decoration: none;
+}
+
+.book {
+    &__img {
+        &-element {
+            width: 100%;
+            object-fit: contain;
+            max-height: 250px;
+            display: block;
+            margin-right: 12rem;
+            transition: transform 450ms;
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    &__info {
+        padding: 0.5rem;
+
+        &-title {
+            color: $black;
+            transition: color 450ms;
+            cursor: pointer;
+
+            &:hover {
+                color: $red;
+                text-decoration: underline;
+            }
+        }
+
+        &-author {
+            font-size: 0.9rem;
+            display: block;
+            opacity: 0.5;
+            color: #333 !important;
+        }
+
+        &-category {
+            font-size: 0.9rem;
+            color: $cyan;
+        }
+
+        &-price {
+            color: $blue;
+        }
+
+        &-rating {
+            list-style: none;
+            display: flex;
+
+            > li {
+                margin-right: 0.2rem;
+            }
+        }
+    }
+}

@@ -1,128 +1,162 @@
-@import '../../Styles/_mixins.scss';
-@import '../../Styles/_variables.scss';
+@import "../../Styles/helpers";
 
-$height : 91vh;
+$height: 91vh;
 
-$img-one : "../../Assets/hero-one.jpg";
-$img-two : "../../Assets/hero-three.jpg";
+$img-one: "../../Assets/hero-one.jpg";
+$img-two: "../../Assets/hero-three.jpg";
 
-
-div.hero-section{
-    display : flex;
+div.hero-section {
+    display: flex;
     justify-content: center;
     align-items: center;
 
-    div.slider{
-        div.black-bg{
-            background-color : rgba(0,0,0,0.3);
-            height : $height;
+    div.slider {
+        div.black-bg {
+            background-color: rgba(0, 0, 0, 0.3);
+            height: $height;
             width: 100vw;
-            z-index : 2;
-            position : absolute;    
+            z-index: 2;
+            position: absolute;
         }
-        img{
-            height : $height;
-            width : 100vw;
-            object-fit : cover;
+        img {
+            height: $height;
+            width: 100vw;
+            object-fit: cover;
             z-index: 1;
-        }   
+        }
     }
 
-    div.hero-content{
-        display : flex;
+    div.hero-content {
+        display: flex;
         justify-content: center;
-        align-items:  center;
-        position : absolute;
-        flex-direction : column;
-        // background-color: rgba(0,0,0,0.4);
-        z-index: 3;
-        
-        h3{
-            font-size : 35px;
-            color : $white;
-
-        }
-
-        h4{
-            font-size:  27px;
-            margin : 0.6rem;
-            color : white;
-            font-weight : 500;
-        }
-    }  
-}
-
-div.section-header{
-    @include center;
-    
-    margin : {
-        top : 1.4rem;
-        bottom : 3.5rem;
-    }
-
-    h1{
-        font-size : 40px;
-        font-weight : 600;
-        font-family: $font-two;
-        color : $blue;
-    }
-}
-
-div.how-it-works{
-    div.how-it-works-cards{
-        display : flex;
-        justify-content : space-around;
         align-items: center;
+        position: absolute;
+        flex-direction: column;
+        z-index: 3;
+
+        h3 {
+            font-size: 35px;
+            color: $white;
+        }
+
+        h4 {
+            font-size: 27px;
+            margin: 0.6rem;
+            color: white;
+            font-weight: 500;
+        }
     }
 }
 
+div.section-header {
+    @include center;
 
-div.about-us{
-    background-color : #646B76;
-    margin-top : 5rem;
-    padding : 2rem;
-    
-    div.section-header{
-        h1{
-            color : white;
+    margin : {
+        top: 1.4rem;
+        bottom: 3.5rem;
+    }
+
+    h1 {
+        font-size: 40px;
+        font-weight: 600;
+        font-family: $font-two;
+        color: $blue;
+
+        @include breakpoint-down(small) {
+            font-size: 1.6rem;
+        }
+    }
+}
+
+div.how-it-works {
+    @include container;
+    div.how-it-works-cards {
+        @include grid(3, 2rem);
+    }
+}
+
+div.about-us {
+    background-color: #646b76;
+    margin-top: 5rem;
+    padding: 2rem;
+
+    @include breakpoint-down(small) {
+        background-color: #fff;
+    }
+
+    div.section-header {
+        h1 {
+            color: white;
+            @include breakpoint-down(small) {
+                color: #646b76;
+            }
         }
     }
 
-    div.about-wrapper{
-        display : flex;
-        align-items : center;
-        width : 70vw;
-        margin-left : auto;
-        margin-right : auto;
-        background-color : white;
+    div.about-wrapper {
+        @include container;
+
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
         border-radius: 5px;
-        padding :0.5rem;
-        div.about-img-container{
-            img{
-                height : 50vh;
-                width : auto;
-                object-fit : cover;
+        padding: 0.5rem;
+
+        @include breakpoint-down(small) {
+            padding: 0;
+        }
+
+        div.about-img-container {
+            img {
+                height: 50vh;
+                width: auto;
+                object-fit: cover;
+
+                @include breakpoint-down(small) {
+                    height: initial;
+                    width: 100%;
+                    display: block;
+                    object-fit: initial;
+                }
             }
         }
 
-        div.about-text{
+        @include breakpoint-down(medium) {
+            flex-direction: column;
+        }
+
+        div.about-text {
             padding: 1rem;
-            padding-top : 3rem;
+            padding-top: 3rem;
             padding-bottom: 0;
-            p{
+
+            @include breakpoint-down(small) {
+                padding: 0;
+            }
+
+            p {
                 padding : {
-                    top : 1rem;
-                    bottom : 1rem;
+                    top: 1rem;
+                    bottom: 1rem;
                 }
-                font-size : 18px;
+                font-size: 18px;
+                line-height: 1.6;
+
+                @include breakpoint-down(small) {
+                    padding: 0;
+                    margin-top: 1rem;
+                }
             }
         }
     }
 }
 
-div.feedback{
-    div.cards-wrapper{
-        display : flex;
-        justify-content: space-around;
+div.feedback {
+    @include container;
+    div.cards-wrapper {
+        @include grid(4, 1rem);
     }
 }

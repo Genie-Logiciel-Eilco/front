@@ -1,14 +1,19 @@
 // Font family
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-$font-one: 'Montserrat', sans-serif;
-$font-two : 'Poppins', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+$font-one: "Montserrat", sans-serif;
+$font-two: "Poppins", sans-serif;
 
-// Colors 
+/* Colors */
 $blue: #335c67;
-$white : #fff3b0;
-$yellow : #e09f3e;
-$red : #9e2a2b;
-$brown : #540b0e;
-$black : #333333;
-$cyan : #249cbd;
+$white: #fff3b0;
+$yellow: #e09f3e;
+$red: #9e2a2b;
+$brown: #540b0e;
+$black: #333333;
+$cyan: #249cbd;
+
+/* values */
+// br = border-radius
+// v = value
+$br-v: 4px;

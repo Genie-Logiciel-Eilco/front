@@ -1,53 +1,53 @@
-@import '../../Styles/_mixins.scss';
-@import '../../Styles/_variables.scss';
+@import "../../Styles/_mixins.scss";
+@import "../../Styles/_variables.scss";
 
-div.card-image-container{
-    border-radius : 3rem;
-    border : 3px solid $blue;  
+div.card-image-container {
+    border-radius: 3rem;
+    border: 3px solid $blue;
     border : {
-        left : none;
-        right : none;
-    };
-    width : 20vw;
-    display : flex;
+        left: none;
+        right: none;
+    }
+    width: 100%;
+    display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    box-shadow:  2px 4px 10px rgba(0,0,0,0.4);  
-    padding : 1rem;
-    
-    div.card-image{
-        img{
-            height : 250px;
-            width : 250px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.4);
+    padding: 1rem;
+
+    div.card-image {
+        img {
+            height: 250px;
+            width: 250px;
             object-fit: cover;
             padding : {
-                bottom : 1rem;
+                bottom: 1rem;
             }
         }
     }
 
-    div.card-number{
-        h2{
-            color : $blue;
+    div.card-number {
+        h2 {
+            color: $blue;
             font-size: 35px;
-            border : 3px solid $blue;
-            height : 60px;
-            width : 60px;
-            border-radius : 50%;
+            border: 3px solid $blue;
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
             @include center;
-            background-color : white;
-            position : relative;
-            bottom : 2.5rem;
+            background-color: white;
+            position: relative;
+            bottom: 2.5rem;
             z-index: 5;
         }
     }
 
-    div.card-text{
-        h4{
-            padding : 1rem;
-            font-size : 20px;
-            text-align : center;
+    div.card-text {
+        h4 {
+            padding: 1rem;
+            font-size: 20px;
+            text-align: center;
         }
     }
 }

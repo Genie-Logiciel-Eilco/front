@@ -1,0 +1,103 @@
+@import "../../Styles/helpers";
+
+%flex {
+    display: flex;
+    align-items: center;
+}
+
+.nav {
+    background-color: $black;
+    padding: 0.6rem 0;
+    font-family: $font-one;
+    z-index: 99 !important;
+    position: relative;
+
+    &-container {
+        @include container;
+        @extend %flex;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        @include center;
+        img {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+        }
+    }
+
+    &__searchBox {
+        @extend %flex;
+        flex: 1;
+        margin: 0 2rem;
+        background: #3e3e3e;
+        border-radius: $br-v;
+        color: #a1a1a1;
+        padding: 0.2rem 1rem;
+
+        @include breakpoint-down(medium) {
+            position: absolute;
+            top: 100%;
+            right: -2rem;
+            width: 100%;
+            padding: 0.6rem 1rem;
+            border-radius: 0;
+        }
+
+        &-icon {
+            font-size: 1.2rem;
+            color: #a1a1a1;
+        }
+
+        &-input {
+            all: unset;
+            padding: 0.4rem 0.7rem;
+            margin-left: 0.3rem;
+            width: 100%;
+        }
+    }
+
+    &__toggle {
+        &-btn {
+            font-size: 1.4rem;
+            color: #fff;
+            opacity: 0.5;
+        }
+    }
+
+    &__links {
+        @extend %flex;
+        @include reset-list;
+        @include horizontal-list;
+
+        li {
+            &:not(:first-child) {
+                margin-left: 2rem;
+
+                @include breakpoint-down(medium) {
+                    margin-left: 0;
+                    margin-top: 0.5rem;
+                }
+            }
+
+            a {
+                display: block;
+                @include reset-link;
+                font-size: 1rem;
+                font-weight: 600;
+                font-weight: 400 !important;
+            }
+        }
+
+        @include breakpoint-down(medium) {
+            position: absolute;
+            top: calc(100% + 50.97px);
+            background: #333;
+            width: 100%;
+            right: 0;
+            flex-direction: column;
+            padding: 1rem;
+        }
+    }
+}

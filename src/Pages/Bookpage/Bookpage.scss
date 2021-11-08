@@ -1,0 +1,107 @@
+@import "../../Styles/helpers";
+
+.book__detail {
+    margin: 4rem 0;
+
+    .container {
+        @include container;
+    }
+
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+
+        @include breakpoint-down(medium) {
+            flex-direction: column;
+        }
+    }
+
+    &-info {
+        width: 75%;
+        max-width: 700px;
+        @include breakpoint-down(medium) {
+            order: 2;
+            max-width: initial;
+            width: 100%;
+        }
+    }
+
+    &-title {
+        font-weight: 400;
+        font-size: 2.5rem;
+        line-height: 1.6;
+        color: $blue;
+
+        @include breakpoint-down(medium) {
+            font-size: 1.5rem;
+        }
+    }
+
+    &-author {
+        opacity: 0.5;
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+
+        @include breakpoint-down(medium) {
+            font-size: 1rem;
+        }
+    }
+
+    &-category-tag {
+        display: inline-block;
+        background-color: lighten($blue, 65%);
+        padding: 0.3rem 1rem;
+        border-radius: 2rem;
+        font-weight: 600;
+        color: $cyan;
+        margin-bottom: 1rem;
+    }
+
+    &-desc {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: $black;
+
+        @include breakpoint-down(medium) {
+            font-size: 1rem;
+        }
+    }
+
+    h3 {
+        color: $black;
+    }
+
+    &-cta {
+        margin-top: 1rem;
+
+        .btns {
+            display: flex;
+            margin-top: 1rem;
+
+            > * + * {
+                margin-left: 1rem !important;
+            }
+        }
+    }
+
+    &-img {
+        width: 25%;
+        @include breakpoint-down(medium) {
+            order: 1;
+            width: 100%;
+            margin: 4rem 0 2rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        &-ele {
+            width: 100%;
+            display: block;
+
+            @include breakpoint-down(medium) {
+                width: 60%;
+            }
+        }
+    }
+}
