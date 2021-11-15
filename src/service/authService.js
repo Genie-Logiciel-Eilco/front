@@ -1,7 +1,7 @@
 import axios from 'axios'
 import API_ENDPOINT from '../Helpers/API_URL';
 
-const local = "http:localhost:8000"
+// const local = "http:localhost:8000"
 
 
 const login = (data) => {

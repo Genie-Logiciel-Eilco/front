@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Navbar from "../../Layout/Navbar/Navbar";
 
 // Hero Images
-import hero from "../../Assets/hero-three.jpg";
+//import hero from "../../Assets/hero-three.jpg";
 import heroTwo from "../../Assets/hero-one.jpg";
 import "./Homepage.scss";
 import BlueButton from "../../Components/BlueButton/BlueButton";
