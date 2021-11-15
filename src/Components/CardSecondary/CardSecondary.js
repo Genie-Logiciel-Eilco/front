@@ -1,35 +1,34 @@
 import React from 'react';
 import './CardSecondary.scss';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faStar} from '@fortawesome/free-solid-svg-icons';
-import {faStar as faStarTafi} from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar as faStarTafi } from '@fortawesome/free-regular-svg-icons';
 
-export default function CardSecondary({pdp, fullName, status, text, stars}) {
+export default function CardSecondary({ pdp, fullName, status, text, stars }) {
     const generateStars = (stars) => {
-        if(stars > 5 || stars < 0){
+        if (stars > 5 || stars < 0) {
             return ["An error occured !"];
         }
         let output = [];
 
-        for(let i = 0; i < stars; i++){
+        for (let i = 0; i < stars; i++) {
             output.push(
                 <FontAwesomeIcon icon={faStar} />
             );
         }
 
-        for(let i = stars; i < 5; i++){
+        for (let i = stars; i < 5; i++) {
             output.push(
                 <FontAwesomeIcon icon={faStarTafi} />
             );
         }
-        
         return output;
     }
-    
+
     return (
         <div className="card-secondary-wrapper">
             <div className="card-secondary-header">
-                <img src={pdp} className="card-secondary-pdp" />
+                <img src={pdp} className="card-secondary-pdp" alt="bruh" />
                 <h3>{fullName}</h3>
             </div>
             <div className="card-secondary-content">
