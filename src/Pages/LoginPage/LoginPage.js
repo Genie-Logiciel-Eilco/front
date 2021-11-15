@@ -49,6 +49,8 @@ export default function LoginPage() {
         }, (err) => {
             console.log(err)
         })
+
+        console.log(data);
     }
 
     return (

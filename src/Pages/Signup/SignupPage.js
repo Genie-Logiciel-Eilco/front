@@ -4,7 +4,7 @@ import Navbar from "../../Layout/Navbar/Navbar";
 import Footer from "../../Layout/Footer/Footer";
 // Helper
 import formGenerator from "../../Helpers/FormGenerator";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 // Imgs
 import logo from "../../Assets/templogo.jpg";
@@ -107,6 +107,9 @@ export default function SignupPage() {
         },
     ];
 
+
+    let history = useHistory();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(data);
@@ -116,6 +119,9 @@ export default function SignupPage() {
                 data
             );
             let response = await request.data;
+            if(response.success){
+                history.push('/Unverified');
+            }
             console.log(response);
         } catch (e) {
             console.log(e);
@@ -150,6 +156,8 @@ export default function SignupPage() {
                     </Link>
                 </form>
             </div>
+
+            
             <Footer />
         </main>
     );

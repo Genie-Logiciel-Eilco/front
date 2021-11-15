@@ -8,7 +8,8 @@ const uploadImage = () => {
 
 }
 
-const accessToken = JSON.parse(localStorage.getItem("data")).token;
+//const accessToken = JSON.parse(localStorage.getItem("data")).token;
+const accessToken = "TempToken";
 
 const getUsers = async (perPage) => {
     return await axios.get(`${API_ENDPOINT}/api/users/paginate/${perPage}`, { headers: authHeader() })
