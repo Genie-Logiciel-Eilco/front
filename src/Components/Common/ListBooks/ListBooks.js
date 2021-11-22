@@ -4,8 +4,8 @@ import { GlobalContext } from "../../../context/GlobalState";
 import BookNew from '../../Book/BookNew.js'
 import './ListBooks.scss';
 
-export default function ListBooks({categoryLabel}) {
-    const { books } = useContext(GlobalContext);
+export default function ListBooks({categoryLabel, books}) {
+    //const { books } = useContext(GlobalContext);
     
     return (
         <section className="books_section">

@@ -19,7 +19,7 @@ import Authors from './Pages/Dashboard/Books/Authors/Authors'
 import Publishers from './Pages/Dashboard/Books/Publishers/Publishers'
 import Browsepage from "./Pages/Browsepage/Browsepage";
 import Bookpage from "./Pages/Bookpage/Bookpage";
-
+import Logout from './Pages/Logout/Logout';
 // Routes Imports
 import { AdminRoute } from './Routes/AdminRoute'
 import { AnonymousRoute } from './Routes/AnonymousRoute'
@@ -29,12 +29,14 @@ import { UserRoute } from './Routes/UserRoute'
 import imgUnverified from './Assets/verify.jpg';
 import Unverified from './Pages/Unverified/Unverified';
 
+
 function App() {
   let history = useHistory();
 
   // lazy loaders
   const dashHome = lazy(()=>import("./Pages/Dashboard/Dashboard")) 
   return (
+
     <>
       <Router history={history}>
         <Suspense fallback={HomePage}>
@@ -66,7 +68,7 @@ function App() {
           <AdminRoute exact path="/69420/books/book" component={Books} />
           <AdminRoute exact path="/69420/books/author" component={Authors} />
           <AdminRoute exact path="/69420/books/publisher" component={Publishers} />
-
+          <UserRoute exact path='/logout' component={Logout} />
            <Route exact path="/Unverified" component={()=><Unverified 
                                                                 header="Email non vérifiée" 
                                                                 text="Vous devez vérifier votre email avant de continuer à naviguer notre site"

@@ -7,6 +7,9 @@ import PrimaryBtn from "../../Components/Buttons/PrimaryBtn";
 import SecondaryBtn from "../../Components/Buttons/SecondaryBtn";
 import Footer from "../../Layout/Footer/Footer";
 
+
+
+
 function Bookpage({ match }) {
     const { books } = useContext(GlobalContext);
     let bookId = match.params.id;

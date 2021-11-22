@@ -45,18 +45,18 @@ function BrowseNavbar() {
                     }
                 >
                     <li>
-                        <Link to="/" className="nav__links-item">
-                            explorer
+                        <Link to="/books" className="nav__links-item">
+                            Explorer
                         </Link>
                     </li>
                     <li>
                         <Link to="/" className="nav__links-item">
-                            Link
+                            Profile
                         </Link>
                     </li>
                     <li>
-                        <Link to="/" className="nav__links-item">
-                            Link
+                        <Link to="/logout" className="nav__links-item logout">
+                            Logout
                         </Link>
                     </li>
                 </ul>
