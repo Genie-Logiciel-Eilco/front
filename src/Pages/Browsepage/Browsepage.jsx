@@ -25,7 +25,7 @@ export default function Browsepage() {
 
         let response = await bookService.getCategories();
         let cats = await response.data;
-        let catego
+        // let catego
         setCategories([{name : "Toutes", id : -1}
         ,...cats.data.map((cat) => {
             return {
