@@ -7,6 +7,7 @@ import logo from "../../Assets/templogo.jpg";
 import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton'
 import "./BrowseNavbar.scss";
+import bookService from "../../service/booksService";
 
 function BrowseNavbar() {
      const keys=[
@@ -45,30 +46,51 @@ function BrowseNavbar() {
     ]
     const [navToggle, setNavToggle] = useState(false);
     const [isActive,setIsActive]=useState(false);
+    const [notFound,setNotFound]=useState(false);
     const [isSearching,setIsSearching]=useState(false);
-    const [isReady,setIsReady]=useState(true);
+    const [isReady,setIsReady]=useState(false);
     const [defaultx,setDefaultx]=useState(0);
     const [searchValue,setSearchValue]=useState("");
+    const [books,setBooks]=useState([]);
     const toggleChange=(e)=>{
         console.log(e.target.innerHTML);
         setIsActive(!isActive);
+        resetSearch();
     };
     const setDefaultKey=(id)=>{
         console.log(id);
         setDefaultx(id);
     }
-    const changeSearchValue=(e)=>{
+    const changeSearchValue=async (e)=>{
         const value=e.target.value;
+        setSearchValue(value);
         if(value.length>0)
         {
             setIsSearching(true);
+            setIsActive(false);
+            const data={
+                [keys[defaultx].value]:value,
+                paginate:false
+            }
+            let resp=await bookService.searchBooks(data);
+            let books = await resp.data.data;
+            if(books.length==0)
+            {
+                setNotFound(true)
+            }
+            else
+            {
+                setNotFound(false)
+            }
+            setIsReady(true);
+            setBooks(books);
         }
         else
         {
             setIsSearching(false);
+            setIsReady(false);
         }
-        console.log(value)
-        setSearchValue(value);
+        
     }
     const resetSearch=()=>{
         setSearchValue("");
@@ -107,11 +129,20 @@ function BrowseNavbar() {
                             </>
                         </div>
                     )}
-                    {isSearching && isReady && (
+                    {isSearching && isReady && notFound &&(
                         
                         <div className="nav__searchBox-booksDropdown">
-                            tnaket
+                            <h1>Not found</h1>
                         </div>
+                    )}
+                    {isSearching && isReady && !notFound &&
+                    (
+                        <div className="nav__searchBox-booksDropdown">
+                            {books.map((book)=>(
+                                <h1>{book.name}</h1>
+                            ))}
+                        </div>
+
                     )}
 
                     <input

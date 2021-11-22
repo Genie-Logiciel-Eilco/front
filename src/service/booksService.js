@@ -9,6 +9,11 @@ const getBooks = async () => {
         headers: authHeader(),
     });
 };
+const searchBooks=async(data)=>{
+    return await axios.post(`${API_ENDPOINT}/api/books/search`,data,{
+        headers: authHeader(),
+    });
+}
 
 const getCategories = async () => {
     return await axios.get(`${API_ENDPOINT}/api/categories`, {
@@ -19,6 +24,7 @@ const getCategories = async () => {
 const bookService = {
     getBooks,
     getCategories,
+    searchBooks
 };
 
 export default bookService;
