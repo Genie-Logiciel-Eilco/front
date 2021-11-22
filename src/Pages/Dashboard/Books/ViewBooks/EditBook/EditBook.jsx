@@ -34,7 +34,6 @@ export default function EditBook({ uuid, success, onChange }) {
     //data to send
     const [isbn, setIsbn] = useState(initialState);
     const [name, setName] = useState(initialState);
-    const [subject, setSubject] = useState(initialState);
     const [synopsis, setSynopsis] = useState(initialState);
     const [publicationDate, setPublicationDate] = useState(new Date());
     const [chosenAuthors, setChosenAuthors] = useState([]);
@@ -57,6 +56,9 @@ export default function EditBook({ uuid, success, onChange }) {
     const [imageCheckColor, setImageCheckColor] = useState("disabled");
     const [fileCheckColor, setFileCheckColor] = useState("disabled");
 
+    //reload
+    const [reload, setReload] = useState(false)
+
     const theme = useTheme();
 
     const handleCategory = (event) => {
@@ -77,7 +79,6 @@ export default function EditBook({ uuid, success, onChange }) {
         userService.getBook(uuid).then((res) => {
             setIsbn(res?.data?.data?.isbn);
             setName(res?.data?.data?.name);
-            setSubject(res?.data?.data?.subject);
             setSynopsis(res?.data?.data?.synopsis);
             setPublicationDate(Date.parse(res?.data?.data?.publicationDate));
             setChosenAuthors(res?.data?.data?.authors);
@@ -161,12 +162,7 @@ export default function EditBook({ uuid, success, onChange }) {
                 "content-type": "multipart/form-data",
             },
         };
-        return axios
-            .post(
-                `http://104.248.39.111/api/book/uploadFile/${uuid}`,
-                formData,
-                config
-            )
+        return userService.editImage(uuid, formData, config)
             .then(
                 (res) => {
                     console.log(res?.data)
@@ -182,7 +178,6 @@ export default function EditBook({ uuid, success, onChange }) {
         const data = {
             isbn: isbn,
             name: name,
-            subject: subject,
             synopsis: synopsis,
             authors: chosenAuthors,
             publicationDate: publicationDate,
@@ -191,6 +186,7 @@ export default function EditBook({ uuid, success, onChange }) {
         };
         return userService.uploadBook(uuid, data).then((res) => {
             onChange(!success);
+            setReload(!reload)
         });
     };
 
@@ -202,6 +198,10 @@ export default function EditBook({ uuid, success, onChange }) {
                     : theme.typography.fontWeightMedium,
         };
     }
+
+    useEffect(() => {
+
+    }, [reload])
 
     return (
         <>
@@ -268,17 +268,6 @@ export default function EditBook({ uuid, success, onChange }) {
                             value={name}
                             onChange={(e) => {
                                 setName(e.target.value);
-                            }}
-                        />
-                    </div>
-                    <div className="addbook-item">
-                        <label>Sujet</label>
-                        <input
-                            type="text"
-                            className="addbook-text"
-                            value={subject}
-                            onChange={(e) => {
-                                setSubject(e.target.value);
                             }}
                         />
                     </div>

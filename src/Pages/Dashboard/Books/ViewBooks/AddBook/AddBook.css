@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
 }
-
 .addbook-item {
   padding: 10px 30px;
   align-items: center;
@@ -28,11 +27,23 @@
   border-radius: 10px;
   border: none;
 }
+.addbook-text2 {
+  padding: 10px 20px;
+  max-height: 400;
+  background-color: rgb(245, 245, 245);
+  border-radius: 10px;
+  border: none;
+}
 .addbook-text:focus {
+  outline: none;
+  border: 1px solid rgb(196, 196, 196);
+}
+.addbook-text2:focus {
   outline: none;
   border: 1px solid rgb(196, 196, 196);
 }
 .uploaded-book-image{
   width: 200px;
+  max-height: 100px;
   border-radius: 10%;
 }
