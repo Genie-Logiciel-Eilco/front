@@ -366,7 +366,7 @@ export default function AddBook({ success, onChange }) {
               ref={hiddenContentFileInput}
               style={{ display: "none" }}
               onChange={onContentFileChange}
-              accept=".pdf,.txt"
+              accept=".epub"
             />
             <Box
               sx={{
