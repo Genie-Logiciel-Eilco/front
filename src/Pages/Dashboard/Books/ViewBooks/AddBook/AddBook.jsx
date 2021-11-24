@@ -18,8 +18,6 @@ import axios from "axios";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import TextareaAutosize from '@mui/material/TextareaAutosize';
-
 
 const ITEM_HEIGHT = 50;
 const ITEM_PADDING_TOP = 8;
@@ -36,6 +34,7 @@ export default function AddBook({ success, onChange }) {
   //data to send
   const [isbn, setIsbn] = useState(initialState);
   const [name, setName] = useState(initialState);
+  const [subject, setSubject] = useState(initialState);
   const [synopsis, setSynopsis] = useState(initialState);
   const [publicationDate, setPublicationDate] = useState(new Date());
   const [chosenAuthors, setChosenAuthors] = useState([]);
@@ -113,7 +112,8 @@ export default function AddBook({ success, onChange }) {
         "content-type": "multipart/form-data",
       },
     };
-    return userService.uploadImage(formData, config)
+    return axios
+      .post("http://104.248.39.111/api/book/uploadImage", formData, config)
       .then(
         (res) => {
           setUuid(res?.data?.data?.id);
@@ -169,6 +169,7 @@ export default function AddBook({ success, onChange }) {
     const data = {
       isbn: isbn,
       name: name,
+      subject: subject,
       synopsis: synopsis,
       authors: chosenAuthors,
       publicationDate: publicationDate,
@@ -262,30 +263,32 @@ export default function AddBook({ success, onChange }) {
             />
           </div>
           <div className="addbook-item">
+            <label>Sujet</label>
+            <input
+              type="text"
+              className="addbook-text"
+              value={subject}
+              onChange={(e) => {
+                setSubject(e.target.value);
+              }}
+            />
+          </div>
+          <div className="addbook-item">
             <label>Synopsis</label>
-            {/* <input
+            <input
               type="text"
               className="addbook-text"
               value={synopsis}
               onChange={(e) => {
                 setSynopsis(e.target.value);
               }}
-            /> */}
-            <TextareaAutosize
-              minRows={3}
-              value={synopsis}
-              onChange={(e) => {
-                setSynopsis(e.target.value);
-              }}
-              className='addbook-text2'
-              style={{ width: 220, maxHeight: 220 }}
-
             />
           </div>
           <div className="addbook-item">
             <label>Date de publication</label>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DesktopDatePicker
+                style={{ marginTop: "200px" }}
                 inputFormat="dd/MM/yyyy"
                 value={publicationDate}
                 onChange={(e) => {

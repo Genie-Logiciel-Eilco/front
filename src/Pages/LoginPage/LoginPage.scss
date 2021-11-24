@@ -2,6 +2,14 @@
 @import '../../Styles/_variables.scss';
 
 main.login-page-wrapper{
+    div.MuiPaper-root{
+        position : absolute;
+        right : 1vw;
+        top : 8vh;
+        // display : flex;
+        padding : 0; margin : 0;
+        width : 30vw;
+    }
     nav{
         z-index : 1000 !important;
     }

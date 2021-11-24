@@ -5,11 +5,12 @@ import Navbar from '../../Layout/Navbar/Navbar'
 import loginBG from '../../Assets/Login.jpg';
 import './LoginPage.scss'
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { Alert } from '@mui/material';
 
 
 import logo from '../../Assets/templogo.jpg'
 import authService from '../../service/authService';
+import { useHistory } from 'react-router-dom';
 export default function LoginPage() {
     const [data, setData] = useState({
         usernameOrEmail: "",
@@ -40,20 +41,29 @@ export default function LoginPage() {
         })
     }]
 
+    const [err, setErr] = useState(false);
+    const [message, setMessage] = useState("Il y'a un problème avec la requête")
+    
+    let history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         await authService.login(data).then((res) => {
             localStorage.setItem('data', JSON.stringify(res?.data?.data));
-        }, (err) => {
-            console.log(err)
+            history.push('/signup');
+        }, (er) => {
+            setErr(true);
+            console.log(er)
         })
+
+        console.log(data);
     }
 
     return (
         <main className="login-page-wrapper">
             <Navbar />
+
             <img src={loginBG} className="login-page-bg" />
             <div className="login-form-wrapper">
                 <form onSubmit={handleSubmit}>
@@ -80,6 +90,9 @@ export default function LoginPage() {
 
                 </form>
             </div>
+            {err ? <Alert variant="filled" severity="error">
+                        {message}
+                    </Alert> : ""}
             <Footer />
         </main>
     )

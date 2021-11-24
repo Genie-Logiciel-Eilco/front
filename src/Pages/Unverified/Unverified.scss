@@ -1,0 +1,28 @@
+@import '../../Styles/_mixins.scss';
+@import '../../Styles/_variables.scss';
+
+main.unverified{
+    display : flex;
+    justify-content : space-around;
+    align-items: center;
+    min-height : 79vh;
+    img.error-img{
+        height : 520px;
+        width : auto; 
+        object-fit:cover;
+    }
+    .text-container{
+        text-align: center;
+        padding-right : 2rem;    
+        width : 35vw;
+        &-header{
+            font-size : 40px;
+            font-weight : 600;
+            color : $blue;
+        }
+        &-message{
+            
+            font-size : 30px;
+        }
+    }
+}

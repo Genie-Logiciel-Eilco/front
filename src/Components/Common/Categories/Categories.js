@@ -1,33 +1,25 @@
-import React, { useState, useContext } from "react";
-import { GlobalContext } from "../../../context/GlobalState";
+import React, { useState, useEffect } from "react";
 import "./Categories.scss";
 
-export default function Categories() {
-    const { books } = useContext(GlobalContext);
-    let categories = [];
+export default function Categories({categoriesBase}) {
+    const [active, setActive] = useState("Toutes");
+    const [categories, setCategories] = useState([...categoriesBase]);
+    //const [flag, setFlag] = useState(0);
+    useEffect(()=>{
+    }, [])
 
-    for (let index = 0; index < books.length; index++) {
-        let category = {
-            id: index,
-            activeObject: false,
-            categoryText: books[index].category,
-        };
-        categories.push(category);
-        categories = ["Toutes", ...new Set(books.map((book) => book.category))];
+
+
+    const toggleActiveClass = (name) => {
+        setActive(name);
     }
 
-    const [items, setItems] = useState({
-        activeObject: "Toutes",
-        categories: categories,
-    });
+    const toggleActiveClassStyles = (name) => {
+        return name === active 
+        ? "categories__list-item active"
+        : "categories__list-item inactive";
+    }
 
-    const toggleActiveClass = (index) =>
-        setItems({ ...items, activeObject: items.categories[index] });
-
-    const toggleActiveClassStyles = (index) =>
-        items.categories[index] === items.activeObject
-            ? "categories__list-item active"
-            : "categories__list-item inactive";
 
     return (
         <section className="categories">
@@ -38,10 +30,10 @@ export default function Categories() {
                     {categories.map((category, index) => (
                         <li
                             key={index}
-                            className={toggleActiveClassStyles(index)}
-                            onClick={() => toggleActiveClass(index)}
+                            className={toggleActiveClassStyles(category.name)}
+                            onClick={() => toggleActiveClass(category.name)}
                         >
-                            {category}
+                            {category.name}
                         </li>
                     ))}
                 </ul>
