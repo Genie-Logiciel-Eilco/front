@@ -78,6 +78,8 @@ export default function AddBook({ success, onChange }) {
   useEffect(() => {
     userService.getAuthors().then((res) => {
       setAuthors(res?.data?.data);
+    }, (err) => {
+      console.log(err)
     });
     userService.getPublishers().then((res) => {
       setPublishers(res?.data?.data);
@@ -176,6 +178,7 @@ export default function AddBook({ success, onChange }) {
     return userService.uploadBook(uuid, data).then(
       (res) => {
         onChange(!success)
+        console.log(data)
       }, (err) => {
       }
     );
@@ -286,7 +289,7 @@ export default function AddBook({ success, onChange }) {
                 inputFormat="dd/MM/yyyy"
                 value={publicationDate}
                 onChange={(e) => {
-                  setPublicationDate(e);
+                  setPublicationDate(`${e.getFullYear()}-${e.getMonth()}-${e.getDate()}`);
                 }}
                 renderInput={(params) => <TextField {...params} />}
               />
@@ -325,7 +328,7 @@ export default function AddBook({ success, onChange }) {
                 input={<OutlinedInput label="Auteurs" />}
                 MenuProps={MenuProps}
               >
-                {authors?.map((author) => (
+                {authors?.data?.map((author) => (
                   <MenuItem
                     key={author?.id}
                     value={author?.id}
@@ -366,7 +369,7 @@ export default function AddBook({ success, onChange }) {
               ref={hiddenContentFileInput}
               style={{ display: "none" }}
               onChange={onContentFileChange}
-              accept=".pdf,.txt"
+              accept=".epub"
             />
             <Box
               sx={{

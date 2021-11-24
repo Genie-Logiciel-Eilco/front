@@ -80,7 +80,8 @@ export default function EditBook({ uuid, success, onChange }) {
             setIsbn(res?.data?.data?.isbn);
             setName(res?.data?.data?.name);
             setSynopsis(res?.data?.data?.synopsis);
-            setPublicationDate(Date.parse(res?.data?.data?.publicationDate));
+            setPublicationDate(res?.data?.data?.publicationDate);
+            console.log(res?.data?.data)
             setChosenAuthors(res?.data?.data?.authors);
             setChosenPublisher(res?.data?.data?.publisher_id);
             setImage(`http://104.248.39.111/images/${res?.data?.data?.imageLocation}`);
@@ -329,7 +330,7 @@ export default function EditBook({ uuid, success, onChange }) {
                                 input={<OutlinedInput label="Auteurs" />}
                                 MenuProps={MenuProps}
                             >
-                                {authors?.map((author) => (
+                                {authors?.data?.map((author) => (
                                     <MenuItem
                                         key={author?.id}
                                         value={author?.id}
@@ -369,7 +370,7 @@ export default function EditBook({ uuid, success, onChange }) {
                             ref={hiddenContentFileInput}
                             style={{ display: "none" }}
                             onChange={onContentFileChange}
-                            accept=".pdf,.txt,.epub"
+                            accept=".epub"
                         />
                         <Box
                             sx={{

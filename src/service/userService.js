@@ -27,15 +27,15 @@ const getBooksByPage = async (pageNumber, perPageInput) => {
     );
 };
 
-const getAuthorsByPage = async (pageNumber) => {
+const getAuthorsByPage = async (pageNumber, perPageInput) => {
     return await axios.get(
-        `${API_ENDPOINT}/api/authors/paginate/2?page=${pageNumber}`,
+        `${API_ENDPOINT}/api/authors/paginate/${perPageInput}?page=${pageNumber}`,
         { headers: authHeader() }
     );
 };
 
-const getAuthors = async () => {
-    return await axios.get(`${API_ENDPOINT}/api/authors`, {
+const getAuthors = async (perPage) => {
+    return await axios.get(`http://104.248.39.111/api/authors/paginate/10`, {
         headers: authHeader(),
     });
 };
@@ -58,6 +58,10 @@ const uploadBook = (uuid, data) => {
         "Content-Type": "application/json",
     });
 };
+
+const uploadAuthor = (data) => {
+    return axios.post(`${API_ENDPOINT}/api/author/add`, data, { headers: authHeader() })
+}
 
 const deleteBook = (uuid) => {
     return axios.delete(`${API_ENDPOINT}/api/book/${uuid}`, {
@@ -89,6 +93,21 @@ const editImage = (uuid, formData, config) => {
     )
 }
 
+const uploadAuthorImage = (id, formData, config) => {
+    return axios.post(`${API_ENDPOINT}/api/author/${id}/uploadImage`, formData, config)
+}
+
+const deleteAuthor = (id) => {
+    return axios.delete(`${API_ENDPOINT}/api/author/${id}`, { headers: authHeader() });
+}
+
+const getAuthorById = async (id) => {
+    return await axios.get(`${API_ENDPOINT}/api/author/${id}`, { headers: authHeader() })
+}
+const updateAuthor = (id, data) => {
+    return axios.post(`${API_ENDPOINT}/api/author/update/${id}`, data, { headers: authHeader() })
+}
+
 const authService = {
     getUsers,
     getBooks,
@@ -103,7 +122,13 @@ const authService = {
     getBook,
     getImage,
     editImage,
-    uploadImage
+    uploadImage,
+    getAuthors,
+    uploadAuthor,
+    uploadAuthorImage,
+    deleteAuthor,
+    getAuthorById,
+    updateAuthor
 };
 
 export default authService;

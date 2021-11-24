@@ -14,8 +14,7 @@ import SignupPage from './Pages/Signup/SignupPage';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Users from './Pages/Dashboard/Users/Users'
 import Books from './Pages/Dashboard/Books/Books'
-import Authors from './Pages/Dashboard/Books/Authors/Authors'
-import Publishers from './Pages/Dashboard/Books/Publishers/Publishers'
+import Authors from './Pages/Dashboard/Authors/Authors'
 import Browsepage from "./Pages/Browsepage/Browsepage";
 import Bookpage from "./Pages/Bookpage/Bookpage";
 
@@ -37,11 +36,8 @@ function App() {
             <Route path="/books/:id" exact component={Bookpage} />
             <Route exact path="/69420/home" component={dashHome} />
             <Route exact path="/69420/users" component={Users} />
-            <Route exact path="/69420/books/book" component={Books} />
-            <Route exact path="/69420/books/author" component={Authors} />
-            <Route exact path="/69420/books/publisher" component={Publishers} />
-
-
+            <Route exact path="/69420/books" component={Books} />
+            <Route exact path="/69420/authors" component={Authors} />
           </Switch>
         </Suspense>
       </Router>

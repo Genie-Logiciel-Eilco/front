@@ -2,36 +2,31 @@
   flex: 1;
   height: calc(100vh - 100px);
   position: sticky;
-  background-color: rgb(245, 245, 255);
+  background-color: rgb(63, 63, 63);
   top: 50px;
 }
 .sidebarWrapper {
-  padding: 20px;
-  color: #555;
+  color: rgb(255, 255, 255);
+}
+.sidebarWrapper div:hover{
+background-color: rgb(82, 82, 82);
+}
+.dashlink{
+  font-size: large;
+  color:#FFF;
+}
+.dashlink:hover,.dashlink:focus{
+  color:rgb(238, 195, 138);
+  background-color: rgb(255, 255, 255);
 }
 
+.active-dashlink div{
+  color:rgb(0, 0, 0);
+  background-color: rgb(138, 138, 138);
+}
 .sidebarMenu {
-  margin-bottom: 10px;
-}
-.sidebarTitle {
-  font-size: 16px;
-  color: rgb(187, 187, 187);
-}
-.sidebarList {
-  list-style: none;
-  padding: 5px;
-}
-.sidebarListItem {
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  cursor: pointer;
-  border-radius: 10px;
-}
-.sidebarListItem.active,
-.sidebarListItem:hover {
-  background-color: rgb(230, 230, 255);
-  color: black;
+  padding: 15px 20px;
+  width: 100%;
 }
 .sidebarIcon {
   margin-right: 5px;
