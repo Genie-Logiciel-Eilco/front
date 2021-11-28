@@ -21,6 +21,8 @@ import Authors from './Pages/Dashboard/Authors/Authors'
 import Browsepage from "./Pages/Browsepage/Browsepage";
 import Bookpage from "./Pages/Bookpage/Bookpage";
 import Logout from './Pages/Logout/Logout';
+import BookReadNormal from './Pages/BookReadNormal/BookReadNormal';
+
 // Routes Imports
 import { AdminRoute } from './Routes/AdminRoute'
 import { AnonymousRoute } from './Routes/AnonymousRoute'
@@ -29,6 +31,7 @@ import { UserRoute } from './Routes/UserRoute'
 // Images
 import imgUnverified from './Assets/verify.jpg';
 import Unverified from './Pages/Unverified/Unverified';
+import BookAudio from './Pages/BookAudio/BookAudio';
 
 
 function App() {
@@ -62,6 +65,8 @@ function App() {
             <AnonymousRoute path="/Signup" exact component={SignupPage} />
             <UserRoute path="/books" exact component={Browsepage} />
             <UserRoute path="/books/:id" exact component={Bookpage} />
+            <UserRoute path="/books/read/:id" exact component={BookReadNormal} />
+            <UserRoute path="/books/listen/:id" exact component={BookAudio} />
             <AdminRoute exact path="/69420/home" component={dashHome} />
             <AdminRoute exact path="/69420/users" component={Users} />
             <AdminRoute exact path="/69420/books" component={Books} />

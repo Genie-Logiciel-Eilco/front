@@ -1,0 +1,27 @@
+@import "../../../Styles/helpers";
+
+.book_navbar{
+    display : flex;
+    justify-content: space-around;
+    // border-bottom : #333333 solid 2px;
+    padding : 0.3rem;
+    background-color : #DDD;
+    // color : white;
+    &_left{
+
+    }
+
+    &_right{
+        &_image{
+            height : 10vh;
+        }
+    }
+}
+
+.book__detail-cta.inside{
+    margin : {
+        left : auto;
+        right : auto;
+    }
+    width: fit-content;
+}

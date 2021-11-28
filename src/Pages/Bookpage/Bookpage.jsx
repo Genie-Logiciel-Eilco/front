@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import "./Bookpage.scss";
 import BrowseNavbar from "../Browsepage/BrowseNavbar";
 import PrimaryBtn from "../../Components/Buttons/PrimaryBtn";
@@ -82,7 +83,9 @@ function Bookpage() {
                                     ?
                                 </h3>
                                 <div className="btns">
-                                    <PrimaryBtn text="Lire" />
+                                    <Link to={`/books/read/${id}`}>
+                                        <PrimaryBtn text="Lire" />
+                                    </Link>
                                     <SecondaryBtn text="Ecouter" />
                                 </div>
                             </div>
