@@ -132,13 +132,32 @@
             width: 36.5vw;
             min-height: 100px;
             border-radius: 5px;
-            padding:15px 20px 0px 20px;
             display: block;
             box-shadow: 8px 8px 6px -10px #b3c6ff;
             .skeleton
             {
                 margin-bottom: 15px;
             }
+            div.item
+            {
+                cursor: pointer;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: center;
+                padding:10px 20px;
+                border-bottom: 3px solid black;
+                &:last-child
+                {
+                    border:none;
+                }
+            }
+            img
+            {
+                width: 70px;
+                padding-right: 15px;
+            }
+            
         }
     }
 

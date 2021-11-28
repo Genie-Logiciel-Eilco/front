@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -44,6 +45,7 @@ function BrowseNavbar() {
             value:"category"
         }
     ]
+    const history=useHistory();
     const [navToggle, setNavToggle] = useState(false);
     const [isActive,setIsActive]=useState(false);
     const [notFound,setNotFound]=useState(false);
@@ -97,6 +99,9 @@ function BrowseNavbar() {
         setIsSearching(false);
         setIsReady(false);
     }
+    const handleCLick=($uuid)=>{
+        history.push(`/books/${$uuid}`)
+    }
    
     return (
         <nav className="nav">
@@ -132,14 +137,17 @@ function BrowseNavbar() {
                     {isSearching && isReady && notFound &&(
                         
                         <div className="nav__searchBox-booksDropdown">
-                            <h1>Not found</h1>
+                            <h2>Not found</h2>
                         </div>
                     )}
                     {isSearching && isReady && !notFound &&
                     (
                         <div className="nav__searchBox-booksDropdown">
                             {books.map((book)=>(
-                                <h1>{book.name}</h1>
+                                <div className="item" onClick={()=>handleCLick(book.id)}>
+                                <img src={`http://104.248.39.111/images/${book.imageLocation}`} alt="" srcset="" />
+                                <h3>{book.name}</h3>
+                                </div>
                             ))}
                         </div>
 
