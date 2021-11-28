@@ -1,11 +1,8 @@
 import React from 'react'
-import { useContext } from 'react';
-import { GlobalContext } from "../../../context/GlobalState";
 import BookNew from '../../Book/BookNew.js'
 import './ListBooks.scss';
 
 export default function ListBooks({categoryLabel, books}) {
-    //const { books } = useContext(GlobalContext);
     
     return (
         <section className="books_section">
@@ -15,7 +12,7 @@ export default function ListBooks({categoryLabel, books}) {
 
             <div className="books_container">
                 {books.map((b,i)=>{
-                    return <BookNew book={b} key={i}/>
+                    return <BookNew book={b} key={i} />
                 })}
             </div>
 

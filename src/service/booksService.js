@@ -21,10 +21,18 @@ const getCategories = async () => {
     })
 };
 
+const getOneBook = async (book) => {
+    return await axios.get(`${API_ENDPOINT}/api/book/${book}`, {
+        headers : authHeader(),
+    });
+    
+};
+
 const bookService = {
     getBooks,
     getCategories,
-    searchBooks
+    searchBooks,
+    getOneBook,
 };
 
 export default bookService;

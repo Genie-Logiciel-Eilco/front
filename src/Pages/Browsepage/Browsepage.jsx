@@ -67,10 +67,6 @@ export default function Browsepage() {
                              key={ind} />
                 : "";
             })}
-            {/* <ListBooks categoryLabel={"Business & Money"} books={}/>
-            <ListBooks categoryLabel={"Self developement"}/>
-            <ListBooks categoryLabel={"Novels"}/>
-            <ListBooks categoryLabel={"Comedies"}/> */}
             <Footer />
         </>
     );
