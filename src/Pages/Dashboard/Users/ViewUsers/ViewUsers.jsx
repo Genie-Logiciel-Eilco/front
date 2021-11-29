@@ -7,16 +7,14 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import Tooltip from "@mui/material/Tooltip";
 import userService from "../../../../service/userService";
-import AddCategory from "./AddCategory/AddCategory";
-import EditCategory from "./EditCategory/EditCategory";
 import Pagination from "react-js-pagination";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
 import Snackbar from "@mui/material/Snackbar";
-import "./ViewCategories.css";
+import "./ViewUsers.css";
 import MuiAlert from "@mui/material/Alert";
-
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -34,21 +32,9 @@ const style = {
   p: 4,
 };
 
-export default function ViewCategories() {
-
-  const [id, setId] = useState()
-  //addauthor modal
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  //editauthor modal
-  const [open2, setOpen2] = React.useState(false);
-  const handleOpen2 = () => setOpen2(true);
-  const handleClose2 = () => setOpen2(false);
-  const [editId, setEditId] = useState()
-
-  const [perPageInput, setPerPageInput] = useState(4);
-  const [categories, setCategories] = useState(initialState);
+export default function ViewUsers() {
+  const [perPageInput, setPerPageInput] = useState(2);
+  const [users, setUsers] = useState(initialState);
   const [success, setSuccess] = useState(false);
 
   //snackies
@@ -65,19 +51,19 @@ export default function ViewCategories() {
 
   useEffect(() => {
     if (perPageInput) {
-      userService.getCategoriesInPaginate(perPageInput).then((res) => {
-        setCategories(res?.data?.data)
-        console.log(res?.data?.data)
+      userService.getUsers(perPageInput).then((res) => {
+        setUsers(res?.data?.data?.data)
+        console.log(res?.data?.data?.data)
       })
     }
   }, [perPageInput, success]);
 
-  useEffect(() => { }, [categories, success]);
+  useEffect(() => { }, [users, success]);
 
-  const getCategoriesInPaginate = (pageNumber) => {
-    userService.getCategoriesByPage(pageNumber, perPageInput).then(
+  const getUsersInPaginate = (pageNumber) => {
+    userService.getUsers(pageNumber, perPageInput).then(
       (res) => {
-        setCategories(res?.data?.data);
+        setUsers(res?.data?.data);
       },
       (err) => {
         console.log(err);
@@ -85,9 +71,9 @@ export default function ViewCategories() {
     );
   };
 
-  const deleteCategory = (id) => {
+  const deleteUser = (id) => {
     console.log(id)
-    return userService.deleteCategory(id).then(
+    return userService.deleteUser(id).then(
       (res) => {
         setSuccess(!success)
         setMessage("Suppression avec succès");
@@ -105,71 +91,32 @@ export default function ViewCategories() {
 
   return (
     <div className="userList">
-      <Button
-        variant="contained"
-        style={{ margin: "10px 20px", alignSelf: "flex-end" }}
-        onClick={handleOpen}
-      >
-        Ajouter une catégorie
-      </Button>
-      <Modal open={open} onClose={handleClose}>
-        <Box sx={style}>
-          <AddCategory
-            success={success}
-            onChange={(value) => {
-              setSuccess(value);
-              setSeverity("success");
-              setOpen(false);
-              setMessage("Livre ajouté avec succès");
-              setOpenSnackbar(true);
-            }}
-          />
-        </Box>
-      </Modal>
-      <Modal open={open2} onClose={handleClose2}>
-        <Box sx={style}>
-          <EditCategory
-            id={editId}
-            success={success}
-            onChange={(value) => {
-              setSuccess(value);
-              setSeverity("success");
-              setOpen2(false);
-              setMessage("Auteur modifié avec succès");
-              setOpenSnackbar(true);
-            }}
-          />
-        </Box>
-      </Modal>
       <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>ID</TableCell>
+            <TableCell>Nom d'utilisateur</TableCell>
             <TableCell>Nom</TableCell>
-            <TableCell align="center">Modifier</TableCell>
+            <TableCell>Prénom</TableCell>
+            <TableCell>Email</TableCell>
+            <TableCell>Date de création</TableCell>
             <TableCell align="center">Supprimer</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {categories?.data?.map((category, index) => (
+          {users?.map((user, index) => (
             <TableRow key={index}>
-              <TableCell>{category.id}</TableCell>
-              <TableCell>{category.name}</TableCell>
-              <TableCell align="center">
-                <Button
-                  onClick={() => {
-                    setEditId(category.id);
-                    handleOpen2()
-                  }}
-                >
-                  <EditIcon color="warning" />
-                </Button>
-              </TableCell>
+              <TableCell>{user.id}</TableCell>
+              <TableCell>{user.username}</TableCell>
+              <TableCell>{user.last_name}</TableCell>
+              <TableCell>{user.first_name}</TableCell>
+              <TableCell>{user.email}</TableCell>
+              <TableCell>{`${new Date(user.created_at).getDate()}-${new Date(user.created_at).getMonth()}-${new Date(user.created_at).getFullYear()}`}</TableCell>
               <TableCell align="center">
                 {" "}
                 <Button
                   onClick={() => {
-                    deleteCategory(category.id);
+                    deleteUser(user.id);
                     setSuccess(!success);
                   }}
                 >
@@ -183,15 +130,15 @@ export default function ViewCategories() {
       <div style={{ display: "flex", justifyContent: "space-between", marginTop: '10px' }}>
         <span></span>
         <Pagination
-          activePage={categories?.currentPage}
-          totalItemsCount={categories?.total}
-          itemsCountPerPage={parseInt(categories?.per_page)}
+          activePage={users?.currentPage}
+          totalItemsCount={users?.total}
+          itemsCountPerPage={parseInt(users?.per_page)}
           onChange={(pageNumber) => {
-            getCategoriesInPaginate(pageNumber);
+            getUsersInPaginate(pageNumber);
           }}
           itemClass="page-item"
           linkClass="page-link"
-          activePage={categories?.current_page}
+          activePage={users?.current_page}
           firstPageText="Première"
           lastPageText="Dernière"
         />

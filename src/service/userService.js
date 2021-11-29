@@ -12,7 +12,7 @@ if (JSON.parse(localStorage.getItem("data"))) {
 // const accessToken = "TempToken";
 
 const getUsers = async (perPage) => {
-    return await axios.get(`${API_ENDPOINT}/api/users/paginate/${perPage}`, {
+    return await axios.get(`${API_ENDPOINT}/api/users/${perPage}`, {
         headers: authHeader(),
     });
 };
@@ -123,6 +123,17 @@ const deleteCategory = (id) => {
     return axios.delete(`${API_ENDPOINT}/api/category/${id}`, { headers: authHeader() });
 }
 
+const getUsersByPage = async (pageNumber, perPageInput) => {
+    return await axios.get(
+        `${API_ENDPOINT}/api/users/paginate/${perPageInput}?page=${pageNumber}`,
+        { headers: authHeader() }
+    );
+};
+
+const deleteUser = (id) => {
+    return axios.delete(`${API_ENDPOINT}/api/user/${id}`, { headers: authHeader() });
+}
+
 const uploadBook = (uuid, data) => {
     return axios.post(`${API_ENDPOINT}/api/book/add/${uuid}`, data, {
         headers: authHeader(),
@@ -209,7 +220,9 @@ const authService = {
     getCategoriesInPaginate,
     updateCategory,
     uploadCategory,
-    deleteCategory
+    deleteCategory,
+    deleteUser,
+    getUsersByPage,
 };
 
 export default authService;

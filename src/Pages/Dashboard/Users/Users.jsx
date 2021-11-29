@@ -1,27 +1,19 @@
-import React, { useEffect } from 'react'
-import Navbar from '../../../Layout/Navbar/Navbar'
+import React from 'react'
 import Sidebar from '../../../Layout/Sidebar/Sidebar'
-import './Users.css'
-import UserList from './UserList/UserList'
-import userService from '../../../service/userService'
-
-export default function Dashboard() {
+import Navbar from '../../../Layout/Navbar/Navbar'
+import ViewUsers from "./ViewUsers/ViewUsers"
 
 
-    useEffect(() => {
-        userService.getUsers(2).then((res) => {
-            console.log(res)
-        }, (err) => {
-            console.log(err)
-        })
-    }, [])
+import "./Users.css"
+
+export default function Books() {
 
     return (
         <>
             <Navbar />
-            <div className="dash-container">
+            <div className="bookContainer">
                 <Sidebar />
-                <UserList />
+                <ViewUsers />
             </div>
         </>
     )
