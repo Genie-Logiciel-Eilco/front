@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/* Colors */
+/* values */
+footer.footer-1 {
+  background-color: #333333;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  margin-top: 3rem;
+}
+footer.footer-1 div.footer-copyright {
+  text-align: center;
+  color: white;
+}
+@media (max-width: 39.9375em) {
+  footer.footer-1 div.footer-copyright h3 {
+    font-size: 0.8rem;
+    font-weight: 100 !important;
+  }
+}
+footer.footer-1 div.footer-social-icons {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  width: 6rem;
+}
+footer.footer-1 div.footer-social-icons a {
+  color: white;
+  transition: color 0.2s;
+}
+footer.footer-1 div.footer-social-icons a svg {
+  font-size: 1.5rem;
+}
+footer.footer-1 div.footer-social-icons a:hover {
+  color: #0084ff;
+}
+footer.footer-1 div.footer-scroll button.footer-scroll-btn {
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  background-color: #333333;
+}
+footer.footer-1 div.footer-scroll button.footer-scroll-btn svg {
+  color: white;
+}

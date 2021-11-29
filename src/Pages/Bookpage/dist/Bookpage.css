@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/* Colors */
+/* values */
+.book__detail {
+  margin: 4rem 0;
+}
+.book__detail .container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1em;
+  margin: 0 auto;
+}
+.book__detail .flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 63.9375em) {
+  .book__detail .flex-container {
+    flex-direction: column;
+  }
+}
+.book__detail-info {
+  width: 75%;
+  max-width: 700px;
+}
+@media (max-width: 63.9375em) {
+  .book__detail-info {
+    order: 2;
+    max-width: initial;
+    width: 100%;
+  }
+}
+.book__detail-title {
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 1.6;
+  color: #335c67;
+}
+@media (max-width: 63.9375em) {
+  .book__detail-title {
+    font-size: 1.5rem;
+  }
+}
+.book__detail-author {
+  opacity: 0.5;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+@media (max-width: 63.9375em) {
+  .book__detail-author {
+    font-size: 1rem;
+  }
+}
+.book__detail-category-tag {
+  display: inline-block;
+  background-color: #eff5f7;
+  padding: 0.3rem 1rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  color: #249cbd;
+  margin-bottom: 1rem;
+}
+.book__detail-desc {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #333333;
+}
+@media (max-width: 63.9375em) {
+  .book__detail-desc {
+    font-size: 1rem;
+  }
+}
+.book__detail h3 {
+  color: #333333;
+}
+.book__detail-cta {
+  margin-top: 1rem;
+}
+.book__detail-cta .btns {
+  display: flex;
+  margin-top: 1rem;
+}
+.book__detail-cta .btns > * + * {
+  margin-left: 1rem !important;
+}
+.book__detail-img {
+  width: 25%;
+}
+@media (max-width: 63.9375em) {
+  .book__detail-img {
+    order: 1;
+    width: 100%;
+    margin: 4rem 0 2rem 0;
+    display: flex;
+    justify-content: center;
+  }
+}
+.book__detail-img-ele {
+  width: 100%;
+  display: block;
+}
+@media (max-width: 63.9375em) {
+  .book__detail-img-ele {
+    width: 60%;
+  }
+}

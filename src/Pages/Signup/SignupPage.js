@@ -17,6 +17,7 @@ import axios from "axios";
 import API_ENDPOINT from "../../Helpers/API_URL";
 
 export default function SignupPage() {
+
     const [data, setData] = useState({
         first_name: "",
         last_name: "",

@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/* Colors */
+/* values */
+@media (max-width: 63.9375em) {
+  .hide-for-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 64em) {
+  .hide-for-desktop {
+    display: none !important;
+  }
+}
+
+.open {
+  display: block;
+}
+
+@media (max-width: 63.9375em) {
+  .close {
+    display: none;
+  }
+}

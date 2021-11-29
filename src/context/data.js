@@ -16,7 +16,7 @@ export const data = [
         id: 2,
         imgSrc: "https://images-na.ssl-images-amazon.com/images/I/51u8ZRDCVoL._AC_SX184_.jpg",
         title: "Rich Dad Poor Dad: What the Rich Teach Their Kids",
-        author: "Robert T. Kiyosaki",
+        author: ["Robert T. Kiyosaki"],
         category: "Business & Money",
         rating: 5,
         subInfo: {

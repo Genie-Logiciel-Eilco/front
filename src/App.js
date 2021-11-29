@@ -5,19 +5,20 @@ import {
   BrowserRouter as Router,
   useHistory,
   Switch,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom';
 // Pages import
 import HomePage from './Pages/Homepage/Homepage.js';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import SignupPage from './Pages/Signup/SignupPage';
 import ReadPage from './Pages/ReadPage/ReadPage';
-// import Dashboard from './Pages/Dashboard/Dashboard';
 import Dashboard from './Pages/Dashboard/Dashboard';
-// import Publishers from './Pages/Dashboard/'
 import Users from './Pages/Dashboard/Users/Users'
 import Books from './Pages/Dashboard/Books/Books'
 import Authors from './Pages/Dashboard/Authors/Authors'
+import Publishers from './Pages/Dashboard/Publishers/Publishers'
+import Categories from './Pages/Dashboard/Categories/Categories'
 import Browsepage from "./Pages/Browsepage/Browsepage";
 import Bookpage from "./Pages/Bookpage/Bookpage";
 import Logout from './Pages/Logout/Logout';
@@ -46,32 +47,21 @@ function App() {
         <Suspense fallback={HomePage}>
           <Switch>
             <Route path="/" exact component={HomePage} />
-            {/* <Route path="/Login" exact component={LoginPage} />
-          <Route path="/Signup" exact component={SignupPage} />
-          <Route path="/books" exact component={Browsepage} />
-          <Route path="/books/:id" exact component={Bookpage} />
-
-          <Route path="/books/:id/read" exact component={ReadPage} />
-
-          <Route exact path="/69420/home" component={dashHome} />
-          <Route exact path="/69420/users" component={Users} />
-          <Route exact path="/69420/home" component={dashHome} />
-          <Route exact path="/69420/users" component={Users} />
-          <Route exact path="/69420/books/book" component={Books} />
-          <Route exact path="/69420/books/author" component={Authors} />
-          <Route exact path="/69420/books/publisher" component={Publishers} />
-           */}
             <AnonymousRoute path="/Login" exact component={LoginPage} />
             <AnonymousRoute path="/Signup" exact component={SignupPage} />
             <UserRoute path="/books" exact component={Browsepage} />
             <UserRoute path="/books/:id" exact component={Bookpage} />
             <UserRoute path="/books/read/:id" exact component={BookReadNormal} />
             <UserRoute path="/books/listen/:id" exact component={BookAudio} />
+            <AdminRoute exact path="/69420" component={() => {
+              return (<Redirect to="/69420/home" />)
+            }} />
             <AdminRoute exact path="/69420/home" component={dashHome} />
             <AdminRoute exact path="/69420/users" component={Users} />
             <AdminRoute exact path="/69420/books" component={Books} />
             <AdminRoute exact path="/69420/authors" component={Authors} />
-            {/* <AdminRoute exact path="/69420/publishers" component={Publishers} /> */}
+            <AdminRoute exact path="/69420/publishers" component={Publishers} />
+            <AdminRoute exact path="/69420/categories" component={Categories} />
             <UserRoute exact path='/logout' component={Logout} />
             <Route exact path="/Unverified" component={() => <Unverified
               header="Email non vérifiée"

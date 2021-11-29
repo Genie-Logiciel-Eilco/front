@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/* Colors */
+/* values */
+.books_section {
+  display: flex;
+  flex-direction: column;
+}
+.books_section .books_header_text {
+  font-weight: 500;
+  margin-top: 2rem;
+  margin-bottom: 1.2rem;
+  margin-left: 2rem;
+  font-size: 2rem;
+}
+.books_section div.books_container {
+  display: flex;
+  align-items: center;
+  width: 85vw;
+  height: 600px;
+  padding: 0 1em;
+  margin: 0 auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}

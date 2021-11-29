@@ -1,0 +1,53 @@
+.addbook-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.addbook-item {
+  padding: 10px 30px;
+  align-items: center;
+  align-content: center;
+}
+.addbook-item label {
+  width: 10rem;
+}
+.addbook-item-label {
+  width: 100%;
+  height: 10vh;
+  border: 1px dashed rgb(146, 146, 238);
+}
+.addbook-item-label:hover {
+  background: rgb(196, 196, 196);
+  border: 1px solid rgb(219, 219, 219);
+}
+
+.addbook-text {
+  padding: 10px 20px;
+  background-color: rgb(245, 245, 245);
+  border-radius: 10px;
+  border: none;
+}
+.addbook-text2 {
+  padding: 10px 20px;
+  max-height: 400;
+  background-color: rgb(245, 245, 245);
+  border-radius: 10px;
+  border: none;
+}
+.addbook-text:focus {
+  outline: none;
+  border: 1px solid rgb(196, 196, 196);
+}
+.addbook-text2:focus {
+  outline: none;
+  border: 1px solid rgb(196, 196, 196);
+}
+.uploaded-book-image{
+  width: 200px;
+  max-height: 100px;
+  border-radius: 10%;
+}
+.flex-datepickers{
+  display: flex;
+  flex-direction: row;
+}

@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import "./Bookpage.scss";
@@ -9,37 +9,38 @@ import Footer from "../../Layout/Footer/Footer";
 import bookService from '../../service/booksService';
 import { useHistory } from 'react-router-dom';
 import API_ENDPOINT from "../../Helpers/API_URL";
+import userService from '../../service/userService'
 
 function Bookpage() {
-    let {id} = useParams();
+    let { id } = useParams();
 
-    const [loading, setLoading ] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [book, setBook] = useState({});
     const getBookDetail = async (id) => {
         let res = await bookService.getOneBook(id);
-        if(res.data.data.hasOwnProperty("authors")){
+        if (res.data.data.hasOwnProperty("authors")) {
             res.data.data.authors = ["FLan fertlen", "FLanix Fertlan"];
         }
         setBook(res.data.data);
         return res.data.message;
     };
-    
+
     let history = useHistory();
 
     useEffect(async () => {
-        let response = await getBookDetail(id); 
-        if(response !== "Success"){
+        let response = await getBookDetail(id);
+        if (response !== "Success") {
             history.push("/404");
         }
-        else{
+        else {
             console.log(book);
             setLoading(false);
         }
     }, [])
-    
+
     const getAuthorsList = () => {
         let res = [];
-        for(let i = 0; loading === false && i < book.authors.length; i++){
+        for (let i = 0; loading === false && i < book.authors.length; i++) {
             let instance = <span key={i} className="author_name">{book.authors[i]}</span>;
             res.push(instance);
         }
@@ -60,7 +61,7 @@ function Bookpage() {
                             <p className="book__detail-author">
                                 {/* Ecrit par: <br/>  */}
                                 <div className="authors_container">
-                                {loading ? "Patientez s'il vous plaît..." : getAuthorsList()}
+                                    {loading ? "Patientez s'il vous plaît..." : getAuthorsList()}
                                 </div>
                             </p>
                             <p className="text-dark mt-4 font-weight-bold title">Catégories</p>
@@ -74,7 +75,7 @@ function Bookpage() {
                             </p>
                             <p className="text-dark mt-4 font-weight-bold text-lg title">Publié en</p>
                             <p className="book__detail-date">
-                            
+
                                 {book.publicationDate}
                             </p>
                             <div className="book__detail-cta">

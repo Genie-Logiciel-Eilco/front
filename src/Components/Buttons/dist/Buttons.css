@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/* Colors */
+/* values */
+.btn {
+  all: unset;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+}
+.btn-primary {
+  background-color: #335c67;
+  color: #fff;
+}
+.btn-primary:hover {
+  background-color: #223e45;
+}
+.btn-secondary {
+  background-color: #9e2a2b;
+  color: #fff;
+}
+.btn-secondary:hover {
+  background-color: #761f20;
+}

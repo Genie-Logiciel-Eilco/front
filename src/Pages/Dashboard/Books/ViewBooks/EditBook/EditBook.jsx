@@ -18,6 +18,8 @@ import axios from "axios";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import imgplaceholder from '../../../../../Assets/imgplaceholder.png'
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 const ITEM_HEIGHT = 50;
 const ITEM_PADDING_TOP = 8;
@@ -34,7 +36,6 @@ export default function EditBook({ uuid, success, onChange }) {
     //data to send
     const [isbn, setIsbn] = useState(initialState);
     const [name, setName] = useState(initialState);
-    const [subject, setSubject] = useState(initialState);
     const [synopsis, setSynopsis] = useState(initialState);
     const [publicationDate, setPublicationDate] = useState(new Date());
     const [chosenAuthors, setChosenAuthors] = useState([]);
@@ -77,7 +78,6 @@ export default function EditBook({ uuid, success, onChange }) {
         userService.getBook(uuid).then((res) => {
             setIsbn(res?.data?.data?.isbn);
             setName(res?.data?.data?.name);
-            setSubject(res?.data?.data?.subject);
             setSynopsis(res?.data?.data?.synopsis);
             setPublicationDate(res?.data?.data?.publicationDate);
             console.log(res?.data?.data)
@@ -88,6 +88,7 @@ export default function EditBook({ uuid, success, onChange }) {
         });
         userService.getAuthors().then((res) => {
             setAuthors(res?.data?.data);
+            console.log(res?.data?.data)
         });
         userService.getPublishers().then((res) => {
             setPublishers(res?.data?.data);
@@ -183,7 +184,6 @@ export default function EditBook({ uuid, success, onChange }) {
         const data = {
             isbn: isbn,
             name: name,
-            subject: subject,
             synopsis: synopsis,
             authors: chosenAuthors,
             publicationDate: publicationDate,
@@ -248,7 +248,6 @@ export default function EditBook({ uuid, success, onChange }) {
                             style={{ display: "none" }}
                             accept=".jpeg,.png,.jpg,.tif,.jfif"
                         />
-                        <img src={image} alt="" className="uploaded-book-image" />
                     </div>
                     <div className="addbook-item">
                         <label>ISBN</label>
@@ -273,25 +272,15 @@ export default function EditBook({ uuid, success, onChange }) {
                         />
                     </div>
                     <div className="addbook-item">
-                        <label>Sujet</label>
-                        <input
-                            type="text"
-                            className="addbook-text"
-                            value={subject}
-                            onChange={(e) => {
-                                setSubject(e.target.value);
-                            }}
-                        />
-                    </div>
-                    <div className="addbook-item">
                         <label>Synopsis</label>
-                        <input
-                            type="text"
-                            className="addbook-text"
+                        <TextareaAutosize
+                            minRows={3}
                             value={synopsis}
                             onChange={(e) => {
                                 setSynopsis(e.target.value);
                             }}
+                            className='addbook-text'
+                            style={{ width: 220, maxHeight: 220 }}
                         />
                     </div>
                     <div className="addbook-item">
@@ -302,7 +291,7 @@ export default function EditBook({ uuid, success, onChange }) {
                                 inputFormat="dd/MM/yyyy"
                                 value={publicationDate}
                                 onChange={(e) => {
-                                    setPublicationDate(e);
+                                    if (e) setPublicationDate(e);
                                 }}
                                 renderInput={(params) => <TextField {...params} />}
                             />
@@ -341,7 +330,7 @@ export default function EditBook({ uuid, success, onChange }) {
                                 input={<OutlinedInput label="Auteurs" />}
                                 MenuProps={MenuProps}
                             >
-                                {authors?.data?.map((author) => (
+                                {authors?.map((author) => (
                                     <MenuItem
                                         key={author?.id}
                                         value={author?.id}
@@ -352,7 +341,7 @@ export default function EditBook({ uuid, success, onChange }) {
                                 ))}
                             </Select>
                         </FormControl>
-                        <FormControl sx={{ width: 280 }}>
+                        <FormControl sx={{ width: 200 }}>
                             <InputLabel>Catégories</InputLabel>
                             <Select
                                 labelId="demo-multiple-name-label"
@@ -417,6 +406,9 @@ export default function EditBook({ uuid, success, onChange }) {
                             <a href={contentFile} rel="noreferrer" target="_blank">Visualiser</a>
                         </Box>
                     </div>
+                </div>
+                <div>
+                    <img className="imayge-desu" src={image ? image : imgplaceholder} alt="Bug bruh" />
                 </div>
             </div>
             <Button

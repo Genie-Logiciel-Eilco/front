@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/* Colors */
+/* values */
+a {
+  text-decoration: none;
+}
+
+.book__img-element {
+  width: 100%;
+  object-fit: contain;
+  max-height: 250px;
+  display: block;
+  margin-right: 12rem;
+  transition: transform 450ms;
+}
+.book__img-element:hover {
+  transform: scale(1.05);
+}
+.book__info {
+  padding: 0.5rem;
+}
+.book__info-title {
+  color: #333333;
+  transition: color 450ms;
+  cursor: pointer;
+}
+.book__info-title:hover {
+  color: #9e2a2b;
+  text-decoration: underline;
+}
+.book__info-author {
+  font-size: 0.9rem;
+  display: block;
+  opacity: 0.5;
+  color: #333 !important;
+}
+.book__info-category {
+  font-size: 0.9rem;
+  color: #249cbd;
+}
+.book__info-price {
+  color: #335c67;
+}
+.book__info-rating {
+  list-style: none;
+  display: flex;
+}
+.book__info-rating > li {
+  margin-right: 0.2rem;
+}

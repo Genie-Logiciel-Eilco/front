@@ -9,13 +9,12 @@ import CloudDoneIcon from "@mui/icons-material/CloudDone";
 import TextField from "@mui/material/TextField";
 import { useTheme } from "@mui/material/styles";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
-import DateRangePicker from '@mui/lab/DateRangePicker';
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import TextareaAutosize from '@mui/material/TextareaAutosize';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import DatePicker from '@mui/lab/DatePicker';
+import imgplaceholder from '../../../../../Assets/imgplaceholder.png'
+
 
 
 
@@ -43,7 +42,7 @@ export default function AddBook({ success, onChange }) {
   const [checkedBox, setCheckedBox] = useState(false)
 
   //image
-  const [image, setImage] = useState(initialState)
+  const [image, setImage] = useState(null)
   const [file, setFile] = useState(initialState)
   //uxd
   const [imageCheckColor, setImageCheckColor] = useState("disabled");
@@ -107,20 +106,11 @@ export default function AddBook({ success, onChange }) {
     })
   }
 
-  function getStyles(name, obj, theme) {
-    return {
-      fontWeight:
-        obj.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
-    };
-  }
-
   return (
     <>
-      <div className="addbook-container">
-        <div className="addbook-form">
-          <div className="addbook-item">
+      <div className="addauthor-container">
+        <div className="addauthor-form">
+          <div className="addauthor-item">
             <Box
               sx={{
                 display: "flex",
@@ -158,7 +148,6 @@ export default function AddBook({ success, onChange }) {
               style={{ display: "none" }}
               accept=".jpeg,.png,.jpg,.tif,.jfif"
             />
-            <img src={image} alt="" className="uploaded-book-image" />
           </div>
           <div className="addbook-item">
             <label>Prénom</label>
@@ -223,7 +212,7 @@ export default function AddBook({ success, onChange }) {
                     value={birthDate}
                     style={{ marginRight: "10px" }}
                     onChange={(e) => {
-                      setBirthDate(`${e.getFullYear()}-${e.getMonth()}-${e.getDate()}`);
+                      setBirthDate(`${e.getFullYear()}-${e.getMonth() + 1}-${e.getDate()}`);
                       setDeathDate(null);
                     }}
                     renderInput={(params) => <TextField {...params} />}
@@ -234,7 +223,7 @@ export default function AddBook({ success, onChange }) {
                       label="Naissance"
                       value={birthDate}
                       onChange={(e) => {
-                        setBirthDate(`${e.getFullYear()}-${e.getMonth()}-${e.getDate()}`);
+                        setBirthDate(`${e.getFullYear()}-${e.getMonth() + 1}-${e.getDate()}`);
                       }}
                       renderInput={(params) => <TextField {...params} />}
                     />
@@ -243,7 +232,7 @@ export default function AddBook({ success, onChange }) {
                       label="Décés"
                       value={deathDate}
                       onChange={(e) => {
-                        setDeathDate(`${e.getFullYear()}-${e.getMonth()}-${e.getDate()}`);
+                        setDeathDate(`${e.getFullYear()}-${e.getMonth() + 1}-${e.getDate()}`);
                       }}
                       renderInput={(params) => <TextField {...params} />}
                     />
@@ -253,6 +242,9 @@ export default function AddBook({ success, onChange }) {
             </div>
 
           </div>
+        </div>
+        <div>
+          <img className="imayge-desu" src={image ? image : imgplaceholder} alt="Bug bruh" />
         </div>
       </div>
       <Button

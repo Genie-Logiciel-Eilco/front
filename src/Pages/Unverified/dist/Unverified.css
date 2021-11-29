@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/* Colors */
+/* values */
+main.unverified {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 79vh;
+}
+main.unverified img.error-img {
+  height: 520px;
+  width: auto;
+  object-fit: cover;
+}
+main.unverified .text-container {
+  text-align: center;
+  padding-right: 2rem;
+  width: 35vw;
+}
+main.unverified .text-container-header {
+  font-size: 40px;
+  font-weight: 600;
+  color: #335c67;
+}
+main.unverified .text-container-message {
+  font-size: 30px;
+}

@@ -1,3 +1,9 @@
+.addauthor-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 .addbook-form{
   display: flex;
   flex-direction: column;
@@ -50,4 +56,7 @@
 .flex-datepickers{
   display: flex;
   flex-direction: row;
+}
+.imayge-desu{
+  width: 500px;
 }

@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/* Colors */
+/* values */
+.categories {
+  background-color: #f4f4f4;
+  padding: 3rem 0;
+}
+@media (max-width: 63.9375em) {
+  .categories {
+    padding-top: 4rem;
+    padding-bottom: 1.5rem;
+  }
+}
+.categories .container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1em;
+  margin: 0 auto;
+}
+.categories h2 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+@media (max-width: 63.9375em) {
+  .categories h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+.categories__list {
+  margin-top: 0.5rem !important;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (max-width: 63.9375em) {
+  .categories__list {
+    margin-top: 0 !important;
+  }
+}
+.categories__list-item {
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  transition: all 500ms ease-in-out;
+}
+.categories__list-item.inactive {
+  background-color: #e6e6e6;
+}
+.categories__list-item.active {
+  background-color: #249cbd;
+  color: #fff;
+}
+@media (max-width: 63.9375em) {
+  .categories__list-item {
+    font-size: 0.9rem;
+    padding: 0.3rem 1rem;
+    border-radius: 2rem;
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}

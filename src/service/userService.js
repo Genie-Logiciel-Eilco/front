@@ -5,8 +5,10 @@ import authHeader from "./authHeader";
 // const local = "http:localhost:8000";
 
 // const uploadImage = () => { };
-
-const accessToken = JSON.parse(localStorage.getItem("data")).token;
+let accessToken = '';
+if (JSON.parse(localStorage.getItem("data"))) {
+    accessToken = JSON.parse(localStorage.getItem("data")).token;
+}
 // const accessToken = "TempToken";
 
 const getUsers = async (perPage) => {
@@ -23,7 +25,7 @@ const getBooks = async (perPage) => {
 
 const getBooksByPage = async (pageNumber, perPageInput) => {
     return await axios.get(
-        `http://104.248.39.111/api/books/paginate/${perPageInput}?page=${pageNumber}`,
+        `${API_ENDPOINT}/api/books/paginate/${perPageInput}?page=${pageNumber}`,
         { headers: authHeader() }
     );
 };
@@ -35,26 +37,94 @@ const getAuthorsByPage = async (pageNumber, perPageInput) => {
     );
 };
 
-const getAuthors = async (perPage) => {
-    return await axios.get(`http://104.248.39.111/api/authors/paginate/10`, {
+const getAuthorsInPaginate = async (perPage) => {
+    return await axios.get(`${API_ENDPOINT}/api/authors/paginate/${perPage}`, {
+        headers: authHeader(),
+    });
+};
+
+const getAuthors = async () => {
+    return await axios.get(`${API_ENDPOINT}/api/authors/`, {
+        headers: authHeader(),
+    });
+};
+
+const getPublishersByPage = async (pageNumber, perPageInput) => {
+    return await axios.get(
+        `${API_ENDPOINT}/api/publishers/paginate/${perPageInput}?page=${pageNumber}`,
+        { headers: authHeader() }
+    );
+};
+
+const getPublishersInPaginate = async (perPage) => {
+    return await axios.get(`${API_ENDPOINT}/api/publishers/paginate/${perPage}`, {
+        headers: authHeader(),
+    });
+};
+
+const getPublisherById = async (id) => {
+    return await axios.get(`${API_ENDPOINT}/api/publisher/${id}`, {
         headers: authHeader(),
     });
 };
 
 const getPublishers = async () => {
-    return await axios.get("http://104.248.39.111/api/publishers", {
+    return await axios.get(`${API_ENDPOINT}/api/publishers/`, {
+        headers: authHeader(),
+    });
+};
+
+const uploadPublisher = (data) => {
+    return axios.post(`${API_ENDPOINT}/api/publisher/add`, data, { headers: authHeader() })
+}
+
+const updatePublisher = (id, data) => {
+    return axios.post(`${API_ENDPOINT}/api/publisher/update/${id}`, data, { headers: authHeader() })
+}
+
+const deletePublisher = (id) => {
+    return axios.delete(`${API_ENDPOINT}/api/publisher/${id}`, { headers: authHeader() });
+}
+
+const getCategoriesByPage = async (pageNumber, perPageInput) => {
+    return await axios.get(
+        `${API_ENDPOINT}/api/categories/paginate/${perPageInput}?page=${pageNumber}`,
+        { headers: authHeader() }
+    );
+};
+
+const getCategoriesInPaginate = async (perPage) => {
+    return await axios.get(`${API_ENDPOINT}/api/categories/paginate/${perPage}`, {
+        headers: authHeader(),
+    });
+};
+
+const getCategoryById = async (id) => {
+    return await axios.get(`${API_ENDPOINT}/api/category/${id}`, {
         headers: authHeader(),
     });
 };
 
 const getCategories = async () => {
-    return await axios.get("http://104.248.39.111/api/categories", {
+    return await axios.get(`${API_ENDPOINT}/api/categories/`, {
         headers: authHeader(),
     });
 };
 
+const uploadCategory = (data) => {
+    return axios.post(`${API_ENDPOINT}/api/category/add`, data, { headers: authHeader() })
+}
+
+const updateCategory = (id, data) => {
+    return axios.post(`${API_ENDPOINT}/api/category/update/${id}`, data, { headers: authHeader() })
+}
+
+const deleteCategory = (id) => {
+    return axios.delete(`${API_ENDPOINT}/api/category/${id}`, { headers: authHeader() });
+}
+
 const uploadBook = (uuid, data) => {
-    return axios.post(`http://104.248.39.111/api/book/add/${uuid}`, data, {
+    return axios.post(`${API_ENDPOINT}/api/book/add/${uuid}`, data, {
         headers: authHeader(),
         "Content-Type": "application/json",
     });
@@ -65,19 +135,19 @@ const uploadAuthor = (data) => {
 }
 
 const deleteBook = (uuid) => {
-    return axios.delete(`http://104.248.39.111/api/book/${uuid}`, {
+    return axios.delete(`${API_ENDPOINT}/api/book/${uuid}`, {
         headers: authHeader(),
     });
 };
 
 const getBook = (uuid) => {
-    return axios.get(`http://104.248.39.111/api/book/${uuid}`, {
+    return axios.get(`${API_ENDPOINT}/api/book/${uuid}`, {
         headers: authHeader(),
     });
 };
 
 const getImage = async (image) => {
-    return await axios.get(`http://104.248.39.111/images/${image}`, {
+    return await axios.get(`${API_ENDPOINT}/images/${image}`, {
         headers: authHeader(),
     });
 };
@@ -113,9 +183,7 @@ const authService = {
     getBooksByPage,
     getAuthorsByPage,
     accessToken,
-    getAuthors,
     getPublishers,
-    getCategories,
     uploadBook,
     deleteBook,
     getBook,
@@ -127,7 +195,21 @@ const authService = {
     uploadAuthorImage,
     deleteAuthor,
     getAuthorById,
-    updateAuthor
+    updateAuthor,
+    getAuthorsInPaginate,
+    getPublishersByPage,
+    getPublishersInPaginate,
+    deletePublisher,
+    uploadPublisher,
+    getPublisherById,
+    updatePublisher,
+    getCategoriesByPage,
+    getCategoryById,
+    getCategories,
+    getCategoriesInPaginate,
+    updateCategory,
+    uploadCategory,
+    deleteCategory
 };
 
 export default authService;

@@ -1,0 +1,20 @@
+.per-page-input{
+    outline:none;
+    border:0;
+    border-bottom:1px solid gray;
+    width:30px;
+    text-align:center;
+    margin-right:10px;
+    padding:0;
+}
+
+.userList {
+    display:flex;
+    flex-direction: column;
+
+}
+
+.addbook-button{
+    margin:10px 200px;
+    width: 12rem;
+}

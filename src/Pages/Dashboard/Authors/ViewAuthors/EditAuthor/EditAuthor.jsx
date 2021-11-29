@@ -16,6 +16,8 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import DatePicker from '@mui/lab/DatePicker';
+import imgplaceholder from '../../../../../Assets/imgplaceholder.png'
+
 
 
 
@@ -83,20 +85,20 @@ export default function EditAuthor({ id, success, onChange }) {
         },
         (err) => {
           setImageCheckColor("error");
-          console.log(err)
-          console.log(id)
         }
       );
   };
   useEffect(() => {
     userService.getAuthorById(id).then((res) => {
-      console.log(res?.data);
       setFirstName(res?.data?.data?.first_name)
       setLastName(res?.data?.data?.last_name)
       setBiography(res?.data?.data?.biography)
       setBirthPlace(res?.data?.data?.birthplace)
       setBirthDate(res?.data?.data?.birthDate)
       setDeathDate(res?.data?.data?.deathDate)
+      if (res?.data?.data?.deathDate) {
+        setCheckedBox(true)
+      }
       setImage(`http://104.248.39.111/images/authors/${res?.data?.data?.imageLocation}`)
     })
   }, [])
@@ -114,8 +116,6 @@ export default function EditAuthor({ id, success, onChange }) {
       onChange(!success)
       imageUpload(res?.data?.data?.id)
     }, (err) => {
-      console.log(err)
-      console.log(data)
     })
   }
 
@@ -130,39 +130,10 @@ export default function EditAuthor({ id, success, onChange }) {
 
   return (
     <>
-      <div className="addbook-container">
+      <div className="editauthor-container">
         <div className="addbook-form">
           <div className="addbook-item">
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                "& > *": {
-                  m: 1,
-                },
-              }}
-            >
-              <ButtonGroup
-                variant="contained"
-              >
-                <Button
-                  onClick={(e) => {
-                    hiddenFileInput.current.click();
-                  }}
-                  size="small"
-                >
-                  {" "}
-                  <PhotoCameraIcon /> Choisir
-                </Button>
-                <CloudDoneIcon
-                  fontSize="small"
-                  style={{ marginTop: "7px" }}
-                  color={imageCheckColor}
-                />
-              </ButtonGroup>
-            </Box>
+
             <input
               type="file"
               ref={hiddenFileInput}
@@ -170,7 +141,6 @@ export default function EditAuthor({ id, success, onChange }) {
               style={{ display: "none" }}
               accept=".jpeg,.png,.jpg,.tif,.jfif"
             />
-            <img src={image} alt="" className="uploaded-book-image" />
           </div>
           <div className="addbook-item">
             <label>Prénom</label>
@@ -235,8 +205,10 @@ export default function EditAuthor({ id, success, onChange }) {
                     value={birthDate}
                     style={{ marginRight: "10px" }}
                     onChange={(e) => {
+                      if(e){
                       setBirthDate(`${e.getFullYear()}-${e.getMonth()}-${e.getDate()}`);
                       setDeathDate(null);
+                      }
                     }}
                     renderInput={(params) => <TextField {...params} />}
                   />) :
@@ -246,7 +218,9 @@ export default function EditAuthor({ id, success, onChange }) {
                       label="Naissance"
                       value={birthDate}
                       onChange={(e) => {
+                        if(e){
                         setBirthDate(`${e.getFullYear()}-${e.getMonth()}-${e.getDate()}`);
+                        }
                       }}
                       renderInput={(params) => <TextField {...params} />}
                     />
@@ -255,7 +229,9 @@ export default function EditAuthor({ id, success, onChange }) {
                       label="Décés"
                       value={deathDate}
                       onChange={(e) => {
+                        if(e){
                         setDeathDate(`${e.getFullYear()}-${e.getMonth()}-${e.getDate()}`);
+                        }
                       }}
                       renderInput={(params) => <TextField {...params} />}
                     />
@@ -263,10 +239,43 @@ export default function EditAuthor({ id, success, onChange }) {
                 }
               </LocalizationProvider>
             </div>
-
           </div>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              "& > *": {
+                m: 1,
+              },
+            }}
+          >
+            <ButtonGroup
+              variant="contained"
+            >
+              <Button
+                onClick={(e) => {
+                  hiddenFileInput.current.click();
+                }}
+                size="small"
+              >
+                {" "}
+                <PhotoCameraIcon /> Choisir
+              </Button>
+              <CloudDoneIcon
+                fontSize="small"
+                style={{ marginTop: "7px" }}
+                color={imageCheckColor}
+              />
+            </ButtonGroup>
+          </Box>
+        </div>
+        <div>
+          <img className="imayge-desu" src={image ? image : imgplaceholder} alt="Bug bruh" />
         </div>
       </div>
+
       <Button
         variant="contained"
         onClick={(e) => {

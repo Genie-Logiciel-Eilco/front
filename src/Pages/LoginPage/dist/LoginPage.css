@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/* Colors */
+/* values */
+main.login-page-wrapper div.MuiPaper-root {
+  position: absolute;
+  right: 1vw;
+  top: 8vh;
+  padding: 0;
+  margin: 0;
+  width: 30vw;
+}
+main.login-page-wrapper nav {
+  z-index: 1000 !important;
+}
+main.login-page-wrapper img.login-page-bg {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 84vh;
+  object-fit: cover;
+}
+main.login-page-wrapper div.login-form-wrapper {
+  position: absolute;
+  top: 0;
+  height: 90vh;
+  margin-top: 5vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main.login-page-wrapper div.login-form-wrapper form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 3rem 2rem;
+  border-radius: 0.4rem;
+}
+main.login-page-wrapper div.login-form-wrapper form div.logo-login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main.login-page-wrapper div.login-form-wrapper form div.logo-login-wrapper img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+main.login-page-wrapper div.login-form-wrapper form legend {
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  padding: 2rem;
+}
+main.login-page-wrapper div.login-form-wrapper form div.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.7rem;
+}
+main.login-page-wrapper div.login-form-wrapper form div.input-group label {
+  color: white;
+  font-size: 20px;
+  padding: 0.7rem 0.3rem;
+  text-align: center;
+}
+main.login-page-wrapper div.login-form-wrapper form div.input-group input {
+  padding: 0.4rem 0.7rem;
+  border-radius: 5px;
+}
+main.login-page-wrapper div.login-form-wrapper form button.btn-login {
+  background-color: #3A7FBA;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 1rem;
+  margin-bottom: 0.7rem;
+  transition: background-color 0.15s;
+}
+main.login-page-wrapper div.login-form-wrapper form button.btn-login:hover {
+  background-color: #249cbd;
+}
+main.login-page-wrapper div.login-form-wrapper form button.btn-secondary-login {
+  background-color: #e09f3e;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 0.1rem;
+  margin-bottom: 0.7rem;
+  width: 100%;
+  transition: background-color 0.15s;
+}
+main.login-page-wrapper div.login-form-wrapper form button.btn-secondary-login:hover {
+  background-color: orange;
+}
+main.login-page-wrapper div.login-form-wrapper form button.btn-ternary-login {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  width: 100%;
+  font-weight: 600;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 0.1rem;
+  margin-bottom: 0.7rem;
+  transition: background-color 0.15s;
+  transition: color 0.15s;
+  border: white 2px solid;
+}
+main.login-page-wrapper div.login-form-wrapper form button.btn-ternary-login:hover {
+  background-color: white;
+  color: black;
+}
+main.login-page-wrapper footer {
+  margin-top: -0.3rem;
+}

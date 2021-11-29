@@ -27,14 +27,14 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 800,
+  width: 1200,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
 
-export default function ViewAUthors() {
+export default function ViewAuthors() {
 
   const [id, setId] = useState()
   //addauthor modal
@@ -65,7 +65,7 @@ export default function ViewAUthors() {
 
   useEffect(() => {
     if (perPageInput) {
-      userService.getAuthors(perPageInput).then(
+      userService.getAuthorsInPaginate(perPageInput).then(
         (res) => {
           setAuthors(res?.data?.data);
           console.log(res?.data?.data)
