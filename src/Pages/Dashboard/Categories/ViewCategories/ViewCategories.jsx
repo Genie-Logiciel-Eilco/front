@@ -47,7 +47,7 @@ export default function ViewCategories() {
   const handleClose2 = () => setOpen2(false);
   const [editId, setEditId] = useState()
 
-  const [perPageInput, setPerPageInput] = useState(4);
+  const [perPageInput, setPerPageInput] = useState(10);
   const [categories, setCategories] = useState(initialState);
   const [success, setSuccess] = useState(false);
 

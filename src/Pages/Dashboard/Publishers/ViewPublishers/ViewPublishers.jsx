@@ -47,7 +47,7 @@ export default function ViewPublishers() {
   const handleClose2 = () => setOpen2(false);
   const [editId, setEditId] = useState()
 
-  const [perPageInput, setPerPageInput] = useState(2);
+  const [perPageInput, setPerPageInput] = useState(10);
   const [publishers, setPublishers] = useState(initialState);
   const [success, setSuccess] = useState(false);
 
