@@ -16,16 +16,16 @@ export default function Browsepage() {
 
     const [books, setBooks] = useState([]);
     
+    const [loaded, setLoaded] = useState(false);
     useEffect(async ()=>{
         // GET BOOKS
         let resp = await bookService.getBooks();
         let books = await resp.data.data;
         setBooks(books);
         
-
         let response = await bookService.getCategories();
         let cats = await response.data;
-        // let catego
+        
         setCategories([{name : "Toutes", id : -1}
         ,...cats.data.map((cat) => {
             return {
@@ -33,20 +33,23 @@ export default function Browsepage() {
                 id : cat.id
             };
         })]);
+
+        setLoaded(true);
     
     }, [])
     
     useEffect(() => {
-        console.log("DEBUG: BOOKS: ", books);
+        // console.log("DEBUG: BOOKS: ", books);
     }, [categories])
 
     const displayBooksOfCategory = (categoryID) => {
+        if(categoryID === -1) return books;
         let res = [];
         for(let i = 0; i < books.length; i++){
             let book = books[i];
             for(let j = 0; j < book.categories.length; j++){
                 let cat = book.categories[j];
-                if(cat === categoryID){
+                if(cat.id === categoryID){
                     res.push(book);
                     break;
                 }
@@ -58,15 +61,23 @@ export default function Browsepage() {
     return (
         <>
             <BrowseNavbar />
-            <Categories categoriesBase={categories}/>
-            {categories.map((cat, ind) => {
-                let books = displayBooksOfCategory(cat.id);
-                return books.length > 0 
-                ? <ListBooks categoryLabel={cat.name} 
-                             books={displayBooksOfCategory(cat.id)} 
-                             key={ind} />
-                : "";
-            })}
+
+            {loaded ? 
+            <main>
+                <Categories categoriesBase={categories}/> 
+
+                {
+                categories.map((cat, ind) => {
+                        let bookss = displayBooksOfCategory(cat.id);
+                        
+                        return bookss.length > 0 
+                                ?   <ListBooks categoryLabel={cat.name} 
+                                    books={bookss} 
+                                    key={ind} />
+                                :   ""
+                    })
+                }
+            </main>: "" }
             <Footer />
         </>
     );
