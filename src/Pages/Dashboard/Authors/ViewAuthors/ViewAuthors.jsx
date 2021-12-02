@@ -47,7 +47,7 @@ export default function ViewAuthors() {
   const handleClose2 = () => setOpen2(false);
   const [editId, setEditId] = useState()
 
-  const [perPageInput, setPerPageInput] = useState(2);
+  const [perPageInput, setPerPageInput] = useState(10);
   const [authors, setAuthors] = useState([]);
   const [success, setSuccess] = useState(false);
 

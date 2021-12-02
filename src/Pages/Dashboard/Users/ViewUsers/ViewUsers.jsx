@@ -33,7 +33,7 @@ const style = {
 };
 
 export default function ViewUsers() {
-  const [perPageInput, setPerPageInput] = useState(2);
+  const [perPageInput, setPerPageInput] = useState(10);
   const [users, setUsers] = useState(initialState);
   const [success, setSuccess] = useState(false);
 
