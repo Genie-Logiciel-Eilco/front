@@ -10,6 +10,7 @@ import bookService from '../../service/booksService';
 import { useHistory } from 'react-router-dom';
 import API_ENDPOINT from "../../Helpers/API_URL";
 // import userService from '../../service/userService'
+import EditPublisher from '../Dashboard/Publishers/ViewPublishers/EditPublishers/EditPublisher';
 
 function Bookpage() {
     let { id } = useParams();
@@ -18,8 +19,11 @@ function Bookpage() {
     const [book, setBook] = useState({});
     const getBookDetail = async (id) => {
         let res = await bookService.getOneBook(id);
-        if (res.data.data.hasOwnProperty("authors")) {
-            res.data.data.authors = ["FLan fertlen", "FLanix Fertlan"];
+        if (!res.data.data.hasOwnProperty("authors")) {
+            res.data.data.authors = [{
+                first_name: "FLan",
+                last_name : "fertlen"
+            }];
         }
         setBook(res.data.data);
         return res.data.message;
@@ -39,23 +43,27 @@ function Bookpage() {
     }, [])
 
     const getAuthorsList = () => {
-        let res = [];
-        for (let i = 0; loading === false && i < book.authors.length; i++) {
-            let instance = <span key={i} className="author_name">{book.authors[i]}</span>;
-            res.push(instance);
-        }
-        return res;
+        return book.authors.map((auth, id) => {
+            return <p className="book__detail-author" key={id}>
+                {auth.first_name} {auth.last_name}
+                </p>
+        });
+        
     }
 
-    const getCategories = () => {
+    const getCategories = () => {   
+        let res = [];
         let {categories} = book;
-
-        return categories.map((cat, ind) => {
-            let {id , name} = cat;
-            return <span className="book__detail-category-tag" key={id}>
-            {name}
-        </span>
-        })
+        if(!loading)
+            res = categories.map((cat) => {
+                let {id , name} = cat;
+                return <span className="book__detail-category-tag" key={id}>
+                {name}
+            </span>
+        });
+        console.log(book);
+        return res;
+        
     }
     return (
         <>
@@ -69,15 +77,15 @@ function Bookpage() {
                                 {book.name}
                             </h2>
                             <p className="text-dark mt-4 font-weight-bold title">Ecrit par</p>
-                            <p className="book__detail-author">
+                            {/*  */}
                                 {/* Ecrit par: <br/>  */}
                                 <div className="authors_container">
                                     {loading ? "Patientez s'il vous plaît..." : getAuthorsList()}
                                 </div>
-                            </p>
+                            {/* </p> */}
                             <p className="text-dark mt-4 font-weight-bold title">Catégories</p>
                             <div className="book__detail-category">
-                                {getCategories()}
+                                {!loading ? getCategories() : "Patientez s'il vous plaît... "}
                             
                             </div>
                             <p className="book__detail-desc">

@@ -17,7 +17,7 @@ export default function BookReadNormal() {
 
     const getBookDetail = async (id) => {
         let res = await bookService.getOneBook(id);
-        if(res.data.data.hasOwnProperty("authors")){
+        if(!res.data.data.hasOwnProperty("authors")){
             res.data.data.authors = ["FLan fertlen", "FLanix Fertlan"];
         }
         setBook(res.data.data);
@@ -40,12 +40,22 @@ export default function BookReadNormal() {
     return (
         <div className="read-page-container">
             <BrowseNavbar />
-            {loading 
+            {
+            loading 
             ? "Veuillez patienter..." 
             : <BookNavbar 
                     title={book.name} 
                     image={book.imageLocation} 
-                    author={authors ? authors : ["Wait"]} />}
+                    lire={true}
+                    authors={authors.length > 0 
+                        ? authors 
+                        : [{ 
+                            first_name : "Chargement d'auteur", 
+                            last_name : "", 
+                            id : -1
+                    }]} 
+            />
+            }
              
              <div className="book__detail-cta inside">
                                 <h3>
