@@ -20,6 +20,7 @@ import CardSecondary from "../../Components/CardSecondary/CardSecondary";
 // Feedback
 import user from "../../Assets/user.jpg";
 import Footer from "../../Layout/Footer/Footer";
+import { useHistory } from "react-router";
 
 export default function Homepage() {
     const hows = [
@@ -87,7 +88,7 @@ export default function Homepage() {
 
         return output;
     };
-
+    let history=useHistory();
     return (
         <>
             <Navbar />
@@ -98,11 +99,11 @@ export default function Homepage() {
                     <img src={heroTwo} alt="hero-one" />
                 </div>
                 <div className="hero-content">
-                    <h3>lorem ipsum</h3>
-                    <h4>loreemuu ipsuumuuu</h4>
+                    <h3>Votre premier livre audio gratuit</h3>
+                    <h4>Vous êtes prêt ? Bénéficiez automatiquement de 2 livres audio offerts.</h4>
                     <BlueButton
                         text="Commencer"
-                        clickHandler={() => alert("o zineb tahia")}
+                        clickHandler={() => history.push("/Login")}
                     />
                 </div>
             </div>
