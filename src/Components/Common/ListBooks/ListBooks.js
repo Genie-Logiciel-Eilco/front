@@ -3,7 +3,6 @@ import BookNew from '../../Book/BookNew.js'
 import './ListBooks.scss';
 
 export default function ListBooks({categoryLabel, books}) {
-    
     return (
         <section className="books_section">
             <header className="books_header">

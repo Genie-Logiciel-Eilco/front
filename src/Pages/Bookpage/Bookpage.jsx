@@ -9,7 +9,7 @@ import Footer from "../../Layout/Footer/Footer";
 import bookService from '../../service/booksService';
 import { useHistory } from 'react-router-dom';
 import API_ENDPOINT from "../../Helpers/API_URL";
-import userService from '../../service/userService'
+// import userService from '../../service/userService'
 
 function Bookpage() {
     let { id } = useParams();
@@ -46,6 +46,17 @@ function Bookpage() {
         }
         return res;
     }
+
+    const getCategories = () => {
+        let {categories} = book;
+
+        return categories.map((cat, ind) => {
+            let {id , name} = cat;
+            return <span className="book__detail-category-tag" key={id}>
+            {name}
+        </span>
+        })
+    }
     return (
         <>
             <BrowseNavbar />
@@ -65,10 +76,10 @@ function Bookpage() {
                                 </div>
                             </p>
                             <p className="text-dark mt-4 font-weight-bold title">Catégories</p>
-
-                            <span className="book__detail-category-tag">
-                                {book.category} ss
-                            </span>
+                            <div className="book__detail-category">
+                                {getCategories()}
+                            
+                            </div>
                             <p className="book__detail-desc">
                                 <p className="text-dark mt-4 font-weight-bold text-lg title">De quoi s'agit-il ?</p>
                                 {book.synopsis}

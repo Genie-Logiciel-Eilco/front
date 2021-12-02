@@ -5,7 +5,6 @@ import API_ENDPOINT from '../../Helpers/API_URL';
 // import bookService from '../../service/booksService';
 
 export default function BookNew({ book}) {
-    
     const { id, imageLocation, name, author, rating } = book;
     let stars = [];
 
