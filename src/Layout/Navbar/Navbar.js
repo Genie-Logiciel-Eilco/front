@@ -7,15 +7,15 @@ export default function Navbar() {
     const baseURL = "http://localhost:3000/";
     const navLinks = [
         {
-            path: baseURL + "#how",
+            path: "#how",
             label: "Comment ça marche"
         },
         {
-            path: baseURL + "#about",
+            path: "#about",
             label: "Qui sommes-nous ?"
         },
         {
-            path: baseURL + "#feedback",
+            path: "#feedback",
             label: "Feedback"
         }
     ]
@@ -33,9 +33,9 @@ export default function Navbar() {
             <ul className="nav-items">
                 {navLinks.map((navlink, i) => {
                     return <li key={i}>
-                        <Link to={navlink.path}>
+                        <a href={navlink.path}>
                             {navlink.label}
-                        </Link>
+                        </a>
                     </li>
                 })}
             </ul>
