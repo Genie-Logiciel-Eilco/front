@@ -5,6 +5,10 @@ import { useHistory } from 'react-router';
 import BookNavbar from '../../Components/Common/BookNavbar/BookNavbar'
 import BrowseNavbar from '../Browsepage/BrowseNavbar'
 import Footer from '../../Layout/Footer/Footer';
+import ReactAudioPlayer from 'react-audio-player';
+import sample from '../../Assets/sample.mp3'
+import API_ENDPOINT from '../../Helpers/API_URL';
+import './BookAudio.scss';
 export default function BookAudio() {
     let {id} = useParams();
 
@@ -19,7 +23,6 @@ export default function BookAudio() {
         }
         setBook(res.data.data);
         setAuthors(res.data.data.authors);
-        
         setLoading(false);
         return res.data.message;
     };
@@ -31,14 +34,14 @@ export default function BookAudio() {
             history.push("/404");
         }
         else{
-            console.log(book);
             setLoading(false);
         }
-        console.log("SETAUTHORS DEBUG", authors);
-        console.log("SETBOOK DEBUG: ", book);
+        
     }, [])
+
+
     return (
-        <div>
+        <div className="book_audio">
             <BrowseNavbar />
             {loading 
             ? "Veuillez patienter..." 
@@ -55,7 +58,18 @@ export default function BookAudio() {
                             }]} 
                     />
             }
-            audio page
+
+            <main>
+                <div className="audio-container">
+                    <img src={`${API_ENDPOINT}/images/${book.imageLocation}`}
+                        className="audio-container-img" />
+                    <ReactAudioPlayer
+                        src={sample}
+                        
+                        controls
+                    />
+                </div>
+            </main>
             <Footer />
         </div>
     )
