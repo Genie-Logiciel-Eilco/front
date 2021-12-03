@@ -1,5 +1,14 @@
 @import "../../../Styles/helpers";
 
+
+.alert-container{
+    position : absolute;
+    right : 0;
+    top : 0;
+    padding-top : 0.7rem;
+    z-index: 500;
+}
+
 .book_navbar{
     display : flex;
     justify-content: space-around;
@@ -29,6 +38,13 @@
             color : white;
             &:hover{
                 background-color : rgb(184, 25, 25);
+            }
+        }
+
+        .del{
+            background-color : #444;
+            &:hover{
+                background-color : #666;
             }
         }
     }
