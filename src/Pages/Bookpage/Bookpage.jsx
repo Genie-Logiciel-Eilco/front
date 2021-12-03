@@ -11,12 +11,24 @@ import { useHistory } from 'react-router-dom';
 import API_ENDPOINT from "../../Helpers/API_URL";
 // import userService from '../../service/userService'
 import EditPublisher from '../Dashboard/Publishers/ViewPublishers/EditPublishers/EditPublisher';
-
+import isFavorite from "../../Helpers/isFavorite";
+import { faHeartBroken } from '@fortawesome/free-solid-svg-icons';
+import { faReadme } from '@fortawesome/free-brands-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faVolumeUp } from '@fortawesome/free-solid-svg-icons';
+import { Alert } from '@mui/material';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Bookpage() {
     let { id } = useParams();
 
     const [loading, setLoading] = useState(true);
     const [book, setBook] = useState({});
+
+    const [success, setSuccess] = useState(false);  
+    const [deleted, setDeleted] = useState(false);
+    const [favorite, setFavorite] = useState(false);
+
+
     const getBookDetail = async (id) => {
         let res = await bookService.getOneBook(id);
         if (!res.data.data.hasOwnProperty("authors")) {
@@ -41,7 +53,32 @@ function Bookpage() {
             setLoading(false);
         }
     }, [])
+    useEffect( async () => {
+        let isFavRes = await isFavorite(id);
+        setFavorite(isFavRes);
+        
+    } , [success, deleted])
 
+
+    const addToFav = async () => {
+        let response = await bookService.addToFavorite(id);
+        if(response.data.success){
+            setSuccess(true);
+            setTimeout(()=>{
+                setSuccess(false);
+            }, 3000);
+        }
+    }
+
+    const removeFromFav = async () => {
+        let response = await bookService.deleteFromFavorite(id);
+        if(response.data.success){
+            setDeleted(true);
+            setTimeout(()=>{
+                setDeleted(false);
+            }, 3000);
+        }
+    }
     const getAuthorsList = () => {
         return book.authors.map((auth, id) => {
             return <p className="book__detail-author" key={id}>
@@ -67,8 +104,17 @@ function Bookpage() {
     }
     return (
         <>
+          {
+            success ? <div className="alert-container">
+                            <Alert severity="success">Livre est ajouté au favoris avec succès!</Alert> 
+                        </div>: "" 
+            }
+            {
+            deleted ? <div className="alert-container">
+                            <Alert severity="success">Livre est retiré des favoris avec succès!</Alert> 
+                        </div>: "" 
+            }
             <BrowseNavbar />
-
             <section className="book__detail">
                 <div className="container">
                     <div className="flex-container">
@@ -77,12 +123,9 @@ function Bookpage() {
                                 {book.name}
                             </h2>
                             <p className="text-dark mt-4 font-weight-bold title">Ecrit par</p>
-                            {/*  */}
-                            {/* Ecrit par: <br/>  */}
                             <div className="authors_container">
                                 {loading ? "Patientez s'il vous plaît..." : getAuthorsList()}
                             </div>
-                            {/* </p> */}
                             <p className="text-dark mt-4 font-weight-bold title">Catégories</p>
                             <div className="book__detail-category">
                                 {!loading ? getCategories() : "Patientez s'il vous plaît... "}
@@ -106,7 +149,22 @@ function Bookpage() {
                                     <Link to={`/books/read/${id}`}>
                                         <PrimaryBtn text="Lire" />
                                     </Link>
-                                    <SecondaryBtn text="Ecouter" />
+                                    <Link to={`/books/read/${id}`}>
+                                        <SecondaryBtn text="Ecouter" />
+                                    </Link>
+                                    {
+                                        !favorite 
+                                        ?  <button className="book_navbar_actions_two btn_action add_two" 
+                                                    onClick={addToFav}>
+                                                <FontAwesomeIcon icon={faHeart} />&nbsp;
+                                                    Ajouter au favoris
+                                                </button>
+                                        :  <button className="book_navbar_actions_two btn_action del_two" 
+                                                    onClick={removeFromFav}>
+                                            <FontAwesomeIcon icon={faHeartBroken} />&nbsp;
+                                                Retirer des favoris
+                                            </button>
+                                    }
                                 </div>
                             </div>
                         </article>

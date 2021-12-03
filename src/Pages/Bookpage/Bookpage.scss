@@ -152,3 +152,27 @@ p.title.font-weight-bold{
     font-size: 30px;
     margin-bottom : 0.2rem;
 }
+
+
+
+.del_two{
+    background-color : #444;
+    padding : 0.3rem 0.5rem;
+    border : none;
+    border-radius : 0.2rem;
+    transition : 0.2 background-color;
+    &:hover{
+        background-color : #666;
+    }
+}
+
+.add_two{
+    background-color : $yellow;
+    padding : 0.3rem 0.5rem;
+    border : none;
+    border-radius : 0.2rem;
+    transition : 0.2 background-color;
+    &:hover{
+        background-color : orange;
+    }
+}
