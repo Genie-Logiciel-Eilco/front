@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import { useParams } from 'react-router';
 import Footer from '../../Layout/Footer/Footer';
 import BrowseNavbar from '../Browsepage/BrowseNavbar';
@@ -8,6 +8,7 @@ import { useHistory } from 'react-router';
 import PrimaryBtn from "../../Components/Buttons/PrimaryBtn";
 import SecondaryBtn from "../../Components/Buttons/SecondaryBtn";
 import { Link } from 'react-router-dom';
+import { ReactReader } from "react-reader"
 export default function BookReadNormal() {
     let {id} = useParams();
 
@@ -37,6 +38,18 @@ export default function BookReadNormal() {
             setLoading(false);
         }
     }, [])
+
+
+    const [page, setPage] = useState('')
+    const renditionRef = useRef(null)
+    const tocRef = useRef(null)
+    const locationChanged = (epubcifi) => {
+        if (renditionRef.current && tocRef.current) {
+            const { displayed, href } = renditionRef.current.location.start
+            const chapter = tocRef.current.find((item) => item.href === href)
+            setPage(`Page ${displayed.page} of ${displayed.total} in chapter ${chapter ? chapter.label : 'n/a'}`)
+        }
+    }
     return (
         <div className="read-page-container">
             <BrowseNavbar />
@@ -57,7 +70,7 @@ export default function BookReadNormal() {
             />
             }
              
-             <div className="book__detail-cta inside">
+             {/* <div className="book__detail-cta inside">
                                 <h3>
                                     Comment Voulez-vous interagir avec le livre
                                     ?
@@ -68,9 +81,19 @@ export default function BookReadNormal() {
                                     </Link>
                                     <SecondaryBtn text="Ecouter" />
                                 </div>
-                            </div>
-            <div className="read-page-component text-center my-4">
-                Inject your component here ZACK
+                            </div> */}
+            <div className="read-page-component text-center my-4" style={{ height: "70vh", width : "80vw", border: "2px #DDD solid", margin : "0 auto" }}> 
+                <ReactReader
+                    locationChanged={locationChanged}
+                    url="https://gerhardsletten.github.io/react-reader/files/alice.epub"
+                    // url="files/pg66790.epub"
+                    getRendition={(rendition) => renditionRef.current = rendition}
+                    // tocChanged={toc => tocRef.current = toc}
+                    showToc={false}
+                />
+            </div>
+            <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', left: '1rem', textAlign: 'center', zIndex: 1}}>
+                {page}
             </div>
 
             <Footer />
