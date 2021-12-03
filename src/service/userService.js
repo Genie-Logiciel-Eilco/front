@@ -23,6 +23,14 @@ const getBooks = async (perPage) => {
     });
 };
 
+const getAllBooks = async () => {
+    return await axios.get(`${API_ENDPOINT}/api/books`, { headers: authHeader() })
+}
+
+const getAllUsers = async () => {
+    return await axios.get(`${API_ENDPOINT}/api/users/100000`, { headers: authHeader() })
+}
+
 const getBooksByPage = async (pageNumber, perPageInput) => {
     return await axios.get(
         `${API_ENDPOINT}/api/books/paginate/${perPageInput}?page=${pageNumber}`,
@@ -223,6 +231,8 @@ const authService = {
     deleteCategory,
     deleteUser,
     getUsersByPage,
+    getAllBooks,
+    getAllUsers
 };
 
 export default authService;
