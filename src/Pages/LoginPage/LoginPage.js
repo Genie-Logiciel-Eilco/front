@@ -43,7 +43,7 @@ export default function LoginPage() {
 
     const [err, setErr] = useState(false);
     const [message, setMessage] = useState("Il y'a un problème avec la requête")
-    
+
     let history = useHistory();
 
     const handleSubmit = async (e) => {
@@ -77,12 +77,12 @@ export default function LoginPage() {
                     <button type="submit" className="btn-login" >
                         Se connecter
                     </button>
-                    <Link to="/Forgot/Password">
+                    <Link to="/forgotpassword">
                         <button type="button" role="button" className="btn-secondary-login">
                             Mot de passe oublié ?
                         </button>
                     </Link>
-                    <Link to="/Signup">
+                    <Link to="/signup">
                         <button type="button" role="button" className="btn-ternary-login">
                             Vous n'avez pas de compte ?
                         </button>
@@ -91,8 +91,8 @@ export default function LoginPage() {
                 </form>
             </div>
             {err ? <Alert variant="filled" severity="error">
-                        {message}
-                    </Alert> : ""}
+                {message}
+            </Alert> : ""}
             <Footer />
         </main>
     )

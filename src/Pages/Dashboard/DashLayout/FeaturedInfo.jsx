@@ -8,7 +8,7 @@ export default function FeaturedInfo() {
     return (
         <div className="featured">
             <div className="featuredItem">
-                <span className="featuredTitle">Bruh</span>
+                <span className="featuredTitle">Utilisateurs</span>
                 <div className="featuredMoneyContainer">
                     <span className="featuredMoney">2,45</span>
                     <span className="featuredMoneyRate">
@@ -19,7 +19,7 @@ export default function FeaturedInfo() {
             </div>
 
             <div className="featuredItem">
-                <span className="featuredTitle">Bruh</span>
+                <span className="featuredTitle">Livres</span>
                 <div className="featuredMoneyContainer">
                     <span className="featuredMoney">2,24</span>
                     <span className="featuredMoneyRate">
@@ -30,7 +30,7 @@ export default function FeaturedInfo() {
             </div>
 
             <div className="featuredItem">
-                <span className="featuredTitle">Bruh</span>
+                <span className="featuredTitle">Lectures</span>
                 <div className="featuredMoneyContainer">
                     <span className="featuredMoney">2,24</span>
                     <span className="featuredMoneyRate">

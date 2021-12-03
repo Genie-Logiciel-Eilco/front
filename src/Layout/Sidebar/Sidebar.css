@@ -1,5 +1,9 @@
 .sidebar {
+<<<<<<< Updated upstream
   width: 400px;
+=======
+  flex: 1;
+>>>>>>> Stashed changes
   height: calc(100vh - 69px);
   position: sticky;
   background-color: rgb(63, 63, 63);

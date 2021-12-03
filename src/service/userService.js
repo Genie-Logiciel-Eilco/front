@@ -123,6 +123,7 @@ const deleteCategory = (id) => {
     return axios.delete(`${API_ENDPOINT}/api/category/${id}`, { headers: authHeader() });
 }
 
+<<<<<<< Updated upstream
 const getUsersByPage = async (pageNumber, perPageInput) => {
     return await axios.get(
         `${API_ENDPOINT}/api/users/paginate/${perPageInput}?page=${pageNumber}`,
@@ -134,6 +135,8 @@ const deleteUser = (id) => {
     return axios.delete(`${API_ENDPOINT}/api/user/${id}`, { headers: authHeader() });
 }
 
+=======
+>>>>>>> Stashed changes
 const uploadBook = (uuid, data) => {
     return axios.post(`${API_ENDPOINT}/api/book/add/${uuid}`, data, {
         headers: authHeader(),
@@ -220,9 +223,13 @@ const authService = {
     getCategoriesInPaginate,
     updateCategory,
     uploadCategory,
+<<<<<<< Updated upstream
     deleteCategory,
     deleteUser,
     getUsersByPage,
+=======
+    deleteCategory
+>>>>>>> Stashed changes
 };
 
 export default authService;

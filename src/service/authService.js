@@ -20,9 +20,19 @@ const signup = (data) => {
     })
 }
 
+const forgotPassword = (email) => {
+    return axios.post(`${API_ENDPOINT}/api/user/forgotPassword`, email)
+}
+
+const resetPassword = (data) => {
+    return axios.post(`${API_ENDPOINT}/api/user/resetPassword`, data)
+}
+
 const authService = {
     login,
     signup,
+    forgotPassword,
+    resetPassword
 }
 
 export default authService;

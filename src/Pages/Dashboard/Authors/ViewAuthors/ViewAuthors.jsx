@@ -68,7 +68,6 @@ export default function ViewAuthors() {
       userService.getAuthorsInPaginate(perPageInput).then(
         (res) => {
           setAuthors(res?.data?.data);
-          console.log(res?.data?.data)
         },
         (err) => {
           console.log(err);
@@ -91,7 +90,6 @@ export default function ViewAuthors() {
   };
 
   const deleteAuthor = (id) => {
-    console.log(id)
     return userService.deleteAuthor(id).then(
       (res) => {
         setSuccess(!success)

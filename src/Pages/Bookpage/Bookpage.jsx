@@ -1,16 +1,25 @@
+<<<<<<< Updated upstream
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+=======
+import React, { useContext, useEffect } from "react";
+import { GlobalContext } from "../../context/GlobalState";
+>>>>>>> Stashed changes
 import "./Bookpage.scss";
 import BrowseNavbar from "../Browsepage/BrowseNavbar";
 import PrimaryBtn from "../../Components/Buttons/PrimaryBtn";
 import SecondaryBtn from "../../Components/Buttons/SecondaryBtn";
 import Footer from "../../Layout/Footer/Footer";
+<<<<<<< Updated upstream
 import bookService from '../../service/booksService';
 import { useHistory } from 'react-router-dom';
 import API_ENDPOINT from "../../Helpers/API_URL";
 // import userService from '../../service/userService'
 import EditPublisher from '../Dashboard/Publishers/ViewPublishers/EditPublishers/EditPublisher';
+=======
+import userService from '../../service/userService'
+>>>>>>> Stashed changes
 
 function Bookpage() {
     let { id } = useParams();

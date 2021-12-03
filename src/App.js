@@ -12,8 +12,6 @@ import {
 import HomePage from './Pages/Homepage/Homepage.js';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import SignupPage from './Pages/Signup/SignupPage';
-import ReadPage from './Pages/ReadPage/ReadPage';
-import Dashboard from './Pages/Dashboard/Dashboard';
 import Users from './Pages/Dashboard/Users/Users'
 import Books from './Pages/Dashboard/Books/Books'
 import Authors from './Pages/Dashboard/Authors/Authors'
@@ -23,6 +21,7 @@ import Browsepage from "./Pages/Browsepage/Browsepage";
 import Bookpage from "./Pages/Bookpage/Bookpage";
 import Logout from './Pages/Logout/Logout';
 import BookReadNormal from './Pages/BookReadNormal/BookReadNormal';
+import ForgotPassword from './Pages/ForgotPassword/ForgotPassword'
 
 // Routes Imports
 import { AdminRoute } from './Routes/AdminRoute'
@@ -49,6 +48,7 @@ function App() {
             <Route path="/" exact component={HomePage} />
             <AnonymousRoute path="/Login" exact component={LoginPage} />
             <AnonymousRoute path="/Signup" exact component={SignupPage} />
+            <AnonymousRoute path="/forgotpassword" component={ForgotPassword} />
             <UserRoute path="/books" exact component={Browsepage} />
             <UserRoute path="/books/:id" exact component={Bookpage} />
             <UserRoute path="/books/read/:id" exact component={BookReadNormal} />
