@@ -17,7 +17,7 @@ export default function LoginPage() {
         password: ""
     })
     const form = [{
-        label: "Nom d'utilisateur ou email",
+        label: "Nom d'utilisateur ou Email",
         type: "text",
         name: "usernameOrEmail",
         value: data.usernameOrEmail,

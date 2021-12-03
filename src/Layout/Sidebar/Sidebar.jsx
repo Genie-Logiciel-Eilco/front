@@ -38,11 +38,6 @@ export default function Sidebar() {
                         <CategoryIcon className="sidebarIcon" /> Catégories
                     </div>
                 </NavLink>
-                <NavLink to="/69420/categories" className="dashlink" activeClassName="active-dashlink" style={{ textDecoration: "none" }} exact>
-                    <div className="sidebarMenu">
-                        <PersonIcon className="sidebarIcon" /> Catégories
-                    </div>
-                </NavLink>
                 <NavLink to="/69420/users" className="dashlink" activeClassName="active-dashlink" style={{ textDecoration: "none" }} exact>
                     <div className="sidebarMenu">
                         <PersonIcon className="sidebarIcon" /> Utilisateurs
