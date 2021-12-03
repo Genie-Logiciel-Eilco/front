@@ -195,8 +195,8 @@ function BrowseNavbar() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/" className="nav__links-item">
-                            Profile
+                        <Link to="/books/favorites" className="nav__links-item">
+                            Favoris
                         </Link>
                     </li>
                     <li>

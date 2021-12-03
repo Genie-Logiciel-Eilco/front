@@ -1,0 +1,48 @@
+@import "../../Styles/helpers";
+
+.book_favorites{
+    min-height: 80vh;
+    padding : 2rem 10rem;
+    &_header{
+        display : flex;
+        justify-content : center;
+        h2{
+            color : $blue;
+            padding : 0.6rem 0.7rem;
+            border-radius : 0.7rem;
+            text-shadow : 1px 2px 5px rgba(0, 0, 0, 0.15);
+            border : {
+                top : 3px $blue solid;
+                bottom : 3px $blue solid;
+            }
+        }
+    }
+
+    &_section{
+        display :flex;
+        width : 100%;
+        overflow: inherit;
+
+        .favorite-books-book{
+            div{
+                width : 100%;
+                display: flex; justify-content: center;
+            }
+            &-remove{
+                background-color : #444;
+                border : none;
+                padding : 0.3rem 0.5rem;
+                color : white;
+                margin : {
+                    left : auto;
+                }
+            }
+            img{
+                height : 50vh;
+                width : 100%;
+                object-fit: contain;
+        
+            }
+        }
+    }
+}

@@ -156,23 +156,23 @@ p.title.font-weight-bold{
 
 
 .del_two{
-    background-color : #444;
+    background-color : #444  !important;
     padding : 0.3rem 0.5rem;
     border : none;
     border-radius : 0.2rem;
     transition : 0.2 background-color;
     &:hover{
-        background-color : #666;
+        background-color : #666  !important;
     }
 }
 
 .add_two{
-    background-color : $yellow;
+    background-color : $yellow  !important;
     padding : 0.3rem 0.5rem;
     border : none;
     border-radius : 0.2rem;
     transition : 0.2 background-color;
     &:hover{
-        background-color : orange;
+        background-color : orange !important;
     }
 }

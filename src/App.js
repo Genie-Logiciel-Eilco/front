@@ -22,7 +22,7 @@ import Bookpage from "./Pages/Bookpage/Bookpage";
 import Logout from './Pages/Logout/Logout';
 import BookReadNormal from './Pages/BookReadNormal/BookReadNormal';
 import ForgotPassword from './Pages/ForgotPassword/ForgotPassword'
-
+import BookFavorites from './Pages/BookFavorites/BookFavorites';
 // Routes Imports
 import { AdminRoute } from './Routes/AdminRoute'
 import { AnonymousRoute } from './Routes/AnonymousRoute'
@@ -49,6 +49,8 @@ function App() {
             <AnonymousRoute path="/Login" exact component={LoginPage} />
             <AnonymousRoute path="/Signup" exact component={SignupPage} />
             <AnonymousRoute path="/forgotpassword" component={ForgotPassword} />
+            <UserRoute path="/books/favorites" exact component={BookFavorites} />
+
             <UserRoute path="/books" exact component={Browsepage} />
             <UserRoute path="/books/:id" exact component={Bookpage} />
             <UserRoute path="/books/read/:id" exact component={BookReadNormal} />
