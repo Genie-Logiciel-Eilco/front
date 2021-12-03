@@ -1,9 +1,9 @@
 import axios from "axios";
-import API_ENDPOINT from "../Helpers/API_URL";
+import API_URL from "../Helpers/API_URL";
 import authHeader from "./authHeader";
 
 // const local = "http:localhost:8000";
-
+const API_ENDPOINT = API_URL.API_ENDPOINT
 // const uploadImage = () => { };
 let accessToken = '';
 if (JSON.parse(localStorage.getItem("data"))) {
@@ -165,11 +165,11 @@ const getBook = (uuid) => {
     });
 };
 
-const getImage = async (image) => {
-    return await axios.get(`${API_ENDPOINT}/images/${image}`, {
-        headers: authHeader(),
-    });
-};
+// const getImage = async (image) => {
+//     return await axios.get(`${API_URL.STORAGE_ENDPOINT}/images/${image}`, {
+//         headers: authHeader(),
+//     });
+// };
 
 const uploadAuthorImage = (id, formData, config) => {
     return axios.post(`${API_ENDPOINT}/api/author/${id}/uploadImage`, formData, config)
@@ -206,7 +206,7 @@ const authService = {
     uploadBook,
     deleteBook,
     getBook,
-    getImage,
+    // getImage,
     editImage,
     uploadImage,
     getAuthors,

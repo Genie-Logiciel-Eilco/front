@@ -20,6 +20,8 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import imgplaceholder from '../../../../../Assets/imgplaceholder.png'
 import TextareaAutosize from '@mui/material/TextareaAutosize';
+import API_URL from "../../../../../Helpers/API_URL";
+
 
 const ITEM_HEIGHT = 50;
 const ITEM_PADDING_TOP = 8;
@@ -80,15 +82,13 @@ export default function EditBook({ uuid, success, onChange }) {
             setName(res?.data?.data?.name);
             setSynopsis(res?.data?.data?.synopsis);
             setPublicationDate(res?.data?.data?.publicationDate);
-            console.log(res?.data?.data)
             setChosenAuthors(res?.data?.data?.authors);
             setChosenPublisher(res?.data?.data?.publisher_id);
-            setImage(`http://104.248.39.111/images/${res?.data?.data?.imageLocation}`);
-            setContentFile(`http://104.248.39.111/files/${res?.data?.data?.fileLocation}`)
+            setImage(`${API_URL.STORAGE_ENDPOINT}/${res?.data?.data?.id}/${res?.data?.data?.imageLocation}`)
+            setContentFile(`${API_URL.STORAGE_ENDPOINT}/${res?.data?.data?.id}/${res?.data?.data?.fileLocation}`)
         });
         userService.getAuthors().then((res) => {
             setAuthors(res?.data?.data);
-            console.log(res?.data?.data)
         });
         userService.getPublishers().then((res) => {
             setPublishers(res?.data?.data);
@@ -124,7 +124,7 @@ export default function EditBook({ uuid, success, onChange }) {
         };
         return axios
             .post(
-                `http://104.248.39.111/api/book/uploadImage/${uuid}`,
+                `${API_URL.API_ENDPOINT}/api/book/uploadImage/${uuid}`,
                 formData,
                 config
             )
@@ -165,7 +165,7 @@ export default function EditBook({ uuid, success, onChange }) {
         };
         return axios
             .post(
-                `http://104.248.39.111/api/book/uploadFile/${uuid}`,
+                `${API_URL.API_ENDPOINT}/api/book/uploadFile/${uuid}`,
                 formData,
                 config
             )

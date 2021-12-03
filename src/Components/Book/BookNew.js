@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import './BookNew.scss';
 import { Link } from 'react-router-dom';
-import API_ENDPOINT from '../../Helpers/API_URL';
+import API_URL from '../../Helpers/API_URL';
 // import bookService from '../../service/booksService';
 
-export default function BookNew({ book}) {
+export default function BookNew({ book }) {
     const { id, imageLocation, name, author, rating } = book;
     let stars = [];
 
@@ -17,26 +17,26 @@ export default function BookNew({ book}) {
         if (stars.length > 5) {
             stars.length = 5;
         }
-        
+
 
         return stars.map((star, index) => <li key={index}>{star}</li>);
     };
     return (
         <article className="book">
             <header className="book_header">
-                
+
                 <h3 className="book_header_text">{name}</h3>
                 {/* <i className="fas fa-eye"></i> */}
             </header>
             <Link to={`/books/${id}`}>
-                <img 
-                    src={`${API_ENDPOINT}/images/${imageLocation}`} 
-                    alt={`Book id ${id}`} 
-                    className="book_img" 
+                <img
+                    src={`${API_URL.STORAGE_ENDPOINT}/${id}/${imageLocation}`}
+                    alt={`Book id ${id}`}
+                    className="book_img"
                 />
             </Link>
-            
-        
+
+
             <div className="book_rating">
                 <ul>
                     {bookRating(rating)}

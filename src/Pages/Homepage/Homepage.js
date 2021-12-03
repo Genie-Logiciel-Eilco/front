@@ -88,7 +88,7 @@ export default function Homepage() {
 
         return output;
     };
-    let history=useHistory();
+    let history = useHistory();
     return (
         <>
             <Navbar />
@@ -101,23 +101,23 @@ export default function Homepage() {
                 <div className="hero-content">
                     <h3>Votre premier livre audio gratuit</h3>
                     <h4>Vous êtes prêt ? Bénéficiez automatiquement de 2 livres audio offerts.</h4>
-                        {localStorage.getItem("data") 
+                    {localStorage.getItem("data")
                         ? <BlueButton
-                        text="Commencer"
-                        clickHandler={() => history.push("/Signup")}
+                            text="Commencer"
+                            clickHandler={() => history.push("/Signup")}
                         />
-                        :                    <div className="buttons_home">
-                             <BlueButton
-                        text="Commencer"
-                        clickHandler={() => history.push("/Signup")}
-                    />
-                    <button className="blue-button two" onClick={() => history.push('/Login')}>
-                        S'authentifier
-                    </button>
-                    </div>
+                        : <div className="buttons_home">
+                            <BlueButton
+                                text="Commencer"
+                                clickHandler={() => history.push("/Signup")}
+                            />
+                            <button className="blue-button two" onClick={() => history.push('/Login')}>
+                                S'authentifier
+                            </button>
+                        </div>
 
-                        }
-                   
+                    }
+
                 </div>
             </div>
 
@@ -148,8 +148,8 @@ export default function Homepage() {
                     </div>
                     <div className="about-text">
                         <p>
-                            Nous sommes un groupe d’étudiants au sein de l’EILCO
-                            passionné par la lecture qui met en valeur des
+                            Nous sommes un groupe d’étudiants, au sein de l’EILCO
+                            passionnés par la lecture, qui met en valeur des
                             problèmes rencontrés par une catégorie de personnes.
                         </p>
                         <p>

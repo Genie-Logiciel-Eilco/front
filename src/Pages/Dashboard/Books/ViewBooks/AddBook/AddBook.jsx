@@ -21,6 +21,8 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import imgplaceholder from '../../../../../Assets/imgplaceholder.png'
 
+import API_URL from "../../../../../Helpers/API_URL";
+
 
 const ITEM_HEIGHT = 50;
 const ITEM_PADDING_TOP = 8;
@@ -149,9 +151,8 @@ export default function AddBook({ success, onChange }) {
         "content-type": "multipart/form-data",
       },
     };
-    return axios
-      .post(
-        `http://104.248.39.111/api/book/uploadFile/${uuid}`,
+    axios
+      .post(`${API_URL.API_ENDPOINT}/api/book/uploadFile/${uuid}`,
         formData,
         config
       )

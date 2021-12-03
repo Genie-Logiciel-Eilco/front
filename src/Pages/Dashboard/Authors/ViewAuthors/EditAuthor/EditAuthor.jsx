@@ -7,30 +7,13 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import Box from "@mui/material/Box";
 import CloudDoneIcon from "@mui/icons-material/CloudDone";
 import TextField from "@mui/material/TextField";
-import { useTheme } from "@mui/material/styles";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
-import DateRangePicker from '@mui/lab/DateRangePicker';
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import TextareaAutosize from '@mui/material/TextareaAutosize';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import DatePicker from '@mui/lab/DatePicker';
 import imgplaceholder from '../../../../../Assets/imgplaceholder.png'
-
-
-
-
-const ITEM_HEIGHT = 50;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
+import API_URL from "../../../../../Helpers/API_URL";
 
 export default function EditAuthor({ id, success, onChange }) {
   //data to send
@@ -49,9 +32,6 @@ export default function EditAuthor({ id, success, onChange }) {
   const [file, setFile] = useState(initialState)
   //uxd
   const [imageCheckColor, setImageCheckColor] = useState("disabled");
-
-
-  const theme = useTheme();
 
   const hiddenFileInput = useRef(null);
 
@@ -99,7 +79,8 @@ export default function EditAuthor({ id, success, onChange }) {
       if (res?.data?.data?.deathDate) {
         setCheckedBox(true)
       }
-      setImage(`http://104.248.39.111/images/authors/${res?.data?.data?.imageLocation}`)
+      setImage(`${API_URL.STORAGE_ENDPOINT_AUTHORS}/${res?.data?.data?.imageLocation}`)
+
     })
   }, [])
 
@@ -205,9 +186,9 @@ export default function EditAuthor({ id, success, onChange }) {
                     value={birthDate}
                     style={{ marginRight: "10px" }}
                     onChange={(e) => {
-                      if(e){
-                      setBirthDate(`${e.getFullYear()}-${e.getMonth()}-${e.getDate()}`);
-                      setDeathDate(null);
+                      if (e) {
+                        setBirthDate(`${e.getFullYear()}-${e.getMonth()}-${e.getDate()}`);
+                        setDeathDate(null);
                       }
                     }}
                     renderInput={(params) => <TextField {...params} />}
@@ -218,8 +199,8 @@ export default function EditAuthor({ id, success, onChange }) {
                       label="Naissance"
                       value={birthDate}
                       onChange={(e) => {
-                        if(e){
-                        setBirthDate(`${e.getFullYear()}-${e.getMonth()}-${e.getDate()}`);
+                        if (e) {
+                          setBirthDate(`${e.getFullYear()}-${e.getMonth()}-${e.getDate()}`);
                         }
                       }}
                       renderInput={(params) => <TextField {...params} />}
@@ -229,8 +210,8 @@ export default function EditAuthor({ id, success, onChange }) {
                       label="Décés"
                       value={deathDate}
                       onChange={(e) => {
-                        if(e){
-                        setDeathDate(`${e.getFullYear()}-${e.getMonth()}-${e.getDate()}`);
+                        if (e) {
+                          setDeathDate(`${e.getFullYear()}-${e.getMonth()}-${e.getDate()}`);
                         }
                       }}
                       renderInput={(params) => <TextField {...params} />}

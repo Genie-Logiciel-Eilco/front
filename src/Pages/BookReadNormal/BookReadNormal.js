@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useParams } from 'react-router';
 import Footer from '../../Layout/Footer/Footer';
 import BrowseNavbar from '../Browsepage/BrowseNavbar';
@@ -9,16 +9,17 @@ import PrimaryBtn from "../../Components/Buttons/PrimaryBtn";
 import SecondaryBtn from "../../Components/Buttons/SecondaryBtn";
 import { Link } from 'react-router-dom';
 import { ReactReader } from "react-reader"
+import API_URL from '../../Helpers/API_URL';
 export default function BookReadNormal() {
-    let {id} = useParams();
+    let { id } = useParams();
 
-    const [loading, setLoading ] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [book, setBook] = useState({});
     const [authors, setAuthors] = useState([]);
 
     const getBookDetail = async (id) => {
         let res = await bookService.getOneBook(id);
-        if(!res.data.data.hasOwnProperty("authors")){
+        if (!res.data.data.hasOwnProperty("authors")) {
             res.data.data.authors = ["FLan fertlen", "FLanix Fertlan"];
         }
         setBook(res.data.data);
@@ -29,11 +30,11 @@ export default function BookReadNormal() {
     let history = useHistory();
 
     useEffect(async () => {
-        let response = await getBookDetail(id); 
-        if(response !== "Success"){
+        let response = await getBookDetail(id);
+        if (response !== "Success") {
             history.push("/404");
         }
-        else{
+        else {
             console.log(book);
             setLoading(false);
         }
@@ -54,23 +55,23 @@ export default function BookReadNormal() {
         <div className="read-page-container">
             <BrowseNavbar />
             {
-            loading 
-            ? "Veuillez patienter..." 
-            : <BookNavbar 
-                    title={book.name} 
-                    image={book.imageLocation} 
-                    lire={true}
-                    authors={authors.length > 0 
-                        ? authors 
-                        : [{ 
-                            first_name : "Chargement d'auteur", 
-                            last_name : "", 
-                            id : -1
-                    }]} 
-            />
+                loading
+                    ? "Veuillez patienter..."
+                    : <BookNavbar
+                        title={book.name}
+                        image={`${API_URL.STORAGE_ENDPOINT}/${book.id}/${book.imageLocation}`}
+                        lire={true}
+                        authors={authors.length > 0
+                            ? authors
+                            : [{
+                                first_name: "Chargement d'auteur",
+                                last_name: "",
+                                id: -1
+                            }]}
+                    />
             }
-             
-             {/* <div className="book__detail-cta inside">
+
+            {/* <div className="book__detail-cta inside">
                                 <h3>
                                     Comment Voulez-vous interagir avec le livre
                                     ?
@@ -82,17 +83,17 @@ export default function BookReadNormal() {
                                     <SecondaryBtn text="Ecouter" />
                                 </div>
                             </div> */}
-            <div className="read-page-component text-center my-4" style={{ height: "70vh", width : "80vw", border: "2px #DDD solid", margin : "0 auto" }}> 
+            <div className="read-page-component text-center my-4" style={{ height: "70vh", width: "80vw", border: "2px #DDD solid", margin: "0 auto" }}>
                 <ReactReader
                     locationChanged={locationChanged}
-                    url="https://gerhardsletten.github.io/react-reader/files/alice.epub"
+                    url={`${API_URL.STORAGE_ENDPOINT}/${book.id}/${book.fileLocation}`}
                     // url="files/pg66790.epub"
                     getRendition={(rendition) => renditionRef.current = rendition}
                     // tocChanged={toc => tocRef.current = toc}
                     showToc={false}
                 />
             </div>
-            <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', left: '1rem', textAlign: 'center', zIndex: 1}}>
+            <div style={{ position: 'absolute', bottom: '1rem', right: '1rem', left: '1rem', textAlign: 'center', zIndex: 1 }}>
                 {page}
             </div>
 

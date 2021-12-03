@@ -1,11 +1,11 @@
 import axios from 'axios'
-import API_ENDPOINT from '../Helpers/API_URL';
+import API_URL from '../Helpers/API_URL';
 
 // const local = "http:localhost:8000"
 
 
 const login = (data) => {
-    return axios.post(`${API_ENDPOINT}/api/login`, data, {
+    return axios.post(`${API_URL.API_ENDPOINT}/api/login`, data, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -13,7 +13,7 @@ const login = (data) => {
 }
 
 const signup = (data) => {
-    return axios.post(`${API_ENDPOINT}/api/register`, data, {
+    return axios.post(`${API_URL.API_ENDPOINT}/api/register`, data, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -21,11 +21,11 @@ const signup = (data) => {
 }
 
 const forgotPassword = (email) => {
-    return axios.post(`${API_ENDPOINT}/api/user/forgotPassword`, email)
+    return axios.post(`${API_URL.API_ENDPOINT}/api/user/forgotPassword`, email)
 }
 
 const resetPassword = (data) => {
-    return axios.post(`${API_ENDPOINT}/api/user/resetPassword`, data)
+    return axios.post(`${API_URL.API_ENDPOINT}/api/user/resetPassword`, data)
 }
 
 const authService = {

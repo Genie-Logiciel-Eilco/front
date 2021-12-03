@@ -16,19 +16,6 @@ import Checkbox from '@mui/material/Checkbox';
 import imgplaceholder from '../../../../../Assets/imgplaceholder.png'
 
 
-
-
-const ITEM_HEIGHT = 50;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
 export default function AddBook({ success, onChange }) {
   //data to send
   const [firstName, setFirstName] = useState(initialState)
@@ -46,9 +33,6 @@ export default function AddBook({ success, onChange }) {
   const [file, setFile] = useState(initialState)
   //uxd
   const [imageCheckColor, setImageCheckColor] = useState("disabled");
-
-
-  const theme = useTheme();
 
   const hiddenFileInput = useRef(null);
 

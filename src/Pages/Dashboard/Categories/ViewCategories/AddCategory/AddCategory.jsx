@@ -2,11 +2,6 @@ import React, { useState, initialState } from "react";
 import userService from "../../../../../service/userService";
 import "./AddCategory.css";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 export default function AddPublisher({ success, onChange }) {
   //data to send

@@ -6,8 +6,6 @@ import loginBG from '../../Assets/Login.jpg';
 import './LoginPage.scss'
 import { Link } from 'react-router-dom';
 import { Alert } from '@mui/material';
-
-
 import logo from '../../Assets/templogo.jpg'
 import authService from '../../service/authService';
 import { useHistory } from 'react-router-dom';

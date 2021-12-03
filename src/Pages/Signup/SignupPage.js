@@ -14,7 +14,7 @@ import "./SignupPage.scss";
 
 // Backend
 import axios from "axios";
-import API_ENDPOINT from "../../Helpers/API_URL";
+import API_URL from "../../Helpers/API_URL";
 
 export default function SignupPage() {
 
@@ -116,11 +116,11 @@ export default function SignupPage() {
         console.log(data);
         try {
             let request = await axios.post(
-                `${API_ENDPOINT}/api/register`,
+                `${API_URL.API_ENDPOINT}/api/register`,
                 data
             );
             let response = await request.data;
-            if(response.success){
+            if (response.success) {
                 history.push('/Unverified');
             }
             console.log(response);
@@ -158,7 +158,7 @@ export default function SignupPage() {
                 </form>
             </div>
 
-            
+
             <Footer />
         </main>
     );

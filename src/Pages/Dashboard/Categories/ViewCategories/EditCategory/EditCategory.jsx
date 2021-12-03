@@ -1,12 +1,7 @@
-import React, { useState, initialState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import userService from "../../../../../service/userService";
 import "./EditCategory.css";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 export default function EditCategory({ id, success, onChange }) {
   //data to send

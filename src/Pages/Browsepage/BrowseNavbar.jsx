@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,100 +9,97 @@ import Box from '@mui/material/Box';
 import Skeleton from '@mui/material/Skeleton'
 import "./BrowseNavbar.scss";
 import bookService from "../../service/booksService";
+import API_URL from "../../Helpers/API_URL";
 
 function BrowseNavbar() {
-     const keys=[
+    const keys = [
         {
-            name:"Tous",
-            value:"all"
+            name: "Tous",
+            value: "all"
         },
         {
-            name:"ISBN",
-            value:"isbn"
+            name: "ISBN",
+            value: "isbn"
         },
         {
-            name:"Titre",
-            value:"name"
+            name: "Titre",
+            value: "name"
         },
         {
-            name:"Description",
-            value:"synopsis"
+            name: "Description",
+            value: "synopsis"
         },
         {
-            name:"Date de publication",
-            value:"publicationDate"
+            name: "Date de publication",
+            value: "publicationDate"
         },
         {
-            name:"Auteur",
-            value:"author"
+            name: "Auteur",
+            value: "author"
         },
         {
-            name:"Editeur",
-            value:"publisher"
+            name: "Editeur",
+            value: "publisher"
         },
         {
-            name:"Categorie",
-            value:"category"
+            name: "Categorie",
+            value: "category"
         }
     ]
-    const history=useHistory();
+    const history = useHistory();
     const [navToggle, setNavToggle] = useState(false);
-    const [isActive,setIsActive]=useState(false);
-    const [notFound,setNotFound]=useState(false);
-    const [isSearching,setIsSearching]=useState(false);
-    const [isReady,setIsReady]=useState(false);
-    const [defaultx,setDefaultx]=useState(0);
-    const [searchValue,setSearchValue]=useState("");
-    const [books,setBooks]=useState([]);
-    const toggleChange=(e)=>{
+    const [isActive, setIsActive] = useState(false);
+    const [notFound, setNotFound] = useState(false);
+    const [isSearching, setIsSearching] = useState(false);
+    const [isReady, setIsReady] = useState(false);
+    const [defaultx, setDefaultx] = useState(0);
+    const [searchValue, setSearchValue] = useState("");
+    const [books, setBooks] = useState([]);
+    const toggleChange = (e) => {
         console.log(e.target.innerHTML);
         setIsActive(!isActive);
         resetSearch();
     };
-    const setDefaultKey=(id)=>{
+    const setDefaultKey = (id) => {
         console.log(id);
         setDefaultx(id);
     }
-    const changeSearchValue=async (e)=>{
-        const value=e.target.value;
+    const changeSearchValue = async (e) => {
+        const value = e.target.value;
         setSearchValue(value);
-        if(value.length>0)
-        {
+        if (value.length > 0) {
             setIsSearching(true);
             setIsActive(false);
-            const data={
-                [keys[defaultx].value]:value,
-                paginate:false
+            const data = {
+                [keys[defaultx].value]: value,
+                paginate: false
             }
-            let resp=await bookService.searchBooks(data);
+            let resp = await bookService.searchBooks(data);
             let books = await resp.data.data;
-            if(books.length==0)
-            {
+            if (books.length == 0) {
                 setNotFound(true)
             }
-            else
-            {
+            else {
                 setNotFound(false)
             }
             setIsReady(true);
             setBooks(books);
         }
-        else
-        {
+        else {
             setIsSearching(false);
             setIsReady(false);
         }
-        
+
     }
-    const resetSearch=()=>{
+    const resetSearch = () => {
         setSearchValue("");
         setIsSearching(false);
         setIsReady(false);
     }
-    const handleCLick=($uuid)=>{
+    const handleCLick = ($uuid) => {
         history.push(`/books/${$uuid}`)
     }
-   
+
     return (
         <nav className="nav">
             <div className="nav-container">
@@ -114,44 +111,44 @@ function BrowseNavbar() {
 
                 <div className="nav__searchBox">
                     <div className="nav__searchBox-keysDropdown">
-                        <div className="default_option" onClick={toggleChange}>{keys[defaultx].name}</div>  
+                        <div className="default_option" onClick={toggleChange}>{keys[defaultx].name}</div>
                         {isActive && (
-                        <ul className="active">
-                            {keys.map((key,index)=>(
-                                <li className={defaultx==index?"activeKey":""} onClick={()=>setDefaultKey(index)}>{key.name}</li>
-                            ))}
-                        </ul>)} 
+                            <ul className="active">
+                                {keys.map((key, index) => (
+                                    <li className={defaultx == index ? "activeKey" : ""} onClick={() => setDefaultKey(index)}>{key.name}</li>
+                                ))}
+                            </ul>)}
                     </div>
                     {isSearching && !isReady && (
-                        
+
                         <div className="nav__searchBox-booksDropdown">
                             <>
-                             <Skeleton className="skeleton" variant="h1" />
-                             <Skeleton className="skeleton" variant="h1"/>
-                             <Skeleton className="skeleton" variant="h1"/>
-                             <Skeleton className="skeleton" variant="h1"/>
-                             <Skeleton className="skeleton" variant="h1"/>
+                                <Skeleton className="skeleton" variant="h1" />
+                                <Skeleton className="skeleton" variant="h1" />
+                                <Skeleton className="skeleton" variant="h1" />
+                                <Skeleton className="skeleton" variant="h1" />
+                                <Skeleton className="skeleton" variant="h1" />
                             </>
                         </div>
                     )}
-                    {isSearching && isReady && notFound &&(
-                        
+                    {isSearching && isReady && notFound && (
+
                         <div className="nav__searchBox-booksDropdown">
                             <h2>Not found</h2>
                         </div>
                     )}
                     {isSearching && isReady && !notFound &&
-                    (
-                        <div className="nav__searchBox-booksDropdown">
-                            {books.map((book)=>(
-                                <div className="item" onClick={()=>handleCLick(book.id)}>
-                                <img src={`http://104.248.39.111/images/${book.imageLocation}`} alt="" srcset="" />
-                                <h3>{book.name}</h3>
-                                </div>
-                            ))}
-                        </div>
+                        (
+                            <div className="nav__searchBox-booksDropdown">
+                                {books.map((book) => (
+                                    <div className="item" onClick={() => handleCLick(book.id)}>
+                                        <img src={`${API_URL.STORAGE_ENDPOINT}/${book.id}/${book.imageLocation}`} alt="" srcset="" />
+                                        <h3>{book.name}</h3>
+                                    </div>
+                                ))}
+                            </div>
 
-                    )}
+                        )}
 
                     <input
                         value={searchValue}
@@ -160,16 +157,16 @@ function BrowseNavbar() {
                         placeholder="Search"
                     />
                     {!isReady && (
-                    <FontAwesomeIcon
-                    icon={faSearch}
-                    className="nav__searchBox-icon"
-                    />)}
+                        <FontAwesomeIcon
+                            icon={faSearch}
+                            className="nav__searchBox-icon"
+                        />)}
                     {isReady && (
-                    <FontAwesomeIcon
-                        icon={faTimes}
-                        className="nav__searchBox-icon"
-                        onClick={resetSearch}
-                    />)
+                        <FontAwesomeIcon
+                            icon={faTimes}
+                            className="nav__searchBox-icon"
+                            onClick={resetSearch}
+                        />)
                     }
 
                 </div>

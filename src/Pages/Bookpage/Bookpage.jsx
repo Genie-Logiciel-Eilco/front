@@ -8,7 +8,7 @@ import SecondaryBtn from "../../Components/Buttons/SecondaryBtn";
 import Footer from "../../Layout/Footer/Footer";
 import bookService from '../../service/booksService';
 import { useHistory } from 'react-router-dom';
-import API_ENDPOINT from "../../Helpers/API_URL";
+import API_URL from "../../Helpers/API_URL";
 // import userService from '../../service/userService'
 import EditPublisher from '../Dashboard/Publishers/ViewPublishers/EditPublishers/EditPublisher';
 import isFavorite from "../../Helpers/isFavorite";
@@ -24,7 +24,7 @@ function Bookpage() {
     const [loading, setLoading] = useState(true);
     const [book, setBook] = useState({});
 
-    const [success, setSuccess] = useState(false);  
+    const [success, setSuccess] = useState(false);
     const [deleted, setDeleted] = useState(false);
     const [favorite, setFavorite] = useState(false);
     let history = useHistory();
@@ -37,14 +37,14 @@ function Bookpage() {
                 last_name: "fertlen"
             }];
         }
-        if(res.data.message === "Success")
+        if (res.data.message === "Success")
             setBook(res.data.data);
         else
             history.push('/404');
         return res.data.message;
     };
 
-    
+
 
     useEffect(async () => {
         let response = await getBookDetail(id);
@@ -55,18 +55,18 @@ function Bookpage() {
             setLoading(false);
         }
     }, [])
-    useEffect( async () => {
+    useEffect(async () => {
         let isFavRes = await isFavorite(id);
         setFavorite(isFavRes);
-        
-    } , [success, deleted])
+
+    }, [success, deleted])
 
 
     const addToFav = async () => {
         let response = await bookService.addToFavorite(id);
-        if(response.data.success){
+        if (response.data.success) {
             setSuccess(true);
-            setTimeout(()=>{
+            setTimeout(() => {
                 setSuccess(false);
             }, 3000);
         }
@@ -74,9 +74,9 @@ function Bookpage() {
 
     const removeFromFav = async () => {
         let response = await bookService.deleteFromFavorite(id);
-        if(response.data.success){
+        if (response.data.success) {
             setDeleted(true);
-            setTimeout(()=>{
+            setTimeout(() => {
                 setDeleted(false);
             }, 3000);
         }
@@ -106,15 +106,15 @@ function Bookpage() {
     }
     return (
         <>
-          {
-            success ? <div className="alert-container">
-                            <Alert severity="success">Livre est ajouté au favoris avec succès!</Alert> 
-                        </div>: "" 
+            {
+                success ? <div className="alert-container">
+                    <Alert severity="success">Livre est ajouté au favoris avec succès!</Alert>
+                </div> : ""
             }
             {
-            deleted ? <div className="alert-container">
-                            <Alert severity="success">Livre est retiré des favoris avec succès!</Alert> 
-                        </div>: "" 
+                deleted ? <div className="alert-container">
+                    <Alert severity="success">Livre est retiré des favoris avec succès!</Alert>
+                </div> : ""
             }
             <BrowseNavbar />
             <section className="book__detail">
@@ -155,15 +155,15 @@ function Bookpage() {
                                         <SecondaryBtn text="Ecouter" />
                                     </Link>
                                     {
-                                        !favorite 
-                                        ?  <button className="book_navbar_actions_two btn_action add_two" 
-                                                    onClick={addToFav}>
+                                        !favorite
+                                            ? <button className="book_navbar_actions_two btn_action add_two"
+                                                onClick={addToFav}>
                                                 <FontAwesomeIcon icon={faHeart} />&nbsp;
-                                                    Ajouter au favoris
-                                                </button>
-                                        :  <button className="book_navbar_actions_two btn_action del_two" 
-                                                    onClick={removeFromFav}>
-                                            <FontAwesomeIcon icon={faHeartBroken} />&nbsp;
+                                                Ajouter au favoris
+                                            </button>
+                                            : <button className="book_navbar_actions_two btn_action del_two"
+                                                onClick={removeFromFav}>
+                                                <FontAwesomeIcon icon={faHeartBroken} />&nbsp;
                                                 Retirer des favoris
                                             </button>
                                     }
@@ -174,7 +174,7 @@ function Bookpage() {
                         <div className="book__detail-img">
                             <img
                                 className="book__detail-img-ele"
-                                src={`${API_ENDPOINT}/images/${book.imageLocation}`}
+                                src={`${API_URL.STORAGE_ENDPOINT}/${book.id}/${book.imageLocation}`}
                                 alt={book.name}
                             />
                         </div>
