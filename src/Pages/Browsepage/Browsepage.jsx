@@ -63,7 +63,7 @@ export default function Browsepage() {
             <BrowseNavbar />
 
             {loaded ? 
-            <main>
+            <main className="browsing_paage">
                 <Categories categoriesBase={categories}/> 
 
                 {
@@ -77,8 +77,10 @@ export default function Browsepage() {
                                 :   ""
                     })
                 }
-            </main>: "" }
-            <Footer />
+                            <Footer />
+
+            </main>
+            : <h3 className="mt-4 mb-3" align="center">Veuillez patienter</h3>  }
         </>
     );
 } 

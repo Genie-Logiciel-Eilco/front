@@ -27,7 +27,7 @@ function Bookpage() {
     const [success, setSuccess] = useState(false);  
     const [deleted, setDeleted] = useState(false);
     const [favorite, setFavorite] = useState(false);
-
+    let history = useHistory();
 
     const getBookDetail = async (id) => {
         let res = await bookService.getOneBook(id);
@@ -37,11 +37,14 @@ function Bookpage() {
                 last_name: "fertlen"
             }];
         }
-        setBook(res.data.data);
+        if(res.data.message === "Success")
+            setBook(res.data.data);
+        else
+            history.push('/404');
         return res.data.message;
     };
 
-    let history = useHistory();
+    
 
     useEffect(async () => {
         let response = await getBookDetail(id);
@@ -49,7 +52,6 @@ function Bookpage() {
             history.push("/404");
         }
         else {
-            console.log(book);
             setLoading(false);
         }
     }, [])
@@ -149,7 +151,7 @@ function Bookpage() {
                                     <Link to={`/books/read/${id}`}>
                                         <PrimaryBtn text="Lire" />
                                     </Link>
-                                    <Link to={`/books/read/${id}`}>
+                                    <Link to={`/books/listen/${id}`}>
                                         <SecondaryBtn text="Ecouter" />
                                     </Link>
                                     {

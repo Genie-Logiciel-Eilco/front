@@ -101,10 +101,23 @@ export default function Homepage() {
                 <div className="hero-content">
                     <h3>Votre premier livre audio gratuit</h3>
                     <h4>Vous êtes prêt ? Bénéficiez automatiquement de 2 livres audio offerts.</h4>
-                    <BlueButton
+                        {localStorage.getItem("data") 
+                        ? <BlueButton
                         text="Commencer"
-                        clickHandler={() => history.push("/Login")}
+                        clickHandler={() => history.push("/Signup")}
+                        />
+                        :                    <div className="buttons_home">
+                             <BlueButton
+                        text="Commencer"
+                        clickHandler={() => history.push("/Signup")}
                     />
+                    <button className="blue-button two" onClick={() => history.push('/Login')}>
+                        S'authentifier
+                    </button>
+                    </div>
+
+                        }
+                   
                 </div>
             </div>
 

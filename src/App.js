@@ -71,6 +71,13 @@ function App() {
               img={imgUnverified} />}
               unverified={true}
             />
+            <Route path="/404" component={() => <Unverified
+              header="Erreur 404"
+              text="La page que vous avez demandé n'existe pas ou il y'a une erreur dans votre requête" 
+              img={imgUnverified}
+              unverified={false}
+            />}  />
+            <Redirect from='*' to='/404' />
           </Switch>
         </Suspense>
       </Router>

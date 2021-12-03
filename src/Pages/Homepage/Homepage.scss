@@ -160,3 +160,25 @@ div.feedback {
         @include grid(4, 1rem);
     }
 }
+
+
+.buttons_home{
+    display : flex;
+    justify-content: space-between;
+    .blue-button{
+        background-color : $yellow;
+        margin: {
+            left : 0.5rem; right : 0.5rem;
+        };
+        transition : 0.2s background-color;
+        &:hover{
+            background-color : orange;
+        }
+        &.two{
+            background-color : #2A7FBA !important;
+            &:hover{
+                background-color :$blue !important;
+            }
+        }
+    }
+}
