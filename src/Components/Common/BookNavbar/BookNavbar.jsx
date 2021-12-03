@@ -65,7 +65,7 @@ export default function BookNavbar({title, authors, image, lire}) {
                         </div>: "" 
             }
             <div className="book_navbar_actions">
-                {lire 
+                {!lire 
                 ?   <button className="book_navbar_actions_one btn_action"
                             onClick={handleAction}>
                         <FontAwesomeIcon icon={faReadme} />&nbsp;
