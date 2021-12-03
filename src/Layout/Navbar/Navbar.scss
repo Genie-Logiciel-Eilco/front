@@ -23,12 +23,23 @@ nav.nav-0 {
     @include horizontal-list;
     li {
       padding: 0 0.4rem;
-
+      margin-right: 20px;
       a {
         @include reset-link;
         font-size: 17px;
         font-weight: 600;
       }
+     
     }
+    
   }
+}
+.logout-button{
+      color: "#fff"; 
+      border: "1px solid #fff"; 
+      border-radius: "10px"; 
+      padding: "5px 10px";
+      background: "none"; 
+      margin-left: "10rem";
+    
 }

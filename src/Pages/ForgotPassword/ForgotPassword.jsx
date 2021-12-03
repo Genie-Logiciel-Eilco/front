@@ -157,7 +157,7 @@ export default function LoginPage() {
                             </legend>
                             {formGenerator(form2)}
                             <button type="submit" role="button" className="btn-login">
-                                Envoyer
+                                Changer
                             </button>
                             <Link to="/login">
                                 <button type="button" role="button" className="btn-secondary-login">
@@ -173,7 +173,7 @@ export default function LoginPage() {
                 )}
             </div>
             {open &&
-                <Alert severity={severity} sx={{ width: '50%' }}>
+                <Alert severity={severity} sx={{ width: '10%' }} style={{ padding: "5px 10px" }}>
                     {message}
                 </Alert>
             }
