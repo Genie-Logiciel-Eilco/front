@@ -22,7 +22,7 @@ function Bookpage() {
         if (!res.data.data.hasOwnProperty("authors")) {
             res.data.data.authors = [{
                 first_name: "FLan",
-                last_name : "fertlen"
+                last_name: "fertlen"
             }];
         }
         setBook(res.data.data);
@@ -46,24 +46,24 @@ function Bookpage() {
         return book.authors.map((auth, id) => {
             return <p className="book__detail-author" key={id}>
                 {auth.first_name} {auth.last_name}
-                </p>
+            </p>
         });
-        
+
     }
 
-    const getCategories = () => {   
+    const getCategories = () => {
         let res = [];
-        let {categories} = book;
-        if(!loading)
+        let { categories } = book;
+        if (!loading)
             res = categories.map((cat) => {
-                let {id , name} = cat;
+                let { id, name } = cat;
                 return <span className="book__detail-category-tag" key={id}>
-                {name}
-            </span>
-        });
+                    {name}
+                </span>
+            });
         console.log(book);
         return res;
-        
+
     }
     return (
         <>
@@ -78,15 +78,15 @@ function Bookpage() {
                             </h2>
                             <p className="text-dark mt-4 font-weight-bold title">Ecrit par</p>
                             {/*  */}
-                                {/* Ecrit par: <br/>  */}
-                                <div className="authors_container">
-                                    {loading ? "Patientez s'il vous plaît..." : getAuthorsList()}
-                                </div>
+                            {/* Ecrit par: <br/>  */}
+                            <div className="authors_container">
+                                {loading ? "Patientez s'il vous plaît..." : getAuthorsList()}
+                            </div>
                             {/* </p> */}
                             <p className="text-dark mt-4 font-weight-bold title">Catégories</p>
                             <div className="book__detail-category">
                                 {!loading ? getCategories() : "Patientez s'il vous plaît... "}
-                            
+
                             </div>
                             <p className="book__detail-desc">
                                 <p className="text-dark mt-4 font-weight-bold text-lg title">De quoi s'agit-il ?</p>
