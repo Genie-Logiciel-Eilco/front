@@ -1,23 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Categories.scss";
 
-export default function Categories({categoriesBase}) {
+export default function Categories({ categoriesBase, onChange }) {
     const [active, setActive] = useState("Toutes");
     const [categories, setCategories] = useState([...categoriesBase]);
-    //const [flag, setFlag] = useState(0);
-    useEffect(()=>{
-    }, [])
 
-
-
-    const toggleActiveClass = (name) => {
-        setActive(name);
+    const toggleActiveClass = (category) => {
+        setActive(category.name);
+        onChange(category)
     }
 
     const toggleActiveClassStyles = (name) => {
-        return name === active 
-        ? "categories__list-item active"
-        : "categories__list-item inactive";
+        return name === active
+            ? "categories__list-item active"
+            : "categories__list-item inactive";
     }
 
 
@@ -31,7 +27,7 @@ export default function Categories({categoriesBase}) {
                         <li
                             key={index}
                             className={toggleActiveClassStyles(category.name)}
-                            onClick={() => toggleActiveClass(category.name)}
+                            onClick={() => toggleActiveClass(category)}
                         >
                             {category.name}
                         </li>

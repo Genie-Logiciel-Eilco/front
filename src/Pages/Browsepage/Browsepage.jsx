@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./Browsepage.scss";
 
 // Components
@@ -13,74 +13,70 @@ import bookService from '../../service/booksService';
 export default function Browsepage() {
 
     const [categories, setCategories] = useState([]);
-
+    const [chosenCategory, setChosenCategory] = useState(-1)
     const [books, setBooks] = useState([]);
-    
-    const [loaded, setLoaded] = useState(false);
-    useEffect(async ()=>{
-        // GET BOOKS
-        let resp = await bookService.getBooks();
-        let books = await resp.data.data;
-        setBooks(books);
-        
-        let response = await bookService.getCategories();
-        let cats = await response.data;
-        
-        setCategories([{name : "Toutes", id : -1}
-        ,...cats.data.map((cat) => {
-            return {
-                name : cat.name,
-                id : cat.id
-            };
-        })]);
+    const [bookies, setBookies] = useState([])
+    const [reload, setReload] = useState(false)
 
+
+    const [loaded, setLoaded] = useState(false);
+    useEffect(async () => {
+        // GET BOOKS
+        bookService.getBooks().then((res) => {
+            setBookies(res?.data?.data)
+            setBooks(res?.data?.data)
+        })
+        let response = await bookService.getCategories();
+        let cats = await response.data
+        setCategories([{ name: "Toutes", id: -1 }
+            , ...cats.data.map((cat) => {
+                return {
+                    name: cat.name,
+                    id: cat.id
+                };
+            })]);
         setLoaded(true);
-    
+        setReload(!reload)
     }, [])
-    
+
     useEffect(() => {
-        // console.log("DEBUG: BOOKS: ", books);
-    }, [categories])
+        displayBooksOfCategory(chosenCategory.id)
+    }, [categories, chosenCategory])
 
     const displayBooksOfCategory = (categoryID) => {
-        if(categoryID === -1) return books;
-        let res = [];
-        for(let i = 0; i < books.length; i++){
-            let book = books[i];
-            for(let j = 0; j < book.categories.length; j++){
-                let cat = book.categories[j];
-                if(cat.id === categoryID){
-                    res.push(book);
-                    break;
+        let res = []
+        if (categoryID === -1) {
+            setBookies(books)
+        }
+        else {
+            let catName;
+            for (let i = 0; i < books.length; i++) {
+                for (let j = 0; j < books[i].categories.length; j++) {
+                    catName = books[i].categories[j].name;
+                    if (catName === chosenCategory.name) res = [...res, books[i]]
                 }
             }
+            setBookies(res)
         }
-        return res;
+        setReload(!reload)
     }
 
     return (
         <>
             <BrowseNavbar />
 
-            {loaded ? 
-            <main className="browsing_paage">
-                <Categories categoriesBase={categories}/> 
-
-                {
-                categories.map((cat, ind) => {
-                        let bookss = displayBooksOfCategory(cat.id);
-                        
-                        return bookss.length > 0 
-                                ?   <ListBooks categoryLabel={cat.name} 
-                                    books={bookss} 
-                                    key={ind} />
-                                :   ""
-                    })
-                }
-                            <Footer />
-
-            </main>
-            : <h3 className="mt-4 mb-3" align="center">Veuillez patienter</h3>  }
+            {loaded ?
+                <main className="browsing_paage">
+                    <Categories categoriesBase={categories} onChange={(value) => setChosenCategory(value)} />
+                    {
+                        bookies.length > 0
+                            ? (
+                                <ListBooks categoryLabel={chosenCategory.name} books={bookies} />)
+                            : "Aucun résultat"
+                    }
+                    <Footer />
+                </main>
+                : <h3 className="mt-4 mb-3" align="center">Veuillez patienter</h3>}
         </>
     );
-} 
+}
