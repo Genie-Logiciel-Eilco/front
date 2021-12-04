@@ -22,6 +22,7 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import imgplaceholder from '../../../../../Assets/imgplaceholder.png'
 
 import API_URL from "../../../../../Helpers/API_URL";
+import authHeader from "../../../../../service/authHeader";
 
 
 const ITEM_HEIGHT = 50;
@@ -107,10 +108,9 @@ export default function AddBook({ success, onChange }) {
   const imageUpload = () => {
     let formData = new FormData();
     formData.append("File", file);
-    let value = "Bearer " + userService.accessToken;
     const config = {
       headers: {
-        Authorization: value,
+        Authorization: authHeader(),
         "content-type": "multipart/form-data",
       },
     };
@@ -144,10 +144,9 @@ export default function AddBook({ success, onChange }) {
   const contentFileUpload = () => {
     let formData = new FormData();
     formData.append("File", contentFile);
-    let value = "Bearer " + userService.accessToken;
     const config = {
       headers: {
-        Authorization: value,
+        Authorization: authHeader(),
         "content-type": "multipart/form-data",
       },
     };

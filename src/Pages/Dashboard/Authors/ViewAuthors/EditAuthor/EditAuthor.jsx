@@ -14,6 +14,7 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Checkbox from '@mui/material/Checkbox';
 import imgplaceholder from '../../../../../Assets/imgplaceholder.png'
 import API_URL from "../../../../../Helpers/API_URL";
+import authHeader from "../../../../../service/authHeader";
 
 export default function EditAuthor({ id, success, onChange }) {
   //data to send
@@ -51,10 +52,9 @@ export default function EditAuthor({ id, success, onChange }) {
   const imageUpload = (id) => {
     let formData = new FormData();
     formData.append("File", file);
-    let value = "Bearer " + userService.accessToken;
     const config = {
       headers: {
-        Authorization: value,
+        Authorization: authHeader(),
         "content-type": "multipart/form-data",
       },
     };

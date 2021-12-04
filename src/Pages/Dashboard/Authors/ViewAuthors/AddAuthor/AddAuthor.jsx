@@ -52,10 +52,9 @@ export default function AddBook({ success, onChange }) {
   const imageUpload = (id) => {
     let formData = new FormData();
     formData.append("File", file);
-    let value = "Bearer " + userService.accessToken;
     const config = {
       headers: {
-        Authorization: value,
+        Authorization: authHeader(),
         "content-type": "multipart/form-data",
       },
     };
