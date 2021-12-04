@@ -1,9 +1,6 @@
-import { ArrowBackIos } from "@mui/icons-material";
 import axios from "axios";
 import API_URL from "../Helpers/API_URL";
 import authHeader from "./authHeader";
-
-const accessToken = "TempToken";
 
 const getBooks = async () => {
     return await axios.get(`${API_URL.API_ENDPOINT}/api/books`, {

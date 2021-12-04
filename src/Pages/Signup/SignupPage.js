@@ -146,7 +146,7 @@ export default function SignupPage() {
                         S'enregistrer
                     </button>
 
-                    <Link to="/Signup">
+                    <Link to="/login">
                         <button
                             type="button"
                             role="button"

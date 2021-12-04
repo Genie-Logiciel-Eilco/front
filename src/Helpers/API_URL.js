@@ -7,5 +7,3 @@ const STORAGE_ENDPOINT_AUTHORS = 'http://172.31.13.113:90/authors';
 // file : {`${API_URL.STORAGE_ENDPOINT}/${book.id}/${book.fileLocation}`}
 
 export default { API_ENDPOINT, STORAGE_ENDPOINT, STORAGE_ENDPOINT_AUTHORS };
-
-// import API_URL from "../../../../../Helpers/API_URL";

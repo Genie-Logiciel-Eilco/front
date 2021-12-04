@@ -321,7 +321,7 @@ export default function AddBook({ success, onChange }) {
                 input={<OutlinedInput label="Auteurs" />}
                 MenuProps={MenuProps}
               >
-                {authors?.data?.map((author) => (
+                {authors?.map((author) => (
                   <MenuItem
                     key={author?.id}
                     value={author?.id}
