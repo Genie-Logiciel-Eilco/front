@@ -83,7 +83,6 @@ export default function EditBook({ uuid, success, onChange }) {
             setName(res?.data?.data?.name);
             setSynopsis(res?.data?.data?.synopsis);
             setPublicationDate(res?.data?.data?.publicationDate);
-            setChosenAuthors(res?.data?.data?.authors);
             setChosenPublisher(res?.data?.data?.publisher_id);
             setImage(`${API_URL.STORAGE_ENDPOINT}/${res?.data?.data?.id}/${res?.data?.data?.imageLocation}`)
             setContentFile(`${API_URL.STORAGE_ENDPOINT}/${res?.data?.data?.id}/${res?.data?.data?.fileLocation}`)
